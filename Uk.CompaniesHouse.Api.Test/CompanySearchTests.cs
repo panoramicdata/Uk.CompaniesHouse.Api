@@ -5,9 +5,9 @@ using Xunit.Abstractions;
 
 namespace Uk.CompaniesHouse.Api.Test
 {
-	public class SearchTests : TestBase
+	public class CompanySearchTests : TestBase
 	{
-		public SearchTests(ITestOutputHelper testOutputHelper,
+		public CompanySearchTests(ITestOutputHelper testOutputHelper,
 			IOptions<AppSettings> options
 			) : base(testOutputHelper, options)
 		{
@@ -37,6 +37,19 @@ namespace Uk.CompaniesHouse.Api.Test
 			address.AddressLine1.Should().Be("Heywood Avenue");
 			address.Locality.Should().Be("Maidenhead");
 			address.PostalCode.Should().Be("SL6 3JA");
+		}
+
+		[Fact]
+
+		public async void Search_InvalidQuery_Fails()
+		{
+			var result = await Client
+				.Search
+				.GetCompanyInfoByNameAsync("xyzzzzzzzzzzzzz", default)
+				.ConfigureAwait(false);
+			
+			result.Should().NotBeNull();
+			result.TotalResults.Should().Be(0);
 		}
 	}
 }
