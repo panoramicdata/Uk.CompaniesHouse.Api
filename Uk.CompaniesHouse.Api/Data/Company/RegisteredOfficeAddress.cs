@@ -2,29 +2,28 @@
 
 namespace Uk.CompaniesHouse.Api.Data.Company
 {
-
 	/// <summary>
-	/// XXXXXXX
+	/// Registered office address details
 	/// </summary>
 	[DataContract]
 	public class RegisteredOfficeAddress
 	{
 		/// <summary>
-		/// XXXXXXXXX
+		/// Locality
 		/// </summary>
-		[DataMember(Name = "XXXXXXX")]
-		public string locality { get; set; }
+		[DataMember(Name = "locality")]
+		public string Locality { get; set; } = string.Empty;
 
 		/// <summary>
-		/// XXXXXXXXX
+		/// Address line 1
 		/// </summary>
-		[DataMember(Name = "XXXXXXX")]
-		public string address_line_1 { get; set; }
+		[DataMember(Name = "address_line_1")]
+		public string AddressLine1 { get; set; } = string.Empty;
 
 		/// <summary>
-		/// XXXXXXXXX
+		/// Postal code
 		/// </summary>
-		[DataMember(Name = "XXXXXXX")]
-		public string postal_code { get; set; }
+		[DataMember(Name = "postal_code")]
+		public string PostalCode { get; set; } = string.Empty;
 	}
 }

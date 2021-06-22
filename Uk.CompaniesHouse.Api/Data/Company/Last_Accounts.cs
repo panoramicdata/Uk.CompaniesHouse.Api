@@ -1,40 +1,35 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Runtime.Serialization;
-using System.Text;
+﻿using System.Runtime.Serialization;
 
 namespace Uk.CompaniesHouse.Api.Data.Company
 {
-
 	/// <summary>
-	/// XXXXXXX
+	/// Last accounts
 	/// </summary>
 	[DataContract]
 	public class Last_Accounts
 	{
+		/// <summary>
+		/// Period ended on
+		/// </summary>
+		[DataMember(Name = "period_end_on")]
+		public string PeriodEndOn { get; set; } = string.Empty;
 
 		/// <summary>
-		/// XXXXXXXXX
+		/// Type
 		/// </summary>
-		[DataMember(Name = "XXXXXXX")]
-		public string period_end_on { get; set; }
+		[DataMember(Name = "type")]
+		public string type { get; set; } = string.Empty;
 
 		/// <summary>
-		/// XXXXXXXXX
+		/// Made up to
 		/// </summary>
-		[DataMember(Name = "XXXXXXX")]
-		public string type { get; set; }
+		[DataMember(Name = "made_up_to")]
+		public string MadeUpTo { get; set; } = string.Empty;
 
 		/// <summary>
-		/// XXXXXXXXX
+		/// Period start on
 		/// </summary>
-		[DataMember(Name = "XXXXXXX")]
-		public string made_up_to { get; set; }
-
-		/// <summary>
-		/// XXXXXXXXX
-		/// </summary>
-		[DataMember(Name = "XXXXXXX")]
-		public string period_start_on { get; set; }
+		[DataMember(Name = "period_start_on")]
+		public string PeriodStartOn { get; set; } = string.Empty;
 	}
 }

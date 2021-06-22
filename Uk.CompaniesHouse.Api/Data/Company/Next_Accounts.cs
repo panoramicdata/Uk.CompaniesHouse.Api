@@ -1,40 +1,35 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Runtime.Serialization;
-using System.Text;
+﻿using System.Runtime.Serialization;
 
 namespace Uk.CompaniesHouse.Api.Data.Company
 {
-
 	/// <summary>
-	/// XXXXXXX
+	/// Next accounts
 	/// </summary>
 	[DataContract]
 	public class Next_Accounts
 	{
+		/// <summary>
+		/// Period start on
+		/// </summary>
+		[DataMember(Name = "period_start_on")]
+		public string PeriodStartOn { get; set; } = string.Empty;
 
 		/// <summary>
-		/// XXXXXXXXX
+		/// Due on
 		/// </summary>
-		[DataMember(Name = "XXXXXXX")]
-		public string period_start_on { get; set; }
+		[DataMember(Name = "due_on")]
+		public string DueOn { get; set; } = string.Empty;
 
 		/// <summary>
-		/// XXXXXXXXX
+		/// Overdue
 		/// </summary>
-		[DataMember(Name = "XXXXXXX")]
-		public string due_on { get; set; }
-
-		/// <summary>
-		/// XXXXXXXXX
-		/// </summary>
-		[DataMember(Name = "XXXXXXX")]
+		[DataMember(Name = "overdue")]
 		public bool overdue { get; set; }
 
 		/// <summary>
-		/// XXXXXXXXX
+		/// Period end on
 		/// </summary>
-		[DataMember(Name = "XXXXXXX")]
-		public string period_end_on { get; set; }
+		[DataMember(Name = "period_end_on")]
+		public string PeriodEndOn { get; set; } = string.Empty;
 	}
 }

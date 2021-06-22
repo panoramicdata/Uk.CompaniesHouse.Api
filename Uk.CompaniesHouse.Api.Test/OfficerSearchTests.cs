@@ -1,5 +1,6 @@
 using FluentAssertions;
 using Microsoft.Extensions.Options;
+using Uk.CompaniesHouse.Api.Data.Company;
 using Xunit;
 using Xunit.Abstractions;
 
@@ -17,26 +18,27 @@ namespace Uk.CompaniesHouse.Api.Test
 		public async void Search_ValidQuery_Succeeds()
 		{
 			var result = await Client
-				.Search
-				.GetOfficerInfoByNameAsync("David Bond", default)
+				.Company
+				.GetOfficerInformationAppointmentAsync("06982102", default, "d_YAc-47aoTmbILKPRY7VukqF-I")
 				.ConfigureAwait(false);
 
 			result.Should().NotBeNull();
-			result.TotalResults.Should().NotBe(0);
+			result.Should().BeOfType<Appointment>();
 
-			var item = result.Items[0];
+			result.Name.Should().Be("BOND, David Niel Marshall");
+			result.Nationality.Should().Be("British");
+			result.Occupation.Should().Be("Director");
+			result.CountryOfResidence.Should().Be("England");
 
-			item.Name.Should().Be("David Bond");
-			//item.CompanyType.Should().Be("ltd");
-			//item.CompanyNumber.Should().Be("06982102");
-			//item.CompanyStatus.Should().Be("active");
+			var address = result.Address;
+			address.AddressLine1.Should().Be("Heywood Avenue");
+			address.Country.Should().Be("United Kingdom");
+			address.PostalCode.Should().Be("SL6 3JA");
+			address.Region.Should().Be("Berkshire");
 
-			//var address = item.Address;
-			//address.Should().NotBeNull();
-			//address.Premises.Should().Be("46");
-			//address.AddressLine1.Should().Be("Heywood Avenue");
-			//address.Locality.Should().Be("Maidenhead");
-			//address.PostalCode.Should().Be("SL6 3JA");
+			var dob = result.DateOfBirth;
+			dob.Month.Should().Be("2");
+			dob.Year.Should().Be("1975");
 		}
 
 		[Fact]
@@ -47,7 +49,7 @@ namespace Uk.CompaniesHouse.Api.Test
 				.Search
 				.GetCompanyInfoByNameAsync("xyzzzzzzzzzzzzz", default)
 				.ConfigureAwait(false);
-			
+
 			result.Should().NotBeNull();
 			result.TotalResults.Should().Be(0);
 		}

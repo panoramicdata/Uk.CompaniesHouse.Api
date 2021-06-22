@@ -3,7 +3,6 @@ using System.Runtime.Serialization;
 
 namespace Uk.CompaniesHouse.Api.Data.Search
 {
-
 	[DataContract]
 	public class Matches
 	{
@@ -19,5 +18,4 @@ namespace Uk.CompaniesHouse.Api.Data.Search
 		[DataMember(Name = "title")]
 		public List<int> Title { get; set; } = new();
 	}
-
 }

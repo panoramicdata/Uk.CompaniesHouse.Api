@@ -2,48 +2,46 @@
 
 namespace Uk.CompaniesHouse.Api.Data.Company
 {
-
 	/// <summary>
-	/// XXXXXXX
+	/// Accounts
 	/// </summary>
 	[DataContract]
 	public class Accounts
 	{
+		/// <summary>
+		/// Whether the accounts are overdue
+		/// </summary>
+		[DataMember(Name = "overdue")]
+		public bool Overdue { get; set; }
 
 		/// <summary>
-		/// XXXXXXXXX
+		/// Accounting Reference Date
 		/// </summary>
-		[DataMember(Name = "XXXXXXX")]
-		public bool overdue { get; set; }
+		[DataMember(Name = "accounting_reference_date")]
+		public AccountingReferenceDate AccountingReferenceDate { get; set; } = new();
 
 		/// <summary>
-		/// XXXXXXXXX
+		/// Last Accounts
 		/// </summary>
-		[DataMember(Name = "XXXXXXX")]
-		public Accounting_Reference_Date accounting_reference_date { get; set; }
+		[DataMember(Name = "last_accounts")]
+		public Last_Accounts Last_Accounts { get; set; } = new();
 
 		/// <summary>
-		/// XXXXXXXXX
+		/// Next accounts
 		/// </summary>
-		[DataMember(Name = "XXXXXXX")]
-		public Last_Accounts last_accounts { get; set; }
+		[DataMember(Name = "next_accounts")]
+		public Next_Accounts NextAccounts { get; set; } = new();
 
 		/// <summary>
-		/// XXXXXXXXX
+		/// Next due
 		/// </summary>
-		[DataMember(Name = "XXXXXXX")]
-		public Next_Accounts next_accounts { get; set; }
+		[DataMember(Name = "next_due")]
+		public string NextDue { get; set; } = string.Empty;
 
 		/// <summary>
-		/// XXXXXXXXX
+		/// Next made up to
 		/// </summary>
-		[DataMember(Name = "XXXXXXX")]
-		public string next_due { get; set; }
-
-		/// <summary>
-		/// XXXXXXXXX
-		/// </summary>
-		[DataMember(Name = "XXXXXXX")]
-		public string next_made_up_to { get; set; }
+		[DataMember(Name = "next_made_up_to")]
+		public string NextMadeUpTo { get; set; } = string.Empty;
 	}
 }

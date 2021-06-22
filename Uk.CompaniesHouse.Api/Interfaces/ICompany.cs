@@ -1,7 +1,8 @@
 ﻿using Refit;
 using System.Threading;
 using System.Threading.Tasks;
-using Uk.CompaniesHouse.Api.Data.Search;
+using Uk.CompaniesHouse.Api.Data.Common;
+using Uk.CompaniesHouse.Api.Data.Company;
 
 namespace Uk.CompaniesHouse.Api.Interfaces
 {
@@ -13,9 +14,32 @@ namespace Uk.CompaniesHouse.Api.Interfaces
 		/// <param name="companyNumber">The company number</param>
 		/// <param name="cancellationToken">The cancellation token</param>
 		[Get("/company/{companyNumber}")]
-		public Task<CompanySearchResult> GetByIdAsync(
+		public Task<Company> GetByIdAsync(
 			[AliasAs("companyNumber")] string companyNumber,
 			CancellationToken cancellationToken
+			);
+
+		/// <summary>
+		/// Find address information from the company number
+		/// </summary>
+		/// <param name="companyNumber">The company number</param>
+		/// <param name="cancellationToken">The cancellation token</param>
+		[Get("/company/{companyNumber}/registered-address")]
+		public Task<Address> GetRegisteredAddressAsync(
+			[AliasAs("companyNumber")] string companyNumber,
+			CancellationToken cancellationToken
+			);
+
+		/// <summary>
+		/// Find officer information from the appointment number
+		/// </summary>
+		/// <param name="companyNumber">The company number</param>
+		/// <param name="cancellationToken">The cancellation token</param>
+		[Get("/company/{companyNumber}/appointments/{appointmentNumber}")]
+		public Task<Appointment> GetOfficerInformationAppointmentAsync(
+			[AliasAs("companyNumber")] string companyNumber,
+			CancellationToken cancellationToken,
+			[AliasAs("appointmentNumber")] string appointmentNumber
 			);
 	}
 }

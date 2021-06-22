@@ -1,6 +1,8 @@
 ﻿using System.Collections.Generic;
 using System.Diagnostics;
 using System.Runtime.Serialization;
+using Uk.CompaniesHouse.Api.Data.Common;
+using Uk.CompaniesHouse.Api.Data.Company;
 
 namespace Uk.CompaniesHouse.Api.Data.Search
 {
@@ -75,7 +77,7 @@ namespace Uk.CompaniesHouse.Api.Data.Search
 		/// Links
 		/// </summary>
 		[DataMember(Name = "links")]
-		public Links Links { get; set; } = new();
+		public CompanyLinks Links { get; set; } = new();
 
 		/// <summary>
 		/// Matches

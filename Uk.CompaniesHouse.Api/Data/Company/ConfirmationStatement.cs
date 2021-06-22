@@ -1,40 +1,35 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Runtime.Serialization;
-using System.Text;
+﻿using System.Runtime.Serialization;
 
 namespace Uk.CompaniesHouse.Api.Data.Company
 {
-
 	/// <summary>
-	/// XXXXXXX
+	/// Confirmation statement
 	/// </summary>
 	[DataContract]
 	public class ConfirmationStatement
 	{
+		/// <summary>
+		/// Next due
+		/// </summary>
+		[DataMember(Name = "next_due")]
+		public string NextDue { get; set; } = string.Empty;
 
 		/// <summary>
-		/// XXXXXXXXX
+		/// Next made up to
 		/// </summary>
-		[DataMember(Name = "XXXXXXX")]
-		public string next_due { get; set; }
+		[DataMember(Name = "next_made_up_to")]
+		public string NextMadeUpTo { get; set; } = string.Empty;
 
 		/// <summary>
-		/// XXXXXXXXX
+		/// Last made up to
 		/// </summary>
-		[DataMember(Name = "XXXXXXX")]
-		public string next_made_up_to { get; set; }
+		[DataMember(Name = "last_made_up_to")]
+		public string LastMadeUpTo { get; set; } = string.Empty;
 
 		/// <summary>
-		/// XXXXXXXXX
+		/// Is it overdue?
 		/// </summary>
-		[DataMember(Name = "XXXXXXX")]
-		public string last_made_up_to { get; set; }
-
-		/// <summary>
-		/// XXXXXXXXX
-		/// </summary>
-		[DataMember(Name = "XXXXXXX")]
+		[DataMember(Name = "overdue")]
 		public bool overdue { get; set; }
 	}
 }

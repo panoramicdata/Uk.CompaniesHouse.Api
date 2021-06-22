@@ -115,7 +115,7 @@ namespace Uk.CompaniesHouse.Api.Data.Company
 		/// Links.
 		/// </summary>
 		[DataMember(Name = "links")]
-		public Links Links { get; set; } = new();
+		public CompanyLinks Links { get; set; } = new();
 
 		/// <summary>
 		/// Whether the registered office is in dispute.

@@ -47,9 +47,20 @@ namespace Uk.CompaniesHouse.Api.Test
 				.Search
 				.GetCompanyInfoByNameAsync("xyzzzzzzzzzzzzz", default)
 				.ConfigureAwait(false);
-			
+
 			result.Should().NotBeNull();
 			result.TotalResults.Should().Be(0);
+		}
+
+		[Fact]
+		public async void GetCompanyInfo_Succeeds()
+		{
+			var result = await Client
+				.Company
+				.GetByIdAsync("06982102", default)
+				.ConfigureAwait(false);
+
+			result.Should().NotBeNull();
 		}
 	}
 }
