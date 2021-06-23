@@ -1,9 +1,9 @@
 ﻿using System.Runtime.Serialization;
 
-namespace Uk.CompaniesHouse.Api.Data.Company
+namespace Uk.CompaniesHouse.Api.Data.Appointment
 {
 	[DataContract]
-	public class Officer
+	public class AppointmentOfficer
 	{
 		/// <summary>
 		/// Self link

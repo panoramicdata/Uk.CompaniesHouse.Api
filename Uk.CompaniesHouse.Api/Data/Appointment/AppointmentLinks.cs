@@ -1,6 +1,6 @@
 ﻿using System.Runtime.Serialization;
 
-namespace Uk.CompaniesHouse.Api.Data.Company
+namespace Uk.CompaniesHouse.Api.Data.Appointment
 {
 	/// <summary>
 	/// Appointment Links
@@ -18,6 +18,6 @@ namespace Uk.CompaniesHouse.Api.Data.Company
 		/// Officer link
 		/// </summary>
 		[DataMember(Name = "officer")]
-		public Officer Officer { get; set; } = new();
+		public AppointmentOfficer Officer { get; set; } = new();
 	}
 }

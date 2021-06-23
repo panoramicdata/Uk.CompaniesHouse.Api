@@ -18,7 +18,7 @@ namespace Uk.CompaniesHouse.Api.Data.Company
 		/// Type
 		/// </summary>
 		[DataMember(Name = "type")]
-		public string type { get; set; } = string.Empty;
+		public string Type { get; set; } = string.Empty;
 
 		/// <summary>
 		/// Made up to

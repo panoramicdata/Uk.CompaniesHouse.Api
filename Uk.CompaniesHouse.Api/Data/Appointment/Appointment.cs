@@ -1,16 +1,16 @@
 ﻿using System.Runtime.Serialization;
 using Uk.CompaniesHouse.Api.Data.Common;
 
-namespace Uk.CompaniesHouse.Api.Data.Company
+namespace Uk.CompaniesHouse.Api.Data.Appointment
 {
 	/// <summary>
-	/// XXXXX
+	/// Appointment details
 	/// </summary>
 	[DataContract]
 	public class Appointment
 	{
 		/// <summary>
-		/// XXXXX
+		/// Links
 		/// </summary>
 		[DataMember(Name = "links")]
 		public AppointmentLinks Links { get; set; } = new();

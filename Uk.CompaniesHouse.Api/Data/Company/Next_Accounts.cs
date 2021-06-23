@@ -24,7 +24,7 @@ namespace Uk.CompaniesHouse.Api.Data.Company
 		/// Overdue
 		/// </summary>
 		[DataMember(Name = "overdue")]
-		public bool overdue { get; set; }
+		public bool Overdue { get; set; }
 
 		/// <summary>
 		/// Period end on

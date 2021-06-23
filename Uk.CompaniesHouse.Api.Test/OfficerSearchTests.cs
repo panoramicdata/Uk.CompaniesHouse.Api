@@ -1,6 +1,5 @@
 using FluentAssertions;
 using Microsoft.Extensions.Options;
-using Uk.CompaniesHouse.Api.Data.Company;
 using Xunit;
 using Xunit.Abstractions;
 
@@ -18,25 +17,24 @@ namespace Uk.CompaniesHouse.Api.Test
 		public async void Search_ValidQuery_Succeeds()
 		{
 			var result = await Client
-				.Company
-				.GetOfficerInformationAppointmentAsync("06982102", default, "d_YAc-47aoTmbILKPRY7VukqF-I")
+				.Search
+				.GetOfficerInfoByNameAsync("David Niel Bond", default)
 				.ConfigureAwait(false);
 
 			result.Should().NotBeNull();
-			result.Should().BeOfType<Appointment>();
+			result.TotalResults.Should().NotBe(0);
 
-			result.Name.Should().Be("BOND, David Niel Marshall");
-			result.Nationality.Should().Be("British");
-			result.Occupation.Should().Be("Director");
-			result.CountryOfResidence.Should().Be("England");
+			var item = result.Items[0];
 
-			var address = result.Address;
+			item.Title.Should().Be("David Niel Marshall BOND");
+
+			var address = item.Address;
 			address.AddressLine1.Should().Be("Heywood Avenue");
-			address.Country.Should().Be("United Kingdom");
+			address.Country.Should().Be("England");
 			address.PostalCode.Should().Be("SL6 3JA");
 			address.Region.Should().Be("Berkshire");
 
-			var dob = result.DateOfBirth;
+			var dob = item.DateOfBirth;
 			dob.Month.Should().Be("2");
 			dob.Year.Should().Be("1975");
 		}
@@ -47,7 +45,7 @@ namespace Uk.CompaniesHouse.Api.Test
 		{
 			var result = await Client
 				.Search
-				.GetCompanyInfoByNameAsync("xyzzzzzzzzzzzzz", default)
+				.GetOfficerInfoByNameAsync("xyzzzzzzzzzzzzz", default)
 				.ConfigureAwait(false);
 
 			result.Should().NotBeNull();

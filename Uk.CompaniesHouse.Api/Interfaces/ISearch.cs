@@ -1,7 +1,6 @@
 ﻿using Refit;
 using System.Threading;
 using System.Threading.Tasks;
-using Uk.CompaniesHouse.Api.Data.Company;
 using Uk.CompaniesHouse.Api.Data.Search;
 
 namespace Uk.CompaniesHouse.Api.Interfaces
@@ -24,8 +23,8 @@ namespace Uk.CompaniesHouse.Api.Interfaces
 		/// </summary>
 		/// <param name="query">The query string</param>
 		/// <param name="cancellationToken">The cancellation token</param>
-		[Get("/search/appointments")]
-		public Task<Appointment> GetOfficerInfoByNameAsync(
+		[Get("/search/officers")]
+		public Task<Page<OfficerSearchResult>> GetOfficerInfoByNameAsync(
 			[AliasAs("q")] string query,
 			CancellationToken cancellationToken
 			);
