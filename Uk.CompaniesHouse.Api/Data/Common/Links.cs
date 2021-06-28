@@ -1,12 +1,12 @@
 ﻿using System.Runtime.Serialization;
 
-namespace Uk.CompaniesHouse.Api.Data.Company
+namespace Uk.CompaniesHouse.Api.Data.Common
 {
 	/// <summary>
 	/// Links
 	/// </summary>
 	[DataContract]
-	public class OfficerLinks
+	public class Links
 	{
 		/// <summary>
 		/// Link to self

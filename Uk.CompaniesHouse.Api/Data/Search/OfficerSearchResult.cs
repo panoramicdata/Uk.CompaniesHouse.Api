@@ -2,7 +2,6 @@
 using System.Diagnostics;
 using System.Runtime.Serialization;
 using Uk.CompaniesHouse.Api.Data.Common;
-using Uk.CompaniesHouse.Api.Data.Company;
 
 namespace Uk.CompaniesHouse.Api.Data.Search
 {
@@ -59,7 +58,7 @@ namespace Uk.CompaniesHouse.Api.Data.Search
 		/// Full title
 		/// </summary>
 		[DataMember(Name = "links")]
-		public OfficerLinks Links { get; set; } = new();
+		public Links Links { get; set; } = new();
 
 		/// <summary>
 		/// Address snippet

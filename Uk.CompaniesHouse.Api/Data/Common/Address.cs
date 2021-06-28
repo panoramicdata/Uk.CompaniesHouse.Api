@@ -15,6 +15,12 @@ namespace Uk.CompaniesHouse.Api.Data.Common
 		public string AddressLine1 { get; set; } = string.Empty;
 
 		/// <summary>
+		/// Line 2 of address
+		/// </summary>
+		[DataMember(Name = "address_line_2")]
+		public string AddressLine2 { get; set; } = string.Empty;
+
+		/// <summary>
 		/// Country
 		/// </summary>
 		[DataMember(Name = "country")]
