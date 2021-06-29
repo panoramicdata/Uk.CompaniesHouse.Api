@@ -13,12 +13,14 @@ namespace Uk.CompaniesHouse.Api.Test
 		{
 		}
 
+		private readonly string ExampleOfficerID = "Xnyu-NIsDtgtZDK42JJJ567Lixc";
+
 		[Fact]
 		public async void Search_ValidQuery_Succeeds()
 		{
 			var result = await Client
 				.Company
-				.GetNaturalDisqualifiedByIdAsync("Xnyu-NIsDtgtZDK42JJJ567Lixc", default)
+				.GetNaturalDisqualifiedByIdAsync(ExampleOfficerID, default)
 				.ConfigureAwait(false);
 
 			result.Should().NotBeNull();
@@ -32,8 +34,6 @@ namespace Uk.CompaniesHouse.Api.Test
 
 			result.Nationality.Should().Be("British");
 			result.Forename.Should().Be("Dominic");
-
-
 		}
 	}
 }

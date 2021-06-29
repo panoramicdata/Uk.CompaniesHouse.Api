@@ -13,12 +13,14 @@ namespace Uk.CompaniesHouse.Api.Test
 		{
 		}
 
+		private readonly string ExampleCompanyID = "00502851";
+
 		[Fact]
 		public async void Search_ValidQuery_Succeeds()
 		{
 			var result = await Client
 				.Company
-				.GetExemptionsByIdAsync("00502851", default)
+				.GetExemptionsByIdAsync(ExampleCompanyID, default)
 				.ConfigureAwait(false);
 
 			result.Should().NotBeNull();
@@ -36,7 +38,6 @@ namespace Uk.CompaniesHouse.Api.Test
 			disItems.ExemptTo.Should().Be("2021-04-19");
 
 			result.Kind.Should().Be("exemptions");
-
 		}
 	}
 }

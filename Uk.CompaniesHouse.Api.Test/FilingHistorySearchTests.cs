@@ -13,12 +13,14 @@ namespace Uk.CompaniesHouse.Api.Test
 		{
 		}
 
+		private readonly string ExampleCompanyID = "06982102";
+
 		[Fact]
 		public async void Search_ValidQuery_Succeeds()
 		{
 			var result = await Client
 				.Company
-				.GetFilingHistoryByIdAsync("06982102", default)
+				.GetFilingHistoryByIdAsync(ExampleCompanyID, default)
 				.ConfigureAwait(false);
 
 			result.Should().NotBeNull();
