@@ -4,10 +4,10 @@ using System.Runtime.Serialization;
 namespace Uk.CompaniesHouse.Api.Data.Exemptions
 {
 	/// <summary>
-	/// PscExemptAsTradingOnUkRegulatedMarket
+	/// PscExemptAsTradingOnRegulatedMarket
 	/// </summary>
 	[DataContract]
-	public class PscExemptAsTradingOnUkRegulatedMarket
+	public class PscExemptAsTradingOnRegulatedMarket
 	{
 		///<summary>
 		/// Items

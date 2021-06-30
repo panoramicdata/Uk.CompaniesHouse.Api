@@ -1,23 +1,23 @@
 ﻿using System.Runtime.Serialization;
 
-namespace Uk.CompaniesHouse.Api.Data.Appointment
+namespace Uk.CompaniesHouse.Api.Data.Persons_with_Significant_Control
 {
 	/// <summary>
-	/// Appointment Links
+	/// Links
 	/// </summary>
 	[DataContract]
-	public class AppointmentLinks
+	public class PWSCLinks
 	{
 		/// <summary>
-		/// Self link
+		/// Self
 		/// </summary>
 		[DataMember(Name = "self")]
 		public string Self { get; set; } = string.Empty;
 
 		/// <summary>
-		/// Officer link
+		/// Statement
 		/// </summary>
-		[DataMember(Name = "officer")]
-		public AppointmentOfficer Officer { get; set; } = new();
+		[DataMember(Name = "statement")]
+		public string? Statement { get; set; }
 	}
 }

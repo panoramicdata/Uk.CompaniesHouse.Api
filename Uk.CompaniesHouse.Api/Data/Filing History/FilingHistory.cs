@@ -1,4 +1,5 @@
-﻿using System.Runtime.Serialization;
+﻿using System.Collections.Generic;
+using System.Runtime.Serialization;
 using Uk.CompaniesHouse.Api.Data.Filing_History;
 
 namespace Uk.CompaniesHouse.Api.Data.Company
@@ -10,10 +11,16 @@ namespace Uk.CompaniesHouse.Api.Data.Company
 	public class FilingHistory
 	{
 		/// <summary>
-		/// Action date
+		/// Annotations
 		/// </summary>
-		[DataMember(Name = "action_date")]
-		public string ActionDate { get; set; } = string.Empty;
+		[DataMember(Name = "annotations")]
+		public List<Annotations>? Annotations { get; set; }
+
+		/// <summary>
+		/// Associated filings
+		/// </summary>
+		[DataMember(Name = "associated_filings")]
+		public List<AssociatedFilings>? AssociatedFilings { get; set; }
 
 		/// <summary>
 		/// Category
@@ -43,7 +50,7 @@ namespace Uk.CompaniesHouse.Api.Data.Company
 		/// Links
 		/// </summary>
 		[DataMember(Name = "links")]
-		public FilingHistoryLinks Links { get; set; } = new();
+		public FilingHistoryLinks? Links { get; set; }
 
 		/// <summary>
 		/// Type
@@ -55,7 +62,7 @@ namespace Uk.CompaniesHouse.Api.Data.Company
 		/// Pages
 		/// </summary>
 		[DataMember(Name = "pages")]
-		public int Pages { get; set; } = 0;
+		public int? Pages { get; set; }
 
 		/// <summary>
 		/// Barcode
@@ -68,5 +75,23 @@ namespace Uk.CompaniesHouse.Api.Data.Company
 		/// </summary>
 		[DataMember(Name = "transaction_id")]
 		public string TransactionId { get; set; } = string.Empty;
+
+		/// <summary>
+		/// Paper filed?
+		/// </summary>
+		[DataMember(Name = "paper_filed")]
+		public bool? Etag { get; set; }
+
+		/// <summary>
+		/// Resolutions
+		/// </summary>
+		[DataMember(Name = "resolutions")]
+		public List<Resolutions>? Resolutions { get; set; }
+
+		/// <summary>
+		/// Subcategory
+		/// </summary>
+		[DataMember(Name = "subcategory")]
+		public string? Subcategory { get; set; }
 	}
 }

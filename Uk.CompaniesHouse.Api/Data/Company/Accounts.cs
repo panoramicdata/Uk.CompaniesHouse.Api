@@ -24,7 +24,7 @@ namespace Uk.CompaniesHouse.Api.Data.Company
 		/// Last Accounts
 		/// </summary>
 		[DataMember(Name = "last_accounts")]
-		public Last_Accounts Last_Accounts { get; set; } = new();
+		public Last_Accounts? Last_Accounts { get; set; }
 
 		/// <summary>
 		/// Next accounts
@@ -36,7 +36,7 @@ namespace Uk.CompaniesHouse.Api.Data.Company
 		/// Next due
 		/// </summary>
 		[DataMember(Name = "next_due")]
-		public string NextDue { get; set; } = string.Empty;
+		public string? NextDue { get; set; }
 
 		/// <summary>
 		/// Next made up to

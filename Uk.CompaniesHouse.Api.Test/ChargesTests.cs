@@ -28,15 +28,12 @@ namespace Uk.CompaniesHouse.Api.Test
 			var item = result.Items[0];
 			var personsEntitled = item.PersonsEntitled[0];
 			var trActions = item.Transactions[0];
-			var classification = item.Classification;
 			var particulars = item.Particulars;
 
 			personsEntitled.Name.Should().Be("Wilmington Trust Sp Services (Dublin) Limited");
 
 			trActions.DeliveredOn.Should().Be("2021-01-22");
 			trActions.FilingType.Should().Be("create-charge-with-deed");
-
-			classification.Description.Should().Be("A registered charge");
 
 			particulars.ContainsFixedCharge.Should().Be(true);
 

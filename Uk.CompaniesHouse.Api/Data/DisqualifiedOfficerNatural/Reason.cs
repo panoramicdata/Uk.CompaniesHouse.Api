@@ -18,12 +18,18 @@ namespace Uk.CompaniesHouse.Api.Data.DisqualifiedOfficerNatural
 		/// Section
 		/// </summary>
 		[DataMember(Name = "section")]
-		public string Section { get; set; } = string.Empty;
+		public string? Section { get; set; }
 
 		/// <summary>
 		/// Act
 		/// </summary>
 		[DataMember(Name = "act")]
 		public string Act { get; set; } = string.Empty;
+
+		/// <summary>
+		/// Article
+		/// </summary>
+		[DataMember(Name = "article")]
+		public string? Article { get; set; }
 	}
 }

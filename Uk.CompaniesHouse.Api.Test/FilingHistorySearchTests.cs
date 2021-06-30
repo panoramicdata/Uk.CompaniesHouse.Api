@@ -27,7 +27,6 @@ namespace Uk.CompaniesHouse.Api.Test
 
 			var item = result.Items[0];
 
-			item.ActionDate.Should().Be("2020-09-30");
 			item.Category.Should().Be("accounts");
 
 			var descValues = item.DescriptionValues;

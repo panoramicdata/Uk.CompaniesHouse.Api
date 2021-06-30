@@ -30,6 +30,18 @@ namespace Uk.CompaniesHouse.Api.Data.Company
 		/// Link to profile of person(s) with significant control
 		/// </summary>
 		[DataMember(Name = "persons_with_significant_control")]
-		public string PersonsWithSignificantControl { get; set; } = string.Empty;
+		public string? PersonsWithSignificantControl { get; set; }
+
+		/// <summary>
+		/// Persons with significant control statements
+		/// </summary>
+		[DataMember(Name = "persons_with_significant_control_statements")]
+		public string? PersonsWithSignificantControlStatements { get; set; }
+
+		/// <summary>
+		/// Registers
+		/// </summary>
+		[DataMember(Name = "registers")]
+		public string? Registers { get; set; }
 	}
 }

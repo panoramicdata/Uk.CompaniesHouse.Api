@@ -12,12 +12,18 @@ namespace Uk.CompaniesHouse.Api.Data.Exemptions
 		/// Psc exempt as trading on uk regulated market
 		/// </summary>
 		[DataMember(Name = "psc_exempt_as_trading_on_uk_regulated_market")]
-		public PscExemptAsTradingOnUkRegulatedMarket PscExemptAsTradingOnUkRegulatedMarket { get; set; } = new();
+		public PscExemptAsTradingOnRegulatedMarket? PscExemptAsTradingOnUkRegulatedMarket { get; set; }
 
 		///<summary>
-		/// Etag
+		/// Psc exempt as shares admitted on market
+		/// </summary>
+		[DataMember(Name = "psc_exempt_as_shares_admitted_on_market")]
+		public PscExemptAsSharesAdmittedOnMarket? PscExemptAsSharesAdmittedOnMarket { get; set; }
+
+		///<summary>
+		/// DisclosureTransparencyRulesChapterFiveApplies
 		/// </summary>
 		[DataMember(Name = "disclosure_transparency_rules_chapter_five_applies")]
-		public DisclosureTransparencyRulesChapterFiveApplies DisclosureTransparencyRulesChapterFiveApplies { get; set; } = new();
+		public DisclosureTransparencyRulesChapterFiveApplies? DisclosureTransparencyRulesChapterFiveApplies { get; set; }
 	}
 }

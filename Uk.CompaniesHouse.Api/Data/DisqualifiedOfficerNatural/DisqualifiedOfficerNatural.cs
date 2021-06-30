@@ -26,13 +26,19 @@ namespace Uk.CompaniesHouse.Api.Data.DisqualifiedOfficerNatural
 		///	Nationality
 		/// </summary>
 		[DataMember(Name = "nationality")]
-		public string Nationality { get; set; } = string.Empty;
+		public string? Nationality { get; set; }
 
 		/// <summary>
 		/// Forename
 		/// </summary>
 		[DataMember(Name = "forename")]
-		public string Forename { get; set; } = string.Empty;
+		public string? Forename { get; set; }
+
+		/// <summary>
+		/// Other forenames
+		/// </summary>
+		[DataMember(Name = "other_forenames")]
+		public string? OtherForenames { get; set; }
 
 		/// <summary>
 		/// Kind
@@ -53,9 +59,27 @@ namespace Uk.CompaniesHouse.Api.Data.DisqualifiedOfficerNatural
 		public string Surname { get; set; } = string.Empty;
 
 		/// <summary>
+		/// Title
+		/// </summary>
+		[DataMember(Name = "title")]
+		public string? Title { get; set; }
+
+		/// <summary>
 		/// Date of birth
 		/// </summary>
 		[DataMember(Name = "date_of_birth")]
-		public string DateOfBirth { get; set; } = string.Empty;
+		public string? DateOfBirth { get; set; }
+
+		/// <summary>
+		/// Honours
+		/// </summary>
+		[DataMember(Name = "honours")]
+		public string? Honours { get; set; }
+
+		/// <summary>
+		/// Permissions to act
+		/// </summary>
+		[DataMember(Name = "permissions_to_act")]
+		public List<PermissionsToAct>? PermissionsToAct { get; set; }
 	}
 }

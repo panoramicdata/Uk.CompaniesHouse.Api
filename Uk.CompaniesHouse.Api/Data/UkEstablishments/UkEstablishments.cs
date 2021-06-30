@@ -1,5 +1,4 @@
-﻿using System;
-using System.Collections.Generic;
+﻿using System.Collections.Generic;
 using System.Runtime.Serialization;
 using Uk.CompaniesHouse.Api.Data.Common;
 
@@ -15,13 +14,13 @@ namespace Uk.CompaniesHouse.Api.Data.UkEstablishments
 		/// Links
 		/// </summary>
 		[DataMember(Name = "links")]
-		public Links Links { get; set; } = new();
+		public Links? Links { get; set; }
 
 		///<summary>
 		/// Items
 		/// </summary>
 		[DataMember(Name = "items")]
-		public List<Object> Items { get; set; } = new();
+		public List<Items> Items { get; set; } = new();
 
 		///<summary>
 		/// Etag

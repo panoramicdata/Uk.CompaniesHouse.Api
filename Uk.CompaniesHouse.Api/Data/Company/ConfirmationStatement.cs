@@ -30,6 +30,6 @@ namespace Uk.CompaniesHouse.Api.Data.Company
 		/// Is it overdue?
 		/// </summary>
 		[DataMember(Name = "overdue")]
-		public bool overdue { get; set; }
+		public bool Overdue { get; set; }
 	}
 }

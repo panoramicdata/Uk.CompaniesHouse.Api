@@ -25,18 +25,18 @@ namespace Uk.CompaniesHouse.Api.Data.Insolvency
 		/// Role
 		/// </summary>
 		[DataMember(Name = "role")]
-		public string Role { get; set; } = string.Empty;
+		public string? Role { get; set; }
 
 		///<summary>
 		/// Ceased to act on
 		/// </summary>
 		[DataMember(Name = "ceased_to_act_on")]
-		public string CeasedToActOn { get; set; } = string.Empty;
+		public string? CeasedToActOn { get; set; }
 
 		///<summary>
 		/// Appointed on
 		/// </summary>
 		[DataMember(Name = "appointed_on")]
-		public string AppointedOn { get; set; } = string.Empty;
+		public string? AppointedOn { get; set; }
 	}
 }

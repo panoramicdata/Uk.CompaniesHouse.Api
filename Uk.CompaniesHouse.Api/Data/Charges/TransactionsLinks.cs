@@ -12,6 +12,12 @@ namespace Uk.CompaniesHouse.Api.Data.Charges
 		///	Filing
 		/// </summary>
 		[DataMember(Name = "filing")]
-		public string Filing { get; set; } = string.Empty;
+		public string? Filing { get; set; }
+
+		/// <summary>
+		/// Insolvency case
+		/// </summary>
+		[DataMember(Name = "insolvency_case")]
+		public string? InsolvencyCase { get; set; }
 	}
 }

@@ -9,6 +9,12 @@ namespace Uk.CompaniesHouse.Api.Data.Common
 	public class DateOfBirth
 	{
 		/// <summary>
+		/// Day
+		/// </summary>
+		[DataMember(Name = "day")]
+		public string? Day { get; set; }
+
+		/// <summary>
 		/// Month
 		/// </summary>
 		[DataMember(Name = "month")]

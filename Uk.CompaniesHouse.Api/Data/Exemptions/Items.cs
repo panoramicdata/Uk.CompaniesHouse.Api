@@ -18,6 +18,6 @@ namespace Uk.CompaniesHouse.Api.Data.Exemptions
 		/// Exempt to
 		/// </summary>
 		[DataMember(Name = "exempt_to")]
-		public string ExemptTo { get; set; } = string.Empty;
+		public string? ExemptTo { get; set; }
 	}
 }

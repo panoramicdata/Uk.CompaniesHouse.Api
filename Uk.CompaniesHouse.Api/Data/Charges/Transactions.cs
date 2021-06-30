@@ -18,12 +18,24 @@ namespace Uk.CompaniesHouse.Api.Data.Charges
 		/// Delivered on
 		/// </summary>
 		[DataMember(Name = "delivered_on")]
-		public string DeliveredOn { get; set; } = string.Empty;
+		public string? DeliveredOn { get; set; }
 
 		///<summary>
 		/// Filing type
 		/// </summary>
 		[DataMember(Name = "filing_type")]
-		public string FilingType { get; set; } = string.Empty;
+		public string? FilingType { get; set; }
+
+		/// <summary>
+		/// Insolvency case number
+		/// </summary>
+		[DataMember(Name = "insolvency_case_number")]
+		public int? InsolvencyCaseNumber { get; set; }
+
+		/// <summary>
+		/// Transaction ID
+		/// </summary>
+		[DataMember(Name = "transaction_id")]
+		public int? TransactionID { get; set; }
 	}
 }

@@ -25,7 +25,7 @@ namespace Uk.CompaniesHouse.Api.Data.Insolvency
 		/// Number
 		/// </summary>
 		[DataMember(Name = "number")]
-		public string Number { get; set; } = string.Empty;
+		public int? Number { get; set; }
 
 		///<summary>
 		/// Dates
@@ -37,6 +37,12 @@ namespace Uk.CompaniesHouse.Api.Data.Insolvency
 		/// Links
 		/// </summary>
 		[DataMember(Name = "links")]
-		public Links Links { get; set; } = new();
+		public Links? Links { get; set; }
+
+		/// <summary>
+		/// Notes
+		/// </summary>
+		[DataMember(Name = "notes")]
+		public List<string>? Notes { get; set; }
 	}
 }

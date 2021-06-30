@@ -12,7 +12,7 @@ namespace Uk.CompaniesHouse.Api.Data.Charges
 		/// Contains fixed charge?
 		/// </summary>
 		[DataMember(Name = "contains_fixed_charge")]
-		public bool ContainsFixedCharge { get; set; } = false;
+		public bool? ContainsFixedCharge { get; set; }
 
 		///<summary>
 		/// Description
@@ -30,6 +30,24 @@ namespace Uk.CompaniesHouse.Api.Data.Charges
 		/// Contains negative pledge?
 		/// </summary>
 		[DataMember(Name = "contains_negative_pledge")]
-		public bool ContainsNegativePledge { get; set; } = false;
+		public bool? ContainsNegativePledge { get; set; }
+
+		/// <summary>
+		/// Chargor acting as bare trustee?
+		/// </summary>
+		[DataMember(Name = "chargor_acting_as_bare_trustee")]
+		public bool? ChargorActingAsBareTrustee { get; set; }
+
+		/// <summary>
+		/// Contains floating charge?
+		/// </summary>
+		[DataMember(Name = "contains_floating_charge")]
+		public bool? ContainsFloatingCharge { get; set; }
+
+		/// <summary>
+		/// Floating charge covers all?
+		/// </summary>
+		[DataMember(Name = "floating_charge_covers_all")]
+		public bool? FloatingChargeCoversAll { get; set; }
 	}
 }

@@ -7,15 +7,21 @@ namespace Uk.CompaniesHouse.Api.Data.Search
 	public class Matches
 	{
 		/// <summary>
+		/// Address snippet
+		/// </summary>
+		[DataMember(Name = "address_snippet")]
+		public List<int>? AddressSnippet { get; set; }
+
+		/// <summary>
 		/// Snippet
 		/// </summary>
 		[DataMember(Name = "snippet")]
-		public List<object> Snippet { get; set; } = new();
+		public List<int>? Snippet { get; set; }
 
 		/// <summary>
 		/// Title
 		/// </summary>
 		[DataMember(Name = "title")]
-		public List<int> Title { get; set; } = new();
+		public List<int>? Title { get; set; }
 	}
 }

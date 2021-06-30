@@ -1,24 +1,24 @@
 ﻿using System.Runtime.Serialization;
 
-namespace Uk.CompaniesHouse.Api.Data.Person_with_Significant_Control
+namespace Uk.CompaniesHouse.Api.Data.Persons_with_Significant_Control
 {
 	/// <summary>
-	/// Name details
+	/// Name elements
 	/// </summary>
 	[DataContract]
 	public class NameElements
 	{
 		/// <summary>
-		/// Middle name
-		/// </summary>
-		[DataMember(Name = "middle_name")]
-		public string MiddleName { get; set; } = string.Empty;
-
-		/// <summary>
 		/// Forename
 		/// </summary>
 		[DataMember(Name = "forename")]
-		public string Forename { get; set; } = string.Empty;
+		public string? Forename { get; set; }
+
+		/// <summary>
+		/// Other forenames
+		/// </summary>
+		[DataMember(Name = "other_forenames")]
+		public string? OtherForenames { get; set; }
 
 		/// <summary>
 		/// Surname
@@ -30,6 +30,6 @@ namespace Uk.CompaniesHouse.Api.Data.Person_with_Significant_Control
 		/// Title
 		/// </summary>
 		[DataMember(Name = "title")]
-		public string Title { get; set; } = string.Empty;
+		public string? Title { get; set; }
 	}
 }

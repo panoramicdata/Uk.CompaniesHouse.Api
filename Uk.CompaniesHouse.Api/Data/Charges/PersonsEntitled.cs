@@ -13,6 +13,5 @@ namespace Uk.CompaniesHouse.Api.Data.Charges
 		/// </summary>
 		[DataMember(Name = "name")]
 		public string Name { get; set; } = string.Empty;
-
 	}
 }

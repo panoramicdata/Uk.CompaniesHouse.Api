@@ -12,6 +12,6 @@ namespace Uk.CompaniesHouse.Api.Data.Insolvency
 		/// Charge
 		/// </summary>
 		[DataMember(Name = "charge")]
-		public string Charge { get; set; } = string.Empty;
+		public string? Charge { get; set; }
 	}
 }

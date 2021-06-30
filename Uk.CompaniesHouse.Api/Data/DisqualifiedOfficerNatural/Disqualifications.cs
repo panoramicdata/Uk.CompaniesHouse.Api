@@ -32,18 +32,18 @@ namespace Uk.CompaniesHouse.Api.Data.DisqualifiedOfficerNatural
 		/// Company names
 		/// </summary>
 		[DataMember(Name = "company_names")]
-		public List<string> CompanyNames { get; set; } = new();
+		public List<string>? CompanyNames { get; set; }
 
 		/// <summary>
 		/// Case identifier
 		/// </summary>
 		[DataMember(Name = "case_identifier")]
-		public string CaseIdentifier { get; set; } = string.Empty;
+		public string? CaseIdentifier { get; set; }
 
 		/// <summary>
 		/// Reason
 		/// </summary>
-		[DataMember(Name = "XXX")]
+		[DataMember(Name = "reason")]
 		public Reason Reason { get; set; } = new();
 
 		/// <summary>
@@ -51,5 +51,29 @@ namespace Uk.CompaniesHouse.Api.Data.DisqualifiedOfficerNatural
 		/// </summary>
 		[DataMember(Name = "disqualification_type")]
 		public string DisqualificationType { get; set; } = string.Empty;
+
+		/// <summary>
+		/// Court name
+		/// </summary>
+		[DataMember(Name = "court_name")]
+		public string? CourtName { get; set; }
+
+		/// <summary>
+		/// Heard on
+		/// </summary>
+		[DataMember(Name = "heard_on")]
+		public string? HeardOn { get; set; }
+
+		/// <summary>
+		/// Last variation
+		/// </summary>
+		[DataMember(Name = "court_name")]
+		public List<LastVariation>? LastVariation { get; set; }
+
+		/// <summary>
+		/// Undertaken on
+		/// </summary>
+		[DataMember(Name = "undertaken_on")]
+		public string? UndertakenOn { get; set; }
 	}
 }
