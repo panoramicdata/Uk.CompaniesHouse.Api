@@ -10,19 +10,19 @@ namespace Uk.CompaniesHouse.Api.Data.Insolvency
 	public class InsolvencyMain
 	{
 		///<summary>
-		/// Cases
+		/// List of insolvency cases.
 		/// </summary>
 		[DataMember(Name = "cases")]
 		public List<Cases> Cases { get; set; } = new();
 
 		///<summary>
-		/// Etag
+		/// The ETag of the resource.
 		/// </summary>s
 		[DataMember(Name = "etag")]
 		public string Etag { get; set; } = string.Empty;
 
 		///<summary>
-		/// Status
+		/// Company insolvency status details
 		/// </summary>
 		[DataMember(Name = "status")]
 		public string Status { get; set; } = string.Empty;

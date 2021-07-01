@@ -3,19 +3,19 @@
 namespace Uk.CompaniesHouse.Api.Data.Charges
 {
 	/// <summary>
-	/// Classification
+	/// Classification information
 	/// </summary>
 	[DataContract]
 	public class Classification
 	{
 		///<summary>
-		/// Description
+		/// Details of the charge classification
 		/// </summary>
 		[DataMember(Name = "description")]
 		public string Description { get; set; } = string.Empty;
 
 		///<summary>
-		/// Type
+		/// The type of charge classication.
 		/// </summary>
 		[DataMember(Name = "type")]
 		public string Type { get; set; } = string.Empty;

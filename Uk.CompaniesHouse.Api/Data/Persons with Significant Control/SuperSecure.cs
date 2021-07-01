@@ -10,19 +10,19 @@ namespace Uk.CompaniesHouse.Api.Data.Persons_with_Significant_Control
 	public class SuperSecure
 	{
 		/// <summary>
-		/// Ceased
+		/// Presence of that indicator means the super secure person status is ceased
 		/// </summary>
 		[DataMember(Name = "ceased")]
 		public bool? Ceased { get; set; }
 
 		/// <summary>
-		/// Description
+		/// Description of the super secure legal statement
 		/// </summary>
 		[DataMember(Name = "description")]
 		public string Description { get; set; } = string.Empty;
 
 		/// <summary>
-		/// Etag
+		/// The ETag of the resource.
 		/// </summary>
 		[DataMember(Name = "etag")]
 		public string Etag { get; set; } = string.Empty;
@@ -34,7 +34,7 @@ namespace Uk.CompaniesHouse.Api.Data.Persons_with_Significant_Control
 		public string Kind { get; set; } = string.Empty;
 
 		/// <summary>
-		/// Links
+		/// A set of URLs related to the resource, including self.
 		/// </summary>
 		[DataMember(Name = "links")]
 		public Links Links { get; set; } = new();

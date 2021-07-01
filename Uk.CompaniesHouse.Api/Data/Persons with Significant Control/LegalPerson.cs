@@ -12,19 +12,19 @@ namespace Uk.CompaniesHouse.Api.Data.Persons_with_Significant_Control
 	public class LegalPerson
 	{
 		/// <summary>
-		/// Address
+		/// The address of the person with significant control.
 		/// </summary>
 		[DataMember(Name = "address")]
 		public Address Address { get; set; } = new();
 
 		/// <summary>
-		/// Ceased on
+		/// The date that Companies House was notified about the cessation of this person with significant control.
 		/// </summary>
 		[DataMember(Name = "ceased_on")]
 		public string? CeasedOn { get; set; }
 
 		/// <summary>
-		/// Etag
+		/// The ETag of the resource.
 		/// </summary>
 		[DataMember(Name = "etag")]
 		public string Etag { get; set; } = string.Empty;
@@ -42,25 +42,25 @@ namespace Uk.CompaniesHouse.Api.Data.Persons_with_Significant_Control
 		public string Kind { get; set; } = string.Empty;
 
 		/// <summary>
-		/// Links
+		/// A set of URLs related to the resource, including self.
 		/// </summary>
 		[DataMember(Name = "links")]
 		public PWSCLinks Links { get; set; } = new();
 
 		/// <summary>
-		/// Name
+		/// Name of the person with significant control.
 		/// </summary>
 		[DataMember(Name = "name")]
 		public string Name { get; set; } = string.Empty;
 
 		/// <summary>
-		/// Natures of control
+		/// Indicates the nature of control the person with significant control holds.
 		/// </summary>
 		[DataMember(Name = "natures_of_control")]
 		public List<Object> NaturesOfControl { get; set; } = new();
 
 		/// <summary>
-		/// Notified on
+		/// The date that Companies House was notified about this person with significant control.
 		/// </summary>
 		[DataMember(Name = "notified_on")]
 		public string NotifiedOn { get; set; } = string.Empty;

@@ -11,85 +11,79 @@ namespace Uk.CompaniesHouse.Api.Data.Company
 	public class FilingHistory
 	{
 		/// <summary>
-		/// Annotations
+		/// Annotations for the filing
 		/// </summary>
 		[DataMember(Name = "annotations")]
 		public List<Annotations>? Annotations { get; set; }
 
 		/// <summary>
-		/// Associated filings
+		/// Any filings associated with the current item
 		/// </summary>
 		[DataMember(Name = "associated_filings")]
 		public List<AssociatedFilings>? AssociatedFilings { get; set; }
 
 		/// <summary>
-		/// Category
+		/// The category of the document filed.
 		/// </summary>
 		[DataMember(Name = "category")]
 		public string Category { get; set; } = string.Empty;
 
 		/// <summary>
-		/// Date
+		/// The date the filing was processed.
 		/// </summary>
 		[DataMember(Name = "date")]
 		public string Date { get; set; } = string.Empty;
 
 		/// <summary>
-		/// Description
+		/// A description of the filing.
 		/// </summary>
 		[DataMember(Name = "description")]
 		public string Description { get; set; } = string.Empty;
 
 		/// <summary>
-		/// Description values
-		/// </summary>
-		[DataMember(Name = "description_values")]
-		public DescriptionValues DescriptionValues { get; set; } = new();
-
-		/// <summary>
-		/// Links
+		/// Links to other resources associated with this filing history item.
 		/// </summary>
 		[DataMember(Name = "links")]
 		public FilingHistoryLinks? Links { get; set; }
 
 		/// <summary>
-		/// Type
+		/// The type of filing.
 		/// </summary>
 		[DataMember(Name = "type")]
 		public string Type { get; set; } = string.Empty;
 
 		/// <summary>
-		/// Pages
+		/// Number of pages within the PDF document
 		/// </summary>
 		[DataMember(Name = "pages")]
 		public int? Pages { get; set; }
 
 		/// <summary>
-		/// Barcode
+		/// The barcode of the document.
 		/// </summary>
 		[DataMember(Name = "barcode")]
 		public string Barcode { get; set; } = string.Empty;
 
 		/// <summary>
-		/// Transaction ID
+		/// The transaction ID of the filing.
 		/// </summary>
 		[DataMember(Name = "transaction_id")]
 		public string TransactionId { get; set; } = string.Empty;
 
 		/// <summary>
-		/// Paper filed?
+		/// If true, indicates this is a paper filing.
 		/// </summary>
 		[DataMember(Name = "paper_filed")]
 		public bool? Etag { get; set; }
 
 		/// <summary>
-		/// Resolutions
+		/// Resolutions for the filing
 		/// </summary>
 		[DataMember(Name = "resolutions")]
 		public List<Resolutions>? Resolutions { get; set; }
 
 		/// <summary>
-		/// Subcategory
+		/// The sub-category of the document filed.
 		/// </summary>
 		[DataMember(Name = "subcategory")]
 		public string? Subcategory { get; set; }

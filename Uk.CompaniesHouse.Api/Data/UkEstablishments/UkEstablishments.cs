@@ -11,19 +11,19 @@ namespace Uk.CompaniesHouse.Api.Data.UkEstablishments
 	public class UkEstablishments
 	{
 		///<summary>
-		/// Links
+		/// UK Establishment Resources related to this company.
 		/// </summary>
 		[DataMember(Name = "links")]
 		public Links? Links { get; set; }
 
 		///<summary>
-		/// Items
+		/// List of UK Establishment companies.
 		/// </summary>
 		[DataMember(Name = "items")]
 		public List<Items> Items { get; set; } = new();
 
 		///<summary>
-		/// Etag
+		/// The ETag of the resource.
 		/// </summary>
 		[DataMember(Name = "etag")]
 		public string Etag { get; set; } = string.Empty;

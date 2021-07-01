@@ -9,13 +9,13 @@ namespace Uk.CompaniesHouse.Api.Data.Officers
 	public class OfficerLinks
 	{
 		/// <summary>
-		/// Officer
+		/// Links to other officer resources associated with this officer list item.
 		/// </summary>
 		[DataMember(Name = "officer")]
 		public OfficerAppoint Officer { get; set; } = new();
 
 		/// <summary>
-		/// Self
+		/// Link to this individual company officer appointment resource.
 		/// </summary>
 		[DataMember(Name = "self")]
 		public string Self { get; set; } = string.Empty;

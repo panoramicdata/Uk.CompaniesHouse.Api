@@ -13,57 +13,69 @@ namespace Uk.CompaniesHouse.Api.Data.Search
 	public class OfficerSearchResult
 	{
 		/// <summary>
-		/// Address
+		/// The service address of the officer.
 		/// </summary>
 		[DataMember(Name = "address")]
 		public Address Address { get; set; } = new();
 
 		/// <summary>
-		/// Description identifiers
+		/// An array of enumeration types that make up the search description.
 		/// </summary>
 		[DataMember(Name = "description_identifiers")]
 		public List<string> DescriptionIdentifiers { get; set; } = new();
 
 		/// <summary>
-		/// Full title
+		/// The title of the search result.
 		/// </summary>
 		[DataMember(Name = "title")]
 		public string Title { get; set; } = string.Empty;
 
 		/// <summary>
-		/// Kind
+		/// Describes the type of result returned.
 		/// </summary>
 		[DataMember(Name = "kind")]
 		public string Kind { get; set; } = null!;
 
 		/// <summary>
-		/// Description
+		/// The result description.
 		/// </summary>
 		[DataMember(Name = "description")]
 		public string Description { get; set; } = null!;
 
 		/// <summary>
-		/// Matches
+		/// A list of members and arrays of character offset defining substrings that matched the search terms.
 		/// </summary>
 		[DataMember(Name = "matches")]
 		public Matches Matches { get; set; } = new();
 
 		/// <summary>
-		/// Date of birth
+		/// The officer date of birth details.
 		/// </summary>
 		[DataMember(Name = "date_of_birth")]
 		public DateOfBirth DateOfBirth { get; set; } = new();
 
 		/// <summary>
-		/// Full title
+		/// The URL of the search result.
 		/// </summary>
 		[DataMember(Name = "links")]
 		public Links Links { get; set; } = new();
 
 		/// <summary>
-		/// Address snippet
+		/// A single line address.
 		/// </summary>
 		[DataMember(Name = "address_snippet")]
-		public string AddressSnippet { get; set; } = null!;
+		public string AddressSnippet { get; set; } = string.Empty;
+
+		/// <summary>
+		/// The total number of appointments the officer has.
+		/// </summary>
+		[DataMember(Name = "appointment_count")]
+		public int AppointmentCount { get; set; } = 0;
+
+		/// <summary>
+		/// Summary information for the result showing additional details that have matched.
+		/// </summary>
+		[DataMember(Name = "snippet")]
+		public string? Snippet { get; set; }
 	}
 }

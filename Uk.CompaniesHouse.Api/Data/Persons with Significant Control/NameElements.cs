@@ -3,31 +3,31 @@
 namespace Uk.CompaniesHouse.Api.Data.Persons_with_Significant_Control
 {
 	/// <summary>
-	/// Name elements
+	/// A document encapsulating the seperate elements of a person with significant control's name.
 	/// </summary>
 	[DataContract]
 	public class NameElements
 	{
 		/// <summary>
-		/// Forename
+		/// The forename of the person with significant control.
 		/// </summary>
 		[DataMember(Name = "forename")]
 		public string? Forename { get; set; }
 
 		/// <summary>
-		/// Other forenames
+		/// Other forenames of the person with significant control.
 		/// </summary>
 		[DataMember(Name = "other_forenames")]
 		public string? OtherForenames { get; set; }
 
 		/// <summary>
-		/// Surname
+		/// The surname of the person with significant control.
 		/// </summary>
 		[DataMember(Name = "surname")]
 		public string Surname { get; set; } = string.Empty;
 
 		/// <summary>
-		/// Title
+		/// Title of the person with significant control.
 		/// </summary>
 		[DataMember(Name = "title")]
 		public string? Title { get; set; }

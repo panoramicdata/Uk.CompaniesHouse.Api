@@ -3,49 +3,49 @@
 namespace Uk.CompaniesHouse.Api.Data.Charges
 {
 	/// <summary>
-	/// Particulars
+	/// Details of charge or undertaking
 	/// </summary>
 	[DataContract]
 	public class Particulars
 	{
 		///<summary>
-		/// Contains fixed charge?
+		/// The charge contains a fixed charge
 		/// </summary>
 		[DataMember(Name = "contains_fixed_charge")]
 		public bool? ContainsFixedCharge { get; set; }
 
 		///<summary>
-		/// Description
+		/// Details of charge particulars
 		/// </summary>
 		[DataMember(Name = "description")]
 		public string Description { get; set; } = string.Empty;
 
 		///<summary>
-		/// Type
+		/// The type of charge particulars.
 		/// </summary>
 		[DataMember(Name = "type")]
 		public string Type { get; set; } = string.Empty;
 
 		///<summary>
-		/// Contains negative pledge?
+		/// The charge contains a negative pledge
 		/// </summary>
 		[DataMember(Name = "contains_negative_pledge")]
 		public bool? ContainsNegativePledge { get; set; }
 
 		/// <summary>
-		/// Chargor acting as bare trustee?
+		/// The chargor is acting as a bare trustee for the property
 		/// </summary>
 		[DataMember(Name = "chargor_acting_as_bare_trustee")]
 		public bool? ChargorActingAsBareTrustee { get; set; }
 
 		/// <summary>
-		/// Contains floating charge?
+		/// The charge contains a floating charge
 		/// </summary>
 		[DataMember(Name = "contains_floating_charge")]
 		public bool? ContainsFloatingCharge { get; set; }
 
 		/// <summary>
-		/// Floating charge covers all?
+		/// The floating charge covers all the property or undertaking or the company
 		/// </summary>
 		[DataMember(Name = "floating_charge_covers_all")]
 		public bool? FloatingChargeCoversAll { get; set; }

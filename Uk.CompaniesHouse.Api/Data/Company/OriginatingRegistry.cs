@@ -9,13 +9,13 @@ namespace Uk.CompaniesHouse.Api.Data.Company
 	public class OriginatingRegistry
 	{
 		/// <summary>
-		/// Country
+		///  Country in which company was incorporated.
 		/// </summary>
 		[DataMember(Name = "country")]
 		public string? Country { get; set; }
 
 		/// <summary>
-		/// Name
+		/// Identity of register in country of incorporation.
 		/// </summary>
 		[DataMember(Name = "name")]
 		public string? Name { get; set; }

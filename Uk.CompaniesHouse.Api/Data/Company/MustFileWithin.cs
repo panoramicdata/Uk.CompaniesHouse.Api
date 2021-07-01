@@ -9,7 +9,7 @@ namespace Uk.CompaniesHouse.Api.Data.Company
 	public class MustFileWithin
 	{
 		/// <summary>
-		/// Months
+		/// Number of months within which to file.
 		/// </summary>
 		[DataMember(Name = "months")]
 		public int? Type { get; set; }

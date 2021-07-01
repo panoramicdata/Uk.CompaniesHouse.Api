@@ -10,19 +10,19 @@ namespace Uk.CompaniesHouse.Api.Data.Company
 	public class ForeignAccounts
 	{
 		/// <summary>
-		/// Account period from
+		/// Date account period starts under parent law.
 		/// </summary>
 		[DataMember(Name = "account_period_from")]
 		public Date? AccountPeriodFrom { get; set; }
 
 		/// <summary>
-		/// Account period to
+		/// Date account period ends under parent law.
 		/// </summary>
 		[DataMember(Name = "account_period_to")]
 		public Date? AccountPeriodTo { get; set; }
 
 		/// <summary>
-		/// Must file within
+		/// Time allowed from period end for disclosure of accounts under parent law.
 		/// </summary>
 		[DataMember(Name = "must_file_within")]
 		public MustFileWithin? MustFileWithin { get; set; }

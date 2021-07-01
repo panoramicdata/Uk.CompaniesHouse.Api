@@ -3,13 +3,13 @@
 namespace Uk.CompaniesHouse.Api.Data.Registers
 {
 	/// <summary>
-	/// Links
+	/// A set of URLs related to the resource.
 	/// </summary>
 	[DataContract]
 	public class PersonsWithSignificantControlLinks
 	{
 		/// <summary>
-		/// Persons with significant control links
+		/// The URL for the resource.
 		/// </summary>
 		[DataMember(Name = "persons_with_significant_control_register")]
 		public string? PersonsWithSignificantControlRegister { get; set; }

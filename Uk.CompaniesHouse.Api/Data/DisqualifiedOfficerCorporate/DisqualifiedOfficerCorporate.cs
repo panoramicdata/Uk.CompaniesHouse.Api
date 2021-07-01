@@ -11,25 +11,25 @@ namespace Uk.CompaniesHouse.Api.Data.DisqualifiedOfficerCorporate
 	public class DisqualifiedOfficerCorporate
 	{
 		/// <summary>
-		/// Company number
+		/// The registration number of the disqualified officer.
 		/// </summary>
 		[DataMember(Name = "company_number")]
 		public string? CompanyNumber { get; set; }
 
 		/// <summary>
-		/// Country of registration
+		/// The country in which the disqualified officer was registered.
 		/// </summary>
 		[DataMember(Name = "country_of_registration")]
 		public string? CountryOfRegistration { get; set; }
 
 		/// <summary>
-		/// Disqualifications
+		/// The officer's disqualifications.
 		/// </summary>
 		[DataMember(Name = "disqualifications")]
 		public List<Disqualifications> Disqualifications { get; set; } = new();
 
 		/// <summary>
-		/// Etag
+		/// The ETag of the resource.
 		/// </summary>
 		[DataMember(Name = "etag")]
 		public string Etag { get; set; } = string.Empty;
@@ -41,19 +41,19 @@ namespace Uk.CompaniesHouse.Api.Data.DisqualifiedOfficerCorporate
 		public string Kind { get; set; } = string.Empty;
 
 		/// <summary>
-		/// Links
+		/// Links to other resources associated with this officer disqualification resource.
 		/// </summary>
 		[DataMember(Name = "links")]
 		public Links Links { get; set; } = new();
 
 		/// <summary>
-		/// Name
+		/// The name of the disqualified officer.
 		/// </summary>
 		[DataMember(Name = "name")]
 		public string Name { get; set; } = string.Empty;
 
 		/// <summary>
-		/// Permissions to act
+		/// Permissions that the disqualified officer has to act outside of their disqualification.
 		/// </summary>
 		[DataMember(Name = "permissions_to_act")]
 		public List<PermissionsToAct>? PermissionsToAct { get; set; }

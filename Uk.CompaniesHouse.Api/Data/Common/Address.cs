@@ -3,61 +3,61 @@
 namespace Uk.CompaniesHouse.Api.Data.Common
 {
 	/// <summary>
-	/// Address of officer
+	/// Address
 	/// </summary>
 	[DataContract]
 	public class Address
 	{
 		/// <summary>
-		/// Line 1 of address
+		/// The first line of the address.
 		/// </summary>
 		[DataMember(Name = "address_line_1")]
 		public string AddressLine1 { get; set; } = string.Empty;
 
 		/// <summary>
-		/// Line 2 of address
+		/// The second line of the address.
 		/// </summary>
 		[DataMember(Name = "address_line_2")]
 		public string? AddressLine2 { get; set; }
 
 		/// <summary>
-		/// Care of
+		/// The care of name.
 		/// </summary>
 		[DataMember(Name = "care_of")]
 		public string? CareOf { get; set; }
 
 		/// <summary>
-		/// Country
+		/// The country.
 		/// </summary>
 		[DataMember(Name = "country")]
 		public string? Country { get; set; }
 
 		/// <summary>
-		/// Locality
+		/// The locality e.g London.
 		/// </summary>
 		[DataMember(Name = "locality")]
 		public string Locality { get; set; } = string.Empty;
 
 		/// <summary>
-		/// PO Box
+		/// The post-office box number.
 		/// </summary>
 		[DataMember(Name = "po_box")]
 		public string? PoBox { get; set; }
 
 		/// <summary>
-		/// Postal code
+		/// The postal code e.g CF14 3UZ.
 		/// </summary>
 		[DataMember(Name = "postal_code")]
 		public string? PostalCode { get; set; }
 
 		/// <summary>
-		/// Premises
+		/// The property name or number.
 		/// </summary>
 		[DataMember(Name = "premises")]
 		public string? Premises { get; set; }
 
 		/// <summary>
-		/// Region
+		/// The region e.g Surrey.
 		/// </summary>
 		[DataMember(Name = "region")]
 		public string? Region { get; set; }

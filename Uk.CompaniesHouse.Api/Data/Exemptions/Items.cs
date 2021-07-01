@@ -3,19 +3,19 @@
 namespace Uk.CompaniesHouse.Api.Data.Exemptions
 {
 	/// <summary>
-	/// Items
+	/// List of exemption periods.
 	/// </summary>
 	[DataContract]
 	public class Items
 	{
 		///<summary>
-		/// Exempt from
+		/// Exemption valid from.
 		/// </summary>
 		[DataMember(Name = "exempt_from")]
 		public string ExemptFrom { get; set; } = string.Empty;
 
 		///<summary>
-		/// Exempt to
+		/// Exemption valid to.
 		/// </summary>
 		[DataMember(Name = "exempt_to")]
 		public string? ExemptTo { get; set; }

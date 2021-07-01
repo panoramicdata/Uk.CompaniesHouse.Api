@@ -3,13 +3,13 @@
 namespace Uk.CompaniesHouse.Api.Data.Registers
 {
 	/// <summary>
-	/// Links
+	/// A set of URLs related to the resource.
 	/// </summary>
 	[DataContract]
 	public class Links
 	{
 		/// <summary>
-		/// Filing
+		/// The URL of the transaction for the resource.
 		/// </summary>
 		[DataMember(Name = "filing")]
 		public string Filing { get; set; } = string.Empty;

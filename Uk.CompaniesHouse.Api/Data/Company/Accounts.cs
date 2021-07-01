@@ -9,37 +9,31 @@ namespace Uk.CompaniesHouse.Api.Data.Company
 	public class Accounts
 	{
 		/// <summary>
-		/// Whether the accounts are overdue
+		/// Flag indicating if the company accounts are overdue.
 		/// </summary>
 		[DataMember(Name = "overdue")]
 		public bool Overdue { get; set; }
 
 		/// <summary>
-		/// Accounting Reference Date
+		/// The Accounting Reference Date (ARD) of the company.
 		/// </summary>
 		[DataMember(Name = "accounting_reference_date")]
 		public AccountingReferenceDate AccountingReferenceDate { get; set; } = new();
 
 		/// <summary>
-		/// Last Accounts
+		/// The last company accounts filed.
 		/// </summary>
 		[DataMember(Name = "last_accounts")]
-		public Last_Accounts? Last_Accounts { get; set; }
+		public LastAccounts? LastAccounts { get; set; }
 
 		/// <summary>
-		/// Next accounts
-		/// </summary>
-		[DataMember(Name = "next_accounts")]
-		public Next_Accounts NextAccounts { get; set; } = new();
-
-		/// <summary>
-		/// Next due
+		/// The date the next company accounts are due.
 		/// </summary>
 		[DataMember(Name = "next_due")]
 		public string? NextDue { get; set; }
 
 		/// <summary>
-		/// Next made up to
+		/// The date the next company accounts should be made up to.
 		/// </summary>
 		[DataMember(Name = "next_made_up_to")]
 		public string NextMadeUpTo { get; set; } = string.Empty;

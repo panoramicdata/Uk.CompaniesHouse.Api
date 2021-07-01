@@ -3,19 +3,19 @@
 namespace Uk.CompaniesHouse.Api.Data.Charges
 {
 	/// <summary>
-	/// Transaction links
+	/// The resources related to this filing
 	/// </summary>
 	[DataContract]
 	public class TransactionsLinks
 	{
 		///<summary>
-		///	Filing
+		///	Link to the charge filing data
 		/// </summary>
 		[DataMember(Name = "filing")]
 		public string? Filing { get; set; }
 
 		/// <summary>
-		/// Insolvency case
+		/// Link to the insolvency case related to this filing
 		/// </summary>
 		[DataMember(Name = "insolvency_case")]
 		public string? InsolvencyCase { get; set; }

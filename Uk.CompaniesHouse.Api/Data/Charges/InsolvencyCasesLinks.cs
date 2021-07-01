@@ -3,13 +3,13 @@
 namespace Uk.CompaniesHouse.Api.Data.Charges
 {
 	/// <summary>
-	/// Links
+	/// The resources related to this insolvency case
 	/// </summary>
 	[DataContract]
 	public class InsolvencyCasesLinks
 	{
 		/// <summary>
-		/// Case
+		/// Link to the insolvency case data
 		/// </summary>
 		[DataMember(Name = "case")]
 		public string? Case { get; set; }

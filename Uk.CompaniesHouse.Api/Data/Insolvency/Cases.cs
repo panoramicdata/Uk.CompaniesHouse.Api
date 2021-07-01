@@ -10,7 +10,7 @@ namespace Uk.CompaniesHouse.Api.Data.Insolvency
 	public class Cases
 	{
 		///<summary>
-		/// Practitioners
+		/// The practitioners for the case.
 		/// </summary>
 		[DataMember(Name = "practitioners")]
 		public List<Practitioners> Practitioners { get; set; } = new();
@@ -22,25 +22,25 @@ namespace Uk.CompaniesHouse.Api.Data.Insolvency
 		public string Type { get; set; } = string.Empty;
 
 		///<summary>
-		/// Number
+		/// The case number.
 		/// </summary>
 		[DataMember(Name = "number")]
 		public int? Number { get; set; }
 
 		///<summary>
-		/// Dates
+		/// The dates specific to the case.
 		/// </summary>
 		[DataMember(Name = "dates")]
 		public List<Dates> Dates { get; set; } = new();
 
 		///<summary>
-		/// Links
+		/// The practitioners for the case.
 		/// </summary>
 		[DataMember(Name = "links")]
 		public Links? Links { get; set; }
 
 		/// <summary>
-		/// Notes
+		/// The dates specific to the case.
 		/// </summary>
 		[DataMember(Name = "notes")]
 		public List<string>? Notes { get; set; }

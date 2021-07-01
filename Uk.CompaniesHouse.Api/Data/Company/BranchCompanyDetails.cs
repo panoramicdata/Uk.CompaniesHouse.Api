@@ -3,13 +3,13 @@
 namespace Uk.CompaniesHouse.Api.Data.Company
 {
 	/// <summary>
-	/// Branch company details
+	/// UK branch of a foreign company.
 	/// </summary>
 	[DataContract]
 	public class BranchCompanyDetails
 	{
 		/// <summary>
-		/// Business activity
+		/// Type of business undertaken by the UK establishment.
 		/// </summary>
 		[DataMember(Name = "business_activity")]
 		public string? BusinessActivity { get; set; }

@@ -3,25 +3,25 @@
 namespace Uk.CompaniesHouse.Api.Data.Filing_History
 {
 	/// <summary>
-	/// Annotations
+	/// Annotations for the filing
 	/// </summary>
 	[DataContract]
 	public class Annotations
 	{
 		/// <summary>
-		/// Annotation
+		/// The annotation text.
 		/// </summary>
 		[DataMember(Name = "annotation")]
 		public string? Annotation { get; set; }
 
 		/// <summary>
-		/// Date
+		/// The date the annotation was added.
 		/// </summary>
 		[DataMember(Name = "date")]
 		public string Date { get; set; } = string.Empty;
 
 		/// <summary>
-		/// Description
+		/// A description of the annotation.
 		/// </summary>
 		[DataMember(Name = "description")]
 		public string Description { get; set; } = string.Empty;

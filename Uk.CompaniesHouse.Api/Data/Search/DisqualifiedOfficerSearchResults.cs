@@ -11,87 +11,63 @@ namespace Uk.CompaniesHouse.Api.Data.Search
 	public class DisqualifiedOfficerSearchResults
 	{
 		/// <summary>
-		/// Address
+		/// The address of the disqualified officer as provided by the disqualifying authority.
 		/// </summary>
 		[DataMember(Name = "address")]
 		public Address Address { get; set; } = new();
 
 		/// <summary>
-		/// Address snippet
+		/// A single line address.
 		/// </summary>
 		[DataMember(Name = "address_snippet")]
 		public string AddressSnippet { get; set; } = string.Empty;
 
 		/// <summary>
-		/// Company number
-		/// </summary>
-		[DataMember(Name = "company_number")]
-		public string CompanyNumber { get; set; } = string.Empty;
-
-		/// <summary>
-		/// Company status
-		/// </summary>
-		[DataMember(Name = "company_status")]
-		public string CompanyStatus { get; set; } = string.Empty;
-
-		/// <summary>
-		/// Company type
-		/// </summary>
-		[DataMember(Name = "company_type")]
-		public string CompanyType { get; set; } = string.Empty;
-
-		/// <summary>
-		/// Date of cessation
-		/// </summary>
-		[DataMember(Name = "date_of_cessation")]
-		public string? DateOfCessation { get; set; }
-
-		/// <summary>
-		/// Date of creation
-		/// </summary>
-		[DataMember(Name = "date_of_creation")]
-		public string DateOfCreation { get; set; } = string.Empty;
-
-		/// <summary>
-		/// Description
+		/// The result description.
 		/// </summary>
 		[DataMember(Name = "description")]
 		public string? Description { get; set; }
 
 		/// <summary>
-		/// Description identifier
+		/// An array of enumeration types that make up the search description.
 		/// </summary>
 		[DataMember(Name = "description_identifier")]
 		public List<string>? DescriptionIdentifier { get; set; }
 
 		/// <summary>
-		/// Kind
+		/// Describes the type of result returned.
 		/// </summary>
 		[DataMember(Name = "kind")]
 		public string Kind { get; set; } = string.Empty;
 
 		/// <summary>
-		/// Links
+		/// The URL of the search result.
 		/// </summary>
 		[DataMember(Name = "links")]
 		public Links Links { get; set; } = new();
 
 		/// <summary>
-		/// Matches
+		/// A list of members and arrays of character offset defining substrings that matched the search terms.
 		/// </summary>
 		[DataMember(Name = "matches")]
 		public Matches? Matches { get; set; }
 
 		/// <summary>
-		/// Snippet
+		/// Summary information for the result showing additional details that have matched.
 		/// </summary>
 		[DataMember(Name = "snippet")]
 		public string? Snippet { get; set; }
 
 		/// <summary>
-		/// Title
+		/// The title of the search result.
 		/// </summary>
 		[DataMember(Name = "title")]
 		public string Title { get; set; } = string.Empty;
+
+		/// <summary>
+		/// The disqualified officer's date of birth.
+		/// </summary>
+		[DataMember(Name = "date_of_birth")]
+		public DateOfBirth? DateOfBirth { get; set; }
 	}
 }

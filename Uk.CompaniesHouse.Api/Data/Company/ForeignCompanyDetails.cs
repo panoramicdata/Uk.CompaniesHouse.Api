@@ -3,55 +3,55 @@
 namespace Uk.CompaniesHouse.Api.Data.Company
 {
 	/// <summary>
-	/// Foreign company details
+	/// Foreign company details.
 	/// </summary>
 	[DataContract]
 	public class ForeignCompanyDetails
 	{
 		/// <summary>
-		/// Accounting requirement
+		/// Accounts requirement.
 		/// </summary>
 		[DataMember(Name = "accounting_requirement")]
 		public AccountingRequirement? AccountingRequirement { get; set; }
 
 		/// <summary>
-		/// Accounts
+		/// Foreign company account information.
 		/// </summary>
 		[DataMember(Name = "accounts")]
 		public ForeignAccounts? ForeignAccounts { get; set; }
 
 		/// <summary>
-		/// Business activity
+		/// Type of business undertaken by the company.
 		/// </summary>
 		[DataMember(Name = "business_activity")]
 		public string? BusinessActivity { get; set; }
 
 		/// <summary>
-		/// Company type
+		/// Legal form of the company in the country of incorporation.
 		/// </summary>
 		[DataMember(Name = "company_type")]
 		public string? CompanyType { get; set; }
 
 		/// <summary>
-		/// Governed by
+		/// Law governing the company in country of incorporation.
 		/// </summary>
 		[DataMember(Name = "governed_by")]
 		public string? GovernedBy { get; set; }
 
 		/// <summary>
-		/// Is it a financial or credit institution
+		/// Is it a financial or credit institution.
 		/// </summary>
 		[DataMember(Name = "is_a_credit_finance_institution")]
 		public bool? IsACreditFinanceInstitution { get; set; }
 
 		/// <summary>
-		/// Originating registry
+		/// Company origin informations
 		/// </summary>
 		[DataMember(Name = "originating_registry")]
 		public OriginatingRegistry? OriginatingRegistry { get; set; }
 
 		/// <summary>
-		/// Registration number
+		/// Registration number in company of incorporation.
 		/// </summary>
 		[DataMember(Name = "registration_number")]
 		public string? RegistrationNumber { get; set; }

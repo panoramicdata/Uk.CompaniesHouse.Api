@@ -1,25 +1,21 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Runtime.Serialization;
-using System.Text;
-using Uk.CompaniesHouse.Api.Data.Common;
+﻿using System.Runtime.Serialization;
 
 namespace Uk.CompaniesHouse.Api.Data.Registers
 {
 	/// <summary>
-	/// Registers
+	/// Company registers
 	/// </summary>
 	[DataContract]
 	public class RegistersMain
 	{
 		/// <summary>
-		/// Company number
+		/// The number of the company.
 		/// </summary>
 		[DataMember(Name = "company_number")]
 		public string CompanyNumber { get; set; } = string.Empty;
 
 		/// <summary>
-		/// Etag
+		/// The ETag of the resource.
 		/// </summary>
 		[DataMember(Name = "etag")]
 		public string? Etag { get; set; }
@@ -31,13 +27,13 @@ namespace Uk.CompaniesHouse.Api.Data.Registers
 		public string Kind { get; set; } = string.Empty;
 
 		/// <summary>
-		/// Links
+		/// A set of URLs related to the resource, including self.
 		/// </summary>
 		[DataMember(Name = "links")]
 		public Links Links { get; set; } = new();
 
 		/// <summary>
-		/// Registers
+		/// Company registers information.
 		/// </summary>
 		[DataMember(Name = "registers")]
 		public Registers Registers { get; set; } = new();

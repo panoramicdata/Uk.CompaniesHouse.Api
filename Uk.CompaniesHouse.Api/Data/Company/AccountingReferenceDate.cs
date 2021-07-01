@@ -9,13 +9,13 @@ namespace Uk.CompaniesHouse.Api.Data.Company
 	public class AccountingReferenceDate
 	{
 		/// <summary>
-		/// Month
+		/// The Accounting Reference Date (ARD) month.
 		/// </summary>
 		[DataMember(Name = "month")]
 		public string Month { get; set; } = string.Empty;
 
 		/// <summary>
-		/// Day
+		/// The Accounting Reference Date (ARD) day.
 		/// </summary>
 		[DataMember(Name = "day")]
 		public string Day { get; set; } = string.Empty;

@@ -9,43 +9,43 @@ namespace Uk.CompaniesHouse.Api.Data.Persons_with_Significant_Control
 	public class StatementList
 	{
 		/// <summary>
-		/// Active count
+		/// The number of active persons with significant control statements in this result set.
 		/// </summary>
 		[DataMember(Name = "active_count")]
 		public int ActiveCount { get; set; } = 0;
 
 		/// <summary>
-		/// Ceased count
+		/// The number of ceased persons with significant control statements in this result set.
 		/// </summary>
 		[DataMember(Name = "ceased_count")]
 		public int CeasedCount { get; set; } = 0;
 
 		/// <summary>
-		/// Items
+		/// The list of persons with significant control statements.
 		/// </summary>
 		[DataMember(Name = "items")]
 		public Statement Items { get; set; } = new();
 
 		/// <summary>
-		/// Items per page
+		/// The number of persons with significant control statements to return per page.
 		/// </summary>
 		[DataMember(Name = "items_per_page")]
 		public int ItemsPerPage { get; set; } = 0;
 
 		/// <summary>
-		/// Links
+		/// A set of URLs related to the resource, including self.
 		/// </summary>
 		[DataMember(Name = "links")]
 		public ListLinks Links { get; set; } = new();
 
 		/// <summary>
-		/// Start index
+		/// The offset into the entire result set that this page starts.
 		/// </summary>
 		[DataMember(Name = "start_index")]
 		public int StartIndex { get; set; } = 0;
 
 		/// <summary>
-		/// Total results
+		/// The total number of persons with significant control statements in this result set.
 		/// </summary>
 		[DataMember(Name = "total_results")]
 		public int TotalResults { get; set; } = 0;

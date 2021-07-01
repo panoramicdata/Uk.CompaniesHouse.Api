@@ -9,7 +9,7 @@ namespace Uk.CompaniesHouse.Api.Data.Common
 	public class Links
 	{
 		/// <summary>
-		/// Link to self
+		/// URL to this resource.
 		/// </summary>
 		[DataMember(Name = "self")]
 		public string Self { get; set; } = string.Empty;

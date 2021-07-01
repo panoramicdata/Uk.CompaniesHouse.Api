@@ -11,31 +11,31 @@ namespace Uk.CompaniesHouse.Api.Data.DisqualifiedOfficerNatural
 	public class DisqualifiedOfficerNatural
 	{
 		/// <summary>
-		/// List of disqualifications
+		/// The officer's disqualifications.
 		/// </summary>
 		[DataMember(Name = "disqualifications")]
 		public List<Disqualifications> Disqualifications { get; set; } = new();
 
 		/// <summary>
-		/// Links
+		/// Links to other resources associated with this officer disqualification resource.
 		/// </summary>
 		[DataMember(Name = "links")]
 		public Links Links { get; set; } = new();
 
 		/// <summary>
-		///	Nationality
+		///	The nationality of the disqualified officer.
 		/// </summary>
 		[DataMember(Name = "nationality")]
 		public string? Nationality { get; set; }
 
 		/// <summary>
-		/// Forename
+		/// The forename of the disqualified officer.
 		/// </summary>
 		[DataMember(Name = "forename")]
 		public string? Forename { get; set; }
 
 		/// <summary>
-		/// Other forenames
+		/// The other forenames of the disqualified officer.
 		/// </summary>
 		[DataMember(Name = "other_forenames")]
 		public string? OtherForenames { get; set; }
@@ -47,37 +47,37 @@ namespace Uk.CompaniesHouse.Api.Data.DisqualifiedOfficerNatural
 		public string Kind { get; set; } = string.Empty;
 
 		/// <summary>
-		/// Etag
+		/// The ETag of the resource.
 		/// </summary>
 		[DataMember(Name = "etag")]
 		public string Etag { get; set; } = string.Empty;
 
 		/// <summary>
-		/// Surname
+		/// The surname of the disqualified officer.
 		/// </summary>
 		[DataMember(Name = "surname")]
 		public string Surname { get; set; } = string.Empty;
 
 		/// <summary>
-		/// Title
+		/// The title of the disqualified officer.
 		/// </summary>
 		[DataMember(Name = "title")]
 		public string? Title { get; set; }
 
 		/// <summary>
-		/// Date of birth
+		/// The disqualified officer's date of birth.
 		/// </summary>
 		[DataMember(Name = "date_of_birth")]
 		public string? DateOfBirth { get; set; }
 
 		/// <summary>
-		/// Honours
+		/// The honours that the disqualified officer has.
 		/// </summary>
 		[DataMember(Name = "honours")]
 		public string? Honours { get; set; }
 
 		/// <summary>
-		/// Permissions to act
+		/// Permissions to act that have been granted for the disqualified officer.
 		/// </summary>
 		[DataMember(Name = "permissions_to_act")]
 		public List<PermissionsToAct>? PermissionsToAct { get; set; }

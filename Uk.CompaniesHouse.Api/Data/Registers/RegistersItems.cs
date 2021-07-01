@@ -3,25 +3,25 @@
 namespace Uk.CompaniesHouse.Api.Data.Registers
 {
 	/// <summary>
-	/// Register director items
+	/// Register items
 	/// </summary>
 	[DataContract]
 	public class RegistersItems
 	{
 		/// <summary>
-		/// Links
+		/// A set of URLs related to the resource.
 		/// </summary>
 		[DataMember(Name = "links")]
 		public Links Links { get; set; } = new();
 
 		/// <summary>
-		/// Registered on
+		/// The date registered on
 		/// </summary>
 		[DataMember(Name = "moved_on")]
 		public string MovedOn { get; set; } = string.Empty;
 
 		/// <summary>
-		/// Register moved to
+		/// Location of registration
 		/// </summary>
 		[DataMember(Name = "register_moved_to")]
 		public string RegisterMovedTo { get; set; } = string.Empty;

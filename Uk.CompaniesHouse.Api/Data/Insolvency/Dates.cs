@@ -3,19 +3,19 @@
 namespace Uk.CompaniesHouse.Api.Data.Insolvency
 {
 	/// <summary>
-	/// Dates
+	/// The dates specific to the case.
 	/// </summary>
 	[DataContract]
 	public class Dates
 	{
 		///<summary>
-		/// Type
+		/// Describes what date is represented by the associated date element.
 		/// </summary>
 		[DataMember(Name = "type")]
 		public string Type { get; set; } = string.Empty;
 
 		///<summary>
-		/// Date
+		/// The case date
 		/// </summary>
 		[DataMember(Name = "date")]
 		public string Date { get; set; } = string.Empty;

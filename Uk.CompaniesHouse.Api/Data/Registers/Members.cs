@@ -4,7 +4,7 @@ using System.Runtime.Serialization;
 namespace Uk.CompaniesHouse.Api.Data.Registers
 {
 	/// <summary>
-	/// Members
+	/// List of registered company members.
 	/// </summary>
 	[DataContract]
 	public class Members
@@ -16,16 +16,15 @@ namespace Uk.CompaniesHouse.Api.Data.Registers
 		public List<RegistersItems> Items { get; set; } = new();
 
 		/// <summary>
-		/// Links
+		/// A set of URLs related to the resource.
 		/// </summary>
 		[DataMember(Name = "links")]
 		public MembersLinks? Links { get; set; }
 
 		/// <summary>
-		/// Register type
+		/// The register type.
 		/// </summary>
 		[DataMember(Name = "register_type")]
 		public string RegisterType { get; set; } = string.Empty;
-
 	}
 }

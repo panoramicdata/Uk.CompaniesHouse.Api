@@ -3,43 +3,31 @@
 namespace Uk.CompaniesHouse.Api.Data.Company
 {
 	/// <summary>
-	/// Links
+	/// A set of URLs related to the resource, including self.
 	/// </summary>
 	[DataContract]
 	public class CompanyLinks
 	{
 		/// <summary>
-		/// Link to self
+		/// The URL of the resource.
 		/// </summary>
 		[DataMember(Name = "self")]
 		public string Self { get; set; } = string.Empty;
 
 		/// <summary>
-		/// Link to filing history
-		/// </summary>
-		[DataMember(Name = "filing_history")]
-		public string FilingHistory { get; set; } = string.Empty;
-
-		/// <summary>
-		/// Link to list of officers
-		/// </summary>
-		[DataMember(Name = "officers")]
-		public string Officers { get; set; } = string.Empty;
-
-		/// <summary>
-		/// Link to profile of person(s) with significant control
+		/// The URL of the persons with significant control list resource.
 		/// </summary>
 		[DataMember(Name = "persons_with_significant_control")]
 		public string? PersonsWithSignificantControl { get; set; }
 
 		/// <summary>
-		/// Persons with significant control statements
+		/// The URL of the persons with significant control statements list resource.
 		/// </summary>
 		[DataMember(Name = "persons_with_significant_control_statements")]
 		public string? PersonsWithSignificantControlStatements { get; set; }
 
 		/// <summary>
-		/// Registers
+		/// The URL of the registers resource for this company
 		/// </summary>
 		[DataMember(Name = "registers")]
 		public string? Registers { get; set; }

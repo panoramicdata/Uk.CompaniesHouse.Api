@@ -20,7 +20,7 @@ namespace Uk.CompaniesHouse.Api.Test
 		{
 			var result = await Client
 				.Company
-				.GetFilingHistoryByIdAsync(ExampleCompanyID, default)
+				.GetFilingHistoryListByIdAsync(ExampleCompanyID, default)
 				.ConfigureAwait(false);
 
 			result.Should().NotBeNull();
@@ -28,9 +28,6 @@ namespace Uk.CompaniesHouse.Api.Test
 			var item = result.Items[0];
 
 			item.Category.Should().Be("accounts");
-
-			var descValues = item.DescriptionValues;
-			descValues.MadeUpDate.Should().Be("2020-09-30");
 
 			item.Pages.Should().Be(3);
 			item.Barcode.Should().Be("XA4QVKM9");
@@ -42,11 +39,10 @@ namespace Uk.CompaniesHouse.Api.Test
 		{
 			var result = await Client
 				.Company
-				.GetFilingHistoryByIdAsync("xyzzzzzzzzzzzzz", default)
+				.GetFilingHistoryListByIdAsync("xyzzzzzzzzzzzzz", default)
 				.ConfigureAwait(false);
 
 			result.Should().NotBeNull();
-			result.TotalResults.Should().Be(0);
 		}
 	}
 }

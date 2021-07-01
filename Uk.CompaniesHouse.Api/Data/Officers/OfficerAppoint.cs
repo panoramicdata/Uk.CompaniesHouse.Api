@@ -9,7 +9,7 @@ namespace Uk.CompaniesHouse.Api.Data.Officers
 	public class OfficerAppoint
 	{
 		/// <summary>
-		/// Appointments
+		/// Link to the officer appointment resource that this appointment is associated with.
 		/// </summary>
 		[DataMember(Name = "appointments")]
 		public string Appointments { get; set; } = string.Empty;

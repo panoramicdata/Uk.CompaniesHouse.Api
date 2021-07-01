@@ -11,25 +11,25 @@ namespace Uk.CompaniesHouse.Api.Data.Officers
 	public class OfficerList
 	{
 		/// <summary>
-		/// Active count
+		/// The number of active officers in this result set.
 		/// </summary>
 		[DataMember(Name = "active_count")]
 		public int ActiveCount { get; set; } = 0;
 
 		/// <summary>
-		/// Etag
+		/// The ETag of the resource.
 		/// </summary>
 		[DataMember(Name = "etag")]
 		public string Etag { get; set; } = string.Empty;
 
 		/// <summary>
-		/// Items
+		/// The list of officers.
 		/// </summary>
 		[DataMember(Name = "items")]
 		public List<Officer> Items { get; set; } = new();
 
 		/// <summary>
-		/// Items per page
+		/// The number of officers to return per page.
 		/// </summary>
 		[DataMember(Name = "items_per_page")]
 		public int ItemsPerPage { get; set; } = 0;
@@ -41,25 +41,25 @@ namespace Uk.CompaniesHouse.Api.Data.Officers
 		public string Kind { get; set; } = string.Empty;
 
 		/// <summary>
-		/// Type
+		/// Links to other resources associated with this officer list resource.
 		/// </summary>
 		[DataMember(Name = "type")]
 		public Links Links { get; set; } = new();
 
 		/// <summary>
-		/// Resigned count
+		/// The number of resigned officers in this result set.
 		/// </summary>
 		[DataMember(Name = "resigned_count")]
 		public int ResignedCount { get; set; } = 0;
 
 		/// <summary>
-		/// Start index
+		/// The offset into the entire result set that this page starts.
 		/// </summary>
 		[DataMember(Name = "start_index")]
 		public int StartIndex { get; set; } = 0;
 
 		/// <summary>
-		/// Total results
+		/// The total number of officers in this result set.
 		/// </summary>
 		[DataMember(Name = "total_results")]
 		public int TotalResults { get; set; } = 0;

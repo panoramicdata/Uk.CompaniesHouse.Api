@@ -9,13 +9,13 @@ namespace Uk.CompaniesHouse.Api.Data.Persons_with_Significant_Control
 	public class PWSCLinks
 	{
 		/// <summary>
-		/// Self
+		/// The URL of the resource.
 		/// </summary>
 		[DataMember(Name = "self")]
 		public string Self { get; set; } = string.Empty;
 
 		/// <summary>
-		/// Statement
+		/// The URL of the statement linked to this person with significant control.
 		/// </summary>
 		[DataMember(Name = "statement")]
 		public string? Statement { get; set; }

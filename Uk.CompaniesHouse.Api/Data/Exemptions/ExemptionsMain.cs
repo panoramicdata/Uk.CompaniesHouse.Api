@@ -10,13 +10,13 @@ namespace Uk.CompaniesHouse.Api.Data.Exemptions
 	public class ExemptionsMain
 	{
 		///<summary>
-		/// Etag
+		/// The ETag of the resource.
 		/// </summary>
 		[DataMember(Name = "etag")]
 		public string Etag { get; set; } = string.Empty;
 
 		///<summary>
-		/// Exemptions
+		/// Company exemptions information.
 		/// </summary>
 		[DataMember(Name = "exemptions")]
 		public Exemptions Exemptions { get; set; } = new();
@@ -28,7 +28,7 @@ namespace Uk.CompaniesHouse.Api.Data.Exemptions
 		public string Kind { get; set; } = string.Empty;
 
 		///<summary>
-		/// Links
+		/// A set of URLs related to the resource, including self.
 		/// </summary>
 		[DataMember(Name = "links")]
 		public Links Links { get; set; } = new();

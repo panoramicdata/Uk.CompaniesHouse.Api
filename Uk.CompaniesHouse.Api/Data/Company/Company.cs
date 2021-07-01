@@ -4,25 +4,25 @@ using System.Runtime.Serialization;
 namespace Uk.CompaniesHouse.Api.Data.Company
 {
 	/// <summary>
-	/// Company
+	/// Company profile
 	/// </summary>
 	[DataContract]
 	public class Company
 	{
 		/// <summary>
-		/// SIC Codes
+		/// SIC codes for this company.
 		/// </summary>
 		[DataMember(Name = "sic_codes")]
 		public List<string>? SicCodes { get; set; }
 
 		/// <summary>
-		/// Creation date
+		/// The date when the company was created.
 		/// </summary>
 		[DataMember(Name = "date_of_creation")]
 		public string CreationDate { get; set; } = string.Empty;
 
 		/// <summary>
-		/// Last full members list date
+		/// The date of last full members list update.
 		/// </summary>
 		[DataMember(Name = "last_full_members_list_date")]
 		public string? LastFullMembersListDate { get; set; }
@@ -34,64 +34,70 @@ namespace Uk.CompaniesHouse.Api.Data.Company
 		public RegisteredOfficeAddress RegisteredOfficeAddress { get; set; } = new();
 
 		/// <summary>
-		/// Company number
+		/// The number of the company.
 		/// </summary>
 		[DataMember(Name = "company_number")]
 		public string CompanyNumber { get; set; } = string.Empty;
 
 		/// <summary>
-		/// Company name
+		/// The name of the company.
 		/// </summary>
 		[DataMember(Name = "company_name")]
 		public string CompanyName { get; set; } = string.Empty;
 
 		/// <summary>
-		/// Whether the company has been liquidated
+		/// The flag indicating if the company has been liquidated in the past.
 		/// </summary>
 		[DataMember(Name = "has_been_liquidated")]
 		public bool? HasBeenLiquidated { get; set; }
 
 		/// <summary>
-		/// Accounts
+		/// Company accounts information.
 		/// </summary>
 		[DataMember(Name = "accounts")]
 		public Accounts? Accounts { get; set; }
 
 		/// <summary>
-		/// Status
+		/// The status of the company.
 		/// </summary>
 		[DataMember(Name = "status")]
 		public string Status { get; set; } = string.Empty;
 
 		/// <summary>
-		/// Undeliverable registered office address
+		/// Flag indicating whether post can be delivered to the registered office.
 		/// </summary>
 		[DataMember(Name = "undeliverable_registered_office_address")]
 		public bool? UndeliverableRegisteredOfficeAddress { get; set; }
 
 		/// <summary>
-		/// Jurisdiction
+		/// The jurisdiction specifies the political body responsible for the company.
 		/// </summary>
 		[DataMember(Name = "jurisdiction")]
 		public string Jurisdiction { get; set; } = string.Empty;
 
 		/// <summary>
-		/// Type
+		/// The type of the company.
 		/// </summary>
 		[DataMember(Name = "type")]
 		public string Type { get; set; } = string.Empty;
 
 		/// <summary>
-		/// E-Tag
+		/// The ETag of the resource.
 		/// </summary>
 		[DataMember(Name = "etag")]
 		public string Etag { get; set; } = string.Empty;
 
 		/// <summary>
-		/// Whether the company has charges.
+		/// The flag indicating if the company has any charges..
 		/// </summary>
 		[DataMember(Name = "has_charges")]
 		public bool? HasCharges { get; set; }
+
+		/// <summary>
+		/// The flag indicating if the company is a Community Interest Company.
+		/// </summary>
+		[DataMember(Name = "is_community_interest_company")]
+		public bool? IsCommunityInterestCompany { get; set; }
 
 		/// <summary>
 		/// The company status
@@ -100,13 +106,13 @@ namespace Uk.CompaniesHouse.Api.Data.Company
 		public string CompanyStatus { get; set; } = string.Empty;
 
 		/// <summary>
-		/// Whether the company has insolvency history
+		/// The flag indicating if the company has insolvency history.
 		/// </summary>
 		[DataMember(Name = "has_insolvency_history")]
 		public bool? HasInsolvencyHistory { get; set; }
 
 		/// <summary>
-		/// Confirmation statement.
+		/// Confirmation statement information.
 		/// </summary>
 		[DataMember(Name = "confirmation_statement")]
 		public ConfirmationStatement ConfirmationStatement { get; set; } = new();
@@ -114,11 +120,11 @@ namespace Uk.CompaniesHouse.Api.Data.Company
 		/// <summary>
 		/// Links.
 		/// </summary>
-		[DataMember(Name = "links")]
+		[DataMember(Name = "A set of URLs related to the resource, including self.")]
 		public CompanyLinks Links { get; set; } = new();
 
 		/// <summary>
-		/// Whether the registered office is in dispute.
+		/// Flag indicating registered office address as been replaced.
 		/// </summary>
 		[DataMember(Name = "registered_office_is_in_dispute")]
 		public bool? RegisteredOfficeIsInDispute { get; set; }
@@ -130,43 +136,43 @@ namespace Uk.CompaniesHouse.Api.Data.Company
 		public bool HasSuperSecurePscs { get; set; }
 
 		/// <summary>
-		/// Whether the company can file.
+		/// Flag indicating whether this company can file.
 		/// </summary>
 		[DataMember(Name = "can_file")]
 		public bool CanFile { get; set; }
 
 		/// <summary>
-		/// Annual return
+		/// Annual return information.
 		/// </summary>
 		[DataMember(Name = "annual_return")]
 		public AnnualReturn? AnnualReturn { get; set; }
 
 		/// <summary>
-		/// Branch company details
+		/// UK branch of a foreign company.
 		/// </summary>
 		[DataMember(Name = "branch_company_details")]
 		public BranchCompanyDetails? BranchCompanyDetails { get; set; }
 
 		/// <summary>
-		/// Company status detail
+		/// Extra details about the status of the company.
 		/// </summary>
 		[DataMember(Name = "company_status_detail")]
 		public string? CompanyStatusDetail { get; set; }
 
 		/// <summary>
-		/// Date of cessation
+		/// The date which the company was converted/closed or dissolved.
 		/// </summary>
 		[DataMember(Name = "date_of_cessation")]
 		public string? DateOfCessation { get; set; }
 
 		/// <summary>
-		/// Foreign company details
+		/// Foreign company details.
 		/// </summary>
 		[DataMember(Name = "foreign_company_details")]
 		public ForeignCompanyDetails? ForeignCompanyDetails { get; set; }
 
 		/// <summary>
-		/// Previous company names
+		/// The previous names of this company.
 		/// </summary>
 		[DataMember(Name = "previous_company_names")]
 		public List<PreviousCompanyNames>? PreviousCompanyNames { get; set; }
