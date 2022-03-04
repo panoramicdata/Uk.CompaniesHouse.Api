@@ -1,5 +1,8 @@
 # Uk.CompaniesHouse.Api
+
 A nuget package for the Companies House REST API.
+
+[![Nuget](https://img.shields.io/nuget/v/Uk.CompaniesHouse.Api)](https://www.nuget.org/packages/Uk.CompaniesHouse.Api/)
 
 To use the Companies House nuget package:
 
