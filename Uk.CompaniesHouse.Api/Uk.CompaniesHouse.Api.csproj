@@ -1,33 +1,33 @@
 ﻿<Project Sdk="Microsoft.NET.Sdk" ToolsVersion="Current">
-  <PropertyGroup>
-    <TargetFramework>netstandard2.1</TargetFramework>
-    <Nullable>enable</Nullable>
-    <LangVersion>preview</LangVersion>
-    <FileUpgradeFlags>40</FileUpgradeFlags>
-    <UpgradeBackupLocation>C:\Users\lorna\OneDrive - Panoramic Data Limited\GitHub\Uk.CompaniesHouse.Api\Backup\Uk.CompaniesHouse.Api\</UpgradeBackupLocation>
-    <OldToolsVersion>2.0</OldToolsVersion>
-    <Authors>Panoramic Data Limited</Authors>
-    <Description>A .NET Nuget package for the UK Companies House API</Description>
-    <Copyright>2021 Panoramic Data Limited</Copyright>
-    <PackageLicenseExpression>MIT</PackageLicenseExpression>
-    <PackageProjectUrl>https://github.com/panoramicdata/Uk.CompaniesHouse.Api</PackageProjectUrl>
-    <PackageIcon>Logo.png</PackageIcon>
-    <PackageIconUrl />
-    <RepositoryUrl>https://github.com/panoramicdata/Uk.CompaniesHouse.Api</RepositoryUrl>
-    <RepositoryType>git</RepositoryType>
-    <PackageTags>Companies House REST API Nuget</PackageTags>
-    <PackageReleaseNotes>First release</PackageReleaseNotes>
-    <GeneratePackageOnBuild>true</GeneratePackageOnBuild>
-  </PropertyGroup>
-  <ItemGroup>
-    <PackageReference Include="Microsoft.Extensions.Logging.Abstractions" Version="6.0.0-preview.4.21253.7" />
-    <PackageReference Include="Refit" Version="6.0.38" />
-    <PackageReference Include="Refit.Newtonsoft.Json" Version="6.0.38" />
-  </ItemGroup>
-  <ItemGroup>
-    <None Include="Logo.png">
-      <Pack>True</Pack>
-      <PackagePath></PackagePath>
-    </None>
-  </ItemGroup>
+	<PropertyGroup>
+		<TargetFramework>net10.0</TargetFramework>
+		<Nullable>enable</Nullable>
+		<LangVersion>preview</LangVersion>
+		<FileUpgradeFlags>40</FileUpgradeFlags>
+		<UpgradeBackupLocation>C:\Users\lorna\OneDrive - Panoramic Data Limited\GitHub\Uk.CompaniesHouse.Api\Backup\Uk.CompaniesHouse.Api\</UpgradeBackupLocation>
+		<OldToolsVersion>2.0</OldToolsVersion>
+		<Authors>Panoramic Data Limited</Authors>
+		<Description>A .NET Nuget package for the UK Companies House API</Description>
+		<Copyright>2021 Panoramic Data Limited</Copyright>
+		<PackageLicenseExpression>MIT</PackageLicenseExpression>
+		<PackageProjectUrl>https://github.com/panoramicdata/Uk.CompaniesHouse.Api</PackageProjectUrl>
+		<PackageIcon>Logo.png</PackageIcon>
+		<PackageIconUrl />
+		<RepositoryUrl>https://github.com/panoramicdata/Uk.CompaniesHouse.Api</RepositoryUrl>
+		<RepositoryType>git</RepositoryType>
+		<PackageTags>Companies House REST API Nuget</PackageTags>
+		<PackageReleaseNotes>First release</PackageReleaseNotes>
+		<GeneratePackageOnBuild>true</GeneratePackageOnBuild>
+	</PropertyGroup>
+	<ItemGroup>
+		<PackageReference Include="Microsoft.Extensions.Logging.Abstractions" Version="10.0.0" />
+		<PackageReference Include="Refit" Version="8.0.0" />
+		<PackageReference Include="Refit.Newtonsoft.Json" Version="8.0.0" />
+	</ItemGroup>
+	<ItemGroup>
+		<None Include="Logo.png">
+			<Pack>True</Pack>
+			<PackagePath></PackagePath>
+		</None>
+	</ItemGroup>
 </Project>

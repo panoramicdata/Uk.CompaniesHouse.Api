@@ -1,42 +1,33 @@
-using FluentAssertions;
-using Microsoft.Extensions.Options;
+using AwesomeAssertions;
+using System.Threading.Tasks;
 using Xunit;
-using Xunit.Abstractions;
 
-namespace Uk.CompaniesHouse.Api.Test
+namespace Uk.CompaniesHouse.Api.Test;
+
+public class InsolvencyTests(ITestOutputHelper testOutputHelper) : TestBase(testOutputHelper)
 {
-	public class InsolvencyTests : TestBase
+	private readonly string ExampleCompanyID = "00229606";
+
+	[Fact]
+	public async Task Search_ValidQuery_Succeeds()
 	{
-		public InsolvencyTests(ITestOutputHelper testOutputHelper,
-			IOptions<AppSettings> options
-			) : base(testOutputHelper, options)
-		{
-		}
+		var result = await Client
+			.Company
+			.GetInsolvencyByIdAsync(ExampleCompanyID, CancellationToken);
 
-		private readonly string ExampleCompanyID = "00229606";
+		result.Should().NotBeNull();
+		var caseOne = result.Cases[0];
+		var Pract = caseOne.Practitioners[0];
+		var Address = Pract.Address;
+		var Dates = caseOne.Dates[0];
 
-		[Fact]
-		public async void Search_ValidQuery_Succeeds()
-		{
-			var result = await Client
-				.Company
-				.GetInsolvencyByIdAsync(ExampleCompanyID, default)
-				.ConfigureAwait(false);
+		Address.AddressLine1.Should().Be("15 Canada Square");
+		Address.Locality.Should().Be("London");
 
-			result.Should().NotBeNull();
-			var caseOne = result.Cases[0];
-			var Pract = caseOne.Practitioners[0];
-			var Address = Pract.Address;
-			var Dates = caseOne.Dates[0];
+		Pract.Name.Should().Be("William James Wright");
 
-			Address.AddressLine1.Should().Be("15 Canada Square");
-			Address.Locality.Should().Be("London");
+		caseOne.Type.Should().Be("corporate-voluntary-arrangement");
 
-			Pract.Name.Should().Be("William James Wright");
-
-			caseOne.Type.Should().Be("corporate-voluntary-arrangement");
-
-			Dates.Type.Should().Be("voluntary-arrangement-started-on");
-		}
+		Dates.Type.Should().Be("voluntary-arrangement-started-on");
 	}
 }

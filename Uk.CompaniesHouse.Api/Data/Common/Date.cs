@@ -1,23 +1,22 @@
 ﻿using System.Runtime.Serialization;
 
-namespace Uk.CompaniesHouse.Api.Data.Common
+namespace Uk.CompaniesHouse.Api.Data.Common;
+
+/// <summary>
+/// Date
+/// </summary>
+[DataContract]
+public class Date
 {
 	/// <summary>
-	/// Date
+	/// Day
 	/// </summary>
-	[DataContract]
-	public class Date
-	{
-		/// <summary>
-		/// Day
-		/// </summary>
-		[DataMember(Name = "day")]
-		public int? Day { get; set; }
+	[DataMember(Name = "day")]
+	public int? Day { get; set; }
 
-		/// <summary>
-		/// Month
-		/// </summary>
-		[DataMember(Name = "month")]
-		public int? Month { get; set; }
-	}
+	/// <summary>
+	/// Month
+	/// </summary>
+	[DataMember(Name = "month")]
+	public int? Month { get; set; }
 }

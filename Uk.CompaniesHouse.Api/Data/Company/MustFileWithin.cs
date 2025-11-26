@@ -1,17 +1,16 @@
 ﻿using System.Runtime.Serialization;
 
-namespace Uk.CompaniesHouse.Api.Data.Company
+namespace Uk.CompaniesHouse.Api.Data.Company;
+
+/// <summary>
+/// Must file within
+/// </summary>
+[DataContract]
+public class MustFileWithin
 {
 	/// <summary>
-	/// Must file within
+	/// Number of months within which to file.
 	/// </summary>
-	[DataContract]
-	public class MustFileWithin
-	{
-		/// <summary>
-		/// Number of months within which to file.
-		/// </summary>
-		[DataMember(Name = "months")]
-		public int? Type { get; set; }
-	}
+	[DataMember(Name = "months")]
+	public int? Type { get; set; }
 }

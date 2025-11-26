@@ -1,48 +1,37 @@
-using FluentAssertions;
-using Microsoft.Extensions.Options;
+using AwesomeAssertions;
+using System.Threading.Tasks;
 using Xunit;
-using Xunit.Abstractions;
 
-namespace Uk.CompaniesHouse.Api.Test
+namespace Uk.CompaniesHouse.Api.Test;
+
+public class FilingHistorySearchTests(ITestOutputHelper testOutputHelper) : TestBase(testOutputHelper)
 {
-	public class FilingHistorySearchTests : TestBase
+	private readonly string ExampleCompanyID = "06982102";
+
+	[Fact]
+	public async Task Search_ValidQuery_Succeeds()
 	{
-		public FilingHistorySearchTests(ITestOutputHelper testOutputHelper,
-			IOptions<AppSettings> options
-			) : base(testOutputHelper, options)
-		{
-		}
+		var result = await Client
+			.Company
+			.GetFilingHistoryListByIdAsync(ExampleCompanyID, CancellationToken);
 
-		private readonly string ExampleCompanyID = "06982102";
+		result.Should().NotBeNull();
 
-		[Fact]
-		public async void Search_ValidQuery_Succeeds()
-		{
-			var result = await Client
-				.Company
-				.GetFilingHistoryListByIdAsync(ExampleCompanyID, default)
-				.ConfigureAwait(false);
+		var item = result.Items[0];
 
-			result.Should().NotBeNull();
+		item.Category.Should().Be("accounts");
 
-			var item = result.Items[0];
+		item.Pages.Should().Be(3);
+		item.Barcode.Should().Be("XA4QVKM9");
+	}
 
-			item.Category.Should().Be("accounts");
+	[Fact]
+	public async Task Search_InvalidQuery_Fails()
+	{
+		var result = await Client
+			.Company
+			.GetFilingHistoryListByIdAsync("xyzzzzzzzzzzzzz", CancellationToken);
 
-			item.Pages.Should().Be(3);
-			item.Barcode.Should().Be("XA4QVKM9");
-		}
-
-		[Fact]
-
-		public async void Search_InvalidQuery_Fails()
-		{
-			var result = await Client
-				.Company
-				.GetFilingHistoryListByIdAsync("xyzzzzzzzzzzzzz", default)
-				.ConfigureAwait(false);
-
-			result.Should().NotBeNull();
-		}
+		result.Should().NotBeNull();
 	}
 }

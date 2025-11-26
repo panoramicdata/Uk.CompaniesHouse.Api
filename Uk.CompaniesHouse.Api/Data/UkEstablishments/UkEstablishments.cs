@@ -2,36 +2,35 @@
 using System.Runtime.Serialization;
 using Uk.CompaniesHouse.Api.Data.Common;
 
-namespace Uk.CompaniesHouse.Api.Data.UkEstablishments
+namespace Uk.CompaniesHouse.Api.Data.UkEstablishments;
+
+/// <summary>
+/// UK Establishments
+/// </summary>
+[DataContract]
+public class UkEstablishments
 {
-	/// <summary>
-	/// UK Establishments
+	///<summary>
+	/// UK Establishment Resources related to this company.
 	/// </summary>
-	[DataContract]
-	public class UkEstablishments
-	{
-		///<summary>
-		/// UK Establishment Resources related to this company.
-		/// </summary>
-		[DataMember(Name = "links")]
-		public Links? Links { get; set; }
+	[DataMember(Name = "links")]
+	public Links? Links { get; set; }
 
-		///<summary>
-		/// List of UK Establishment companies.
-		/// </summary>
-		[DataMember(Name = "items")]
-		public List<Items> Items { get; set; } = new();
+	///<summary>
+	/// List of UK Establishment companies.
+	/// </summary>
+	[DataMember(Name = "items")]
+	public List<Items> Items { get; set; } = new();
 
-		///<summary>
-		/// The ETag of the resource.
-		/// </summary>
-		[DataMember(Name = "etag")]
-		public string Etag { get; set; } = string.Empty;
+	///<summary>
+	/// The ETag of the resource.
+	/// </summary>
+	[DataMember(Name = "etag")]
+	public string Etag { get; set; } = string.Empty;
 
-		///<summary>
-		/// Kind
-		/// </summary>
-		[DataMember(Name = "kind")]
-		public string Kind { get; set; } = string.Empty;
-	}
+	///<summary>
+	/// Kind
+	/// </summary>
+	[DataMember(Name = "kind")]
+	public string Kind { get; set; } = string.Empty;
 }

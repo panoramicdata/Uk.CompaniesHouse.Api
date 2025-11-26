@@ -1,7 +1,6 @@
-﻿namespace Uk.CompaniesHouse.Api.Test
+﻿namespace Uk.CompaniesHouse.Api.Test;
+
+public class AppSettings
 {
-	public class AppSettings
-	{
-		public string ApiKey { get; set; }
-	}
+	public string ApiKey { get; set; }
 }

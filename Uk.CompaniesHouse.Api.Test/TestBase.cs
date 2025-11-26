@@ -1,28 +1,35 @@
-﻿using Divergic.Logging.Xunit;
+﻿using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.Logging;
-using Microsoft.Extensions.Options;
-using Xunit.Abstractions;
+using System.IO;
+using System.Threading;
+using Xunit;
 
-namespace Uk.CompaniesHouse.Api.Test
+namespace Uk.CompaniesHouse.Api.Test;
+
+public abstract class TestBase
 {
-	public abstract class TestBase
+	protected static CancellationToken CancellationToken => TestContext.Current.CancellationToken;
+
+	public ILogger Log { get; }
+
+	public CompaniesHouseClient Client { get; }
+
+	protected TestBase(ITestOutputHelper testOutputHelper)
 	{
-		public ICacheLogger<TestBase> Log { get; }
+		Log = new XunitLogger<TestBase>(testOutputHelper, LogLevel.Debug);
+		
+		var configuration = new ConfigurationBuilder()
+			.SetBasePath(Directory.GetCurrentDirectory())
+			.AddJsonFile("appsettings.json", optional: false)
+			.Build();
 
-		public CompaniesHouseClient Client { get; }
-
-		protected TestBase(
-			ITestOutputHelper testOutputHelper,
-			IOptions<AppSettings> options)
+		var apiKey = configuration["AppSettings:ApiKey"];
+		
+		Client = new CompaniesHouseClient(new CompaniesHouseClientOptions
 		{
-			Log = testOutputHelper.BuildLoggerFor<TestBase>(LogLevel.Debug);
-			var optionsValue = options.Value;
-			Client = new CompaniesHouseClient(new CompaniesHouseClientOptions
-			{
-				ApiKey = optionsValue.ApiKey
-			},
-				Log
-			);
-		}
+			ApiKey = apiKey
+		},
+			Log
+		);
 	}
 }

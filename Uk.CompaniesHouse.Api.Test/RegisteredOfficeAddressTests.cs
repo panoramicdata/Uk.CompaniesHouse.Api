@@ -1,32 +1,23 @@
-using FluentAssertions;
-using Microsoft.Extensions.Options;
+using AwesomeAssertions;
+using System.Threading.Tasks;
 using Xunit;
-using Xunit.Abstractions;
 
-namespace Uk.CompaniesHouse.Api.Test
+namespace Uk.CompaniesHouse.Api.Test;
+
+public class RegisteredOfficeAddressTests(ITestOutputHelper testOutputHelper) : TestBase(testOutputHelper)
 {
-	public class RegisteredOfficeAddressTests : TestBase
+	private readonly string ExampleCompanyID = "06982102";
+
+	[Fact]
+	public async Task Search_ValidQuery_Succeeds()
 	{
-		public RegisteredOfficeAddressTests(ITestOutputHelper testOutputHelper,
-			IOptions<AppSettings> options
-			) : base(testOutputHelper, options)
-		{
-		}
+		var result = await Client
+			.Company
+			.GetRegisteredAddressAsync(ExampleCompanyID, CancellationToken);
 
-		private readonly string ExampleCompanyID = "06982102";
+		result.Should().NotBeNull();
 
-		[Fact]
-		public async void Search_ValidQuery_Succeeds()
-		{
-			var result = await Client
-				.Company
-				.GetRegisteredAddressAsync(ExampleCompanyID, default)
-				.ConfigureAwait(false);
-
-			result.Should().NotBeNull();
-
-			result.Locality.Should().Be("Maidenhead");
-			result.AddressLine1.Should().Be("46 Heywood Avenue");
-		}
+		result.Locality.Should().Be("Maidenhead");
+		result.AddressLine1.Should().Be("46 Heywood Avenue");
 	}
 }
