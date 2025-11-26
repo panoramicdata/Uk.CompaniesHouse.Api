@@ -1,0 +1,11 @@
+<Solution>
+  <Folder Name="/Solution Items/">
+    <File Path=".editorconfig" />
+    <File Path=".gitignore" />
+    <File Path="LICENSE" />
+    <File Path="nuget-key.txt" />
+    <File Path="README.md" />
+  </Folder>
+  <Project Path="Uk.CompaniesHouse.Api.Test/Uk.CompaniesHouse.Api.Test.csproj" />
+  <Project Path="Uk.CompaniesHouse.Api/Uk.CompaniesHouse.Api.csproj" />
+</Solution>
