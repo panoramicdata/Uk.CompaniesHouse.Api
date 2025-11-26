@@ -4,6 +4,7 @@
     <File Path=".gitignore" />
     <File Path="LICENSE" />
     <File Path="nuget-key.txt" />
+    <File Path="Publish.ps1" />
     <File Path="README.md" />
     <File Path="version.json" />
   </Folder>

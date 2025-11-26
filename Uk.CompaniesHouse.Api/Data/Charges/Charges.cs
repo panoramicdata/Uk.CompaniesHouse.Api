@@ -32,7 +32,7 @@ public class Charges
 	/// The charge number is used to reference an individual charge
 	/// </summary>
 	[DataMember(Name = "charge_number")]
-	public int ChargeNumber { get; set; } = 0;
+	public int ChargeNumber { get; set; }
 
 	///<summary>
 	/// Classification information

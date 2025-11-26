@@ -70,7 +70,7 @@ public class OfficerSearchResult
 	/// The total number of appointments the officer has.
 	/// </summary>
 	[DataMember(Name = "appointment_count")]
-	public int AppointmentCount { get; set; } = 0;
+	public int AppointmentCount { get; set; }
 
 	/// <summary>
 	/// Summary information for the result showing additional details that have matched.

@@ -36,33 +36,33 @@ $ErrorActionPreference = "Stop"
 
 # Colors for output
 function Write-Info($message) {
-    Write-Host $message -ForegroundColor Cyan
+    Write-Information $message -InformationAction Continue
 }
 
 function Write-Success($message) {
-    Write-Host $message -ForegroundColor Green
+    Write-Information $message -InformationAction Continue
 }
 
 function Write-Warning($message) {
-    Write-Host $message -ForegroundColor Yellow
+    Microsoft.PowerShell.Utility\Write-Warning $message
 }
 
 function Write-Error($message) {
-    Write-Host $message -ForegroundColor Red
+    Microsoft.PowerShell.Utility\Write-Error $message
 }
 
 # Banner
 Write-Info "=================================================="
 Write-Info "  Uk.CompaniesHouse.Api NuGet Package Publisher"
 Write-Info "=================================================="
-Write-Host ""
+Write-Information "" -InformationAction Continue
 
 # Step 1: Check git status (porcelain)
 Write-Info "Step 1: Checking git status..."
 $gitStatus = git status --porcelain
 if ($gitStatus -and -not $Force) {
     Write-Error "Working directory is not clean. Uncommitted changes detected:"
-    Write-Host $gitStatus
+    Write-Information $gitStatus -InformationAction Continue
     Write-Host ""
     Write-Warning "Please commit or stash your changes before publishing."
     Write-Warning "Or use -Force parameter to publish anyway (not recommended)."

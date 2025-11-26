@@ -21,7 +21,9 @@ public class XunitLogger<T>(ITestOutputHelper output, LogLevel minLogLevel = Log
 		Func<TState, Exception?, string> formatter)
 	{
 		if (!IsEnabled(logLevel))
+		{
 			return;
+		}
 
 		try
 		{

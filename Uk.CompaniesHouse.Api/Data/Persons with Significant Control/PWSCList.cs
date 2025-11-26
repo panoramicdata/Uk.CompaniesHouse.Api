@@ -13,13 +13,13 @@ public class PWSCList
 	/// The number of active persons with significant control in this result set.
 	/// </summary>
 	[DataMember(Name = "active_count")]
-	public int ActiveCount { get; set; } = 0;
+	public int ActiveCount { get; set; }
 
 	/// <summary>
 	/// The number of ceased persons with significant control in this result set.
 	/// </summary>
 	[DataMember(Name = "ceased_count")]
-	public int CeasedCount { get; set; } = 0;
+	public int CeasedCount { get; set; }
 
 	/// <summary>
 	/// The list of persons with significant control.
@@ -31,7 +31,7 @@ public class PWSCList
 	/// The number of persons with significant control to return per page.
 	/// </summary>
 	[DataMember(Name = "items_per_page")]
-	public int ItemsPerPage { get; set; } = 0;
+	public int ItemsPerPage { get; set; }
 
 	/// <summary>
 	/// A set of URLs related to the resource, including self.
@@ -43,11 +43,11 @@ public class PWSCList
 	/// The offset into the entire result set that this page starts.
 	/// </summary>
 	[DataMember(Name = "start_index")]
-	public int StartIndex { get; set; } = 0;
+	public int StartIndex { get; set; }
 
 	/// <summary>
 	/// The total number of persons with significant control in this result set.
 	/// </summary>
 	[DataMember(Name = "total_results")]
-	public int TotalResults { get; set; } = 0;
+	public int TotalResults { get; set; }
 }

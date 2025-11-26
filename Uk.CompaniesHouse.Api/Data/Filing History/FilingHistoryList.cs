@@ -32,7 +32,7 @@ public class FilingHistoryList
 	/// The number of filing history items returned per page.
 	/// </summary>
 	[DataMember(Name = "items_per_page")]
-	public int ItemsPerPage { get; set; } = 0;
+	public int ItemsPerPage { get; set; }
 
 	/// <summary>
 	/// Indicates this resource is a filing history.
@@ -44,11 +44,11 @@ public class FilingHistoryList
 	/// The index into the entire result set that this result page starts.
 	/// </summary>
 	[DataMember(Name = "start_index")]
-	public int StartIndex { get; set; } = 0;
+	public int StartIndex { get; set; }
 
 	/// <summary>
 	/// The total number of filing history items for this company.
 	/// </summary>
 	[DataMember(Name = "total_count")]
-	public int TotalCount { get; set; } = 0;
+	public int TotalCount { get; set; }
 }

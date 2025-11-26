@@ -14,7 +14,7 @@ public class OfficerList
 	/// The number of active officers in this result set.
 	/// </summary>
 	[DataMember(Name = "active_count")]
-	public int ActiveCount { get; set; } = 0;
+	public int ActiveCount { get; set; }
 
 	/// <summary>
 	/// The ETag of the resource.
@@ -32,7 +32,7 @@ public class OfficerList
 	/// The number of officers to return per page.
 	/// </summary>
 	[DataMember(Name = "items_per_page")]
-	public int ItemsPerPage { get; set; } = 0;
+	public int ItemsPerPage { get; set; }
 
 	/// <summary>
 	/// Kind
@@ -50,17 +50,17 @@ public class OfficerList
 	/// The number of resigned officers in this result set.
 	/// </summary>
 	[DataMember(Name = "resigned_count")]
-	public int ResignedCount { get; set; } = 0;
+	public int ResignedCount { get; set; }
 
 	/// <summary>
 	/// The offset into the entire result set that this page starts.
 	/// </summary>
 	[DataMember(Name = "start_index")]
-	public int StartIndex { get; set; } = 0;
+	public int StartIndex { get; set; }
 
 	/// <summary>
 	/// The total number of officers in this result set.
 	/// </summary>
 	[DataMember(Name = "total_results")]
-	public int TotalResults { get; set; } = 0;
+	public int TotalResults { get; set; }
 }
