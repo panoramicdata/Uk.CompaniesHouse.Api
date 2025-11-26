@@ -17,14 +17,15 @@ public abstract class TestBase
 	protected TestBase(ITestOutputHelper testOutputHelper)
 	{
 		Log = new XunitLogger<TestBase>(testOutputHelper, LogLevel.Debug);
-		
+
 		var configuration = new ConfigurationBuilder()
 			.SetBasePath(Directory.GetCurrentDirectory())
 			.AddJsonFile("appsettings.json", optional: false)
 			.Build();
 
-		var apiKey = configuration["AppSettings:ApiKey"];
-		
+		var apiKey = configuration["AppSettings:ApiKey"]
+			?? throw new InvalidDataException("API key not found in configuration.");
+
 		Client = new CompaniesHouseClient(new CompaniesHouseClientOptions
 		{
 			ApiKey = apiKey
