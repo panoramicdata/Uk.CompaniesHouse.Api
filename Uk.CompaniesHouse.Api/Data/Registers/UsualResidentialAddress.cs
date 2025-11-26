@@ -13,7 +13,7 @@ public class UsualResidentialAddress
 	/// Items
 	/// </summary>
 	[DataMember(Name = "items")]
-	public List<RegistersItems> Items { get; set; } = new();
+	public List<RegistersItems> Items { get; set; } = [];
 
 	/// <summary>
 	/// A set of URLs related to the resource.

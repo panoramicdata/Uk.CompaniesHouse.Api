@@ -38,7 +38,7 @@ public class Charges
 	/// Classification information
 	/// </summary>
 	[DataMember(Name = "classification")]
-	public List<Classification> Classification { get; set; } = new();
+	public List<Classification> Classification { get; set; } = [];
 
 	/// <summary>
 	/// The date by which the series of debentures were created

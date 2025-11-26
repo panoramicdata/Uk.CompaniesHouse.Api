@@ -22,7 +22,7 @@ public class OfficerSearchResult
 	/// An array of enumeration types that make up the search description.
 	/// </summary>
 	[DataMember(Name = "description_identifiers")]
-	public List<string> DescriptionIdentifiers { get; set; } = new();
+	public List<string> DescriptionIdentifiers { get; set; } = [];
 
 	/// <summary>
 	/// The title of the search result.

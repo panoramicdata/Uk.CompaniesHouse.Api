@@ -26,7 +26,7 @@ public class DisqualifiedOfficerCorporate
 	/// The officer's disqualifications.
 	/// </summary>
 	[DataMember(Name = "disqualifications")]
-	public List<Disqualifications> Disqualifications { get; set; } = new();
+	public List<Disqualifications> Disqualifications { get; set; } = [];
 
 	/// <summary>
 	/// The ETag of the resource.

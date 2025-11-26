@@ -26,7 +26,7 @@ public class OfficerList
 	/// The list of officers.
 	/// </summary>
 	[DataMember(Name = "items")]
-	public List<Officer> Items { get; set; } = new();
+	public List<Officer> Items { get; set; } = [];
 
 	/// <summary>
 	/// The number of officers to return per page.

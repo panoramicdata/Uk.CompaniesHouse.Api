@@ -3,12 +3,9 @@
 		<TargetFramework>net10.0</TargetFramework>
 		<Nullable>enable</Nullable>
 		<LangVersion>preview</LangVersion>
-		<FileUpgradeFlags>40</FileUpgradeFlags>
-		<UpgradeBackupLocation>C:\Users\lorna\OneDrive - Panoramic Data Limited\GitHub\Uk.CompaniesHouse.Api\Backup\Uk.CompaniesHouse.Api\</UpgradeBackupLocation>
-		<OldToolsVersion>2.0</OldToolsVersion>
 		<Authors>Panoramic Data Limited</Authors>
 		<Description>A .NET Nuget package for the UK Companies House API</Description>
-		<Copyright>2021 Panoramic Data Limited</Copyright>
+		<Copyright>Panoramic Data Limited 2025</Copyright>
 		<PackageLicenseExpression>MIT</PackageLicenseExpression>
 		<PackageProjectUrl>https://github.com/panoramicdata/Uk.CompaniesHouse.Api</PackageProjectUrl>
 		<PackageIcon>Logo.png</PackageIcon>

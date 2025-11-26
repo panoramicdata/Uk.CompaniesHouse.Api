@@ -25,7 +25,7 @@ public class PWSCList
 	/// The list of persons with significant control.
 	/// </summary>
 	[DataMember(Name = "items")]
-	public List<PWSCListItems> Items { get; set; } = new();
+	public List<PWSCListItems> Items { get; set; } = [];
 
 	/// <summary>
 	/// The number of persons with significant control to return per page.

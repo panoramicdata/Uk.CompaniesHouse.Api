@@ -7,7 +7,7 @@ namespace Uk.CompaniesHouse.Api.Data.Search;
 public class Page<T>
 {
 	[DataMember(Name = "items")]
-	public List<T> Items { get; set; } = new();
+	public List<T> Items { get; set; } = [];
 
 	[DataMember(Name = "start_index")]
 	public int StartIndex { get; set; }

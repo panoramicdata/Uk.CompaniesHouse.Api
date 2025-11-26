@@ -19,5 +19,5 @@ public class PscExemptAsSharesAdmittedOnMarket
 	/// List of dates
 	/// </summary>
 	[DataMember(Name = "items")]
-	public List<Items> Items { get; set; } = new();
+	public List<Items> Items { get; set; } = [];
 }

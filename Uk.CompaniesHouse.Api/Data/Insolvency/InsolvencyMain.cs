@@ -13,7 +13,7 @@ public class InsolvencyMain
 	/// List of insolvency cases.
 	/// </summary>
 	[DataMember(Name = "cases")]
-	public List<Cases> Cases { get; set; } = new();
+	public List<Cases> Cases { get; set; } = [];
 
 	///<summary>
 	/// The ETag of the resource.
@@ -25,5 +25,5 @@ public class InsolvencyMain
 	/// Company insolvency status details
 	/// </summary>
 	[DataMember(Name = "status")]
-	public string Status { get; set; } = string.Empty;
+	public List<string>? Status { get; set; }
 }

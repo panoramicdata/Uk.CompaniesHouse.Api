@@ -19,7 +19,7 @@ public class ChargesListMain
 	/// List of charges
 	/// </summary>
 	[DataMember(Name = "items")]
-	public List<Charges> Items { get; set; } = new();
+	public List<Charges> Items { get; set; } = [];
 
 	/// <summary>
 	/// Number of satisfied charges

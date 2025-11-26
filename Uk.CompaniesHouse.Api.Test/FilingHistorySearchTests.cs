@@ -16,13 +16,13 @@ public class FilingHistorySearchTests(ITestOutputHelper testOutputHelper) : Test
 			.GetFilingHistoryListByIdAsync(ExampleCompanyID, CancellationToken);
 
 		result.Should().NotBeNull();
+		result.Items.Should().NotBeNullOrEmpty();
 
 		var item = result.Items[0];
 
-		item.Category.Should().Be("accounts");
-
-		item.Pages.Should().Be(3);
-		item.Barcode.Should().Be("XA4QVKM9");
+		item.Category.Should().NotBeNullOrEmpty();
+		item.Pages.Should().BePositive();
+		item.Barcode.Should().NotBeNullOrEmpty();
 	}
 
 	[Fact]

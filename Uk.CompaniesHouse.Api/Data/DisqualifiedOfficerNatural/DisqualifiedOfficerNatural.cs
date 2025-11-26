@@ -14,7 +14,7 @@ public class DisqualifiedOfficerNatural
 	/// The officer's disqualifications.
 	/// </summary>
 	[DataMember(Name = "disqualifications")]
-	public List<Disqualifications> Disqualifications { get; set; } = new();
+	public List<Disqualifications> Disqualifications { get; set; } = [];
 
 	/// <summary>
 	/// Links to other resources associated with this officer disqualification resource.

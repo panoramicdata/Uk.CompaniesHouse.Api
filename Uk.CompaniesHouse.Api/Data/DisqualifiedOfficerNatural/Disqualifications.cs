@@ -67,7 +67,7 @@ public class Disqualifications
 	/// <summary>
 	/// The latest variation made to the disqualification.
 	/// </summary>
-	[DataMember(Name = "court_name")]
+	[DataMember(Name = "last_variation")]
 	public List<LastVariation>? LastVariation { get; set; }
 
 	/// <summary>

@@ -20,7 +20,7 @@ public class UkEstablishments
 	/// List of UK Establishment companies.
 	/// </summary>
 	[DataMember(Name = "items")]
-	public List<Items> Items { get; set; } = new();
+	public List<Items> Items { get; set; } = [];
 
 	///<summary>
 	/// The ETag of the resource.

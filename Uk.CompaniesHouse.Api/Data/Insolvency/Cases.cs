@@ -13,7 +13,7 @@ public class Cases
 	/// The practitioners for the case.
 	/// </summary>
 	[DataMember(Name = "practitioners")]
-	public List<Practitioners> Practitioners { get; set; } = new();
+	public List<Practitioners> Practitioners { get; set; } = [];
 
 	///<summary>
 	/// Type
@@ -31,7 +31,7 @@ public class Cases
 	/// The dates specific to the case.
 	/// </summary>
 	[DataMember(Name = "dates")]
-	public List<Dates> Dates { get; set; } = new();
+	public List<Dates> Dates { get; set; } = [];
 
 	///<summary>
 	/// The practitioners for the case.

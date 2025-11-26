@@ -19,5 +19,5 @@ public class DisclosureTransparencyRulesChapterFiveApplies
 	/// List of exemption periods.
 	/// </summary>
 	[DataMember(Name = "items")]
-	public List<Items> Items { get; set; } = new();
+	public List<Items> Items { get; set; } = [];
 }

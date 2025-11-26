@@ -93,7 +93,7 @@ public class PWSCListItems
 	/// Indicates the nature of control the person with significant control holds.
 	/// </summary>
 	[DataMember(Name = "natures_of_control")]
-	public List<Object> NaturesOfControl { get; set; } = new();
+	public List<Object> NaturesOfControl { get; set; } = [];
 
 	/// <summary>
 	/// The date that Companies House was notified about this person with significant control.

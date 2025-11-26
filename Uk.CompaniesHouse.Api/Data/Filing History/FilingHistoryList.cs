@@ -26,7 +26,7 @@ public class FilingHistoryList
 	/// The filing history items.
 	/// </summary>
 	[DataMember(Name = "items")]
-	public List<FilingHistory> Items { get; set; } = new();
+	public List<FilingHistory> Items { get; set; } = [];
 
 	/// <summary>
 	/// The number of filing history items returned per page.

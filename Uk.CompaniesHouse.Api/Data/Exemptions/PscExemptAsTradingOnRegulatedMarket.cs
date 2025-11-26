@@ -13,7 +13,7 @@ public class PscExemptAsTradingOnRegulatedMarket
 	/// The exemption type.
 	/// </summary>
 	[DataMember(Name = "items")]
-	public List<Items> Items { get; set; } = new();
+	public List<Items> Items { get; set; } = [];
 
 	///<summary>
 	/// List of dates

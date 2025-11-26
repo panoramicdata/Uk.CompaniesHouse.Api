@@ -16,7 +16,7 @@ public class CompanySearchResult
 	/// The result description.
 	/// </summary>
 	[DataMember(Name = "description_identifier")]
-	public List<string> DescriptionIdentifier { get; set; } = new();
+	public List<string> DescriptionIdentifier { get; set; } = [];
 
 	/// <summary>
 	/// The title of the search result.
