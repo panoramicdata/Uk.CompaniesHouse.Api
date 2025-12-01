@@ -9,17 +9,17 @@ A .NET library for interacting with the [UK Companies House API](https://develop
 
 ## Features
 
-- ?? **Company Search** - Search for companies by name
-- ?? **Company Information** - Retrieve detailed company profiles
-- ?? **Officers** - Access officer lists and appointment details
-- ?? **Filing History** - View company filing history
-- ?? **Persons with Significant Control (PSC)** - Access PSC information
-- ?? **Charges** - Retrieve company charges and secured details
-- ?? **Disqualified Officers** - Access disqualified officer information
-- ?? **UK Establishments** - View UK establishment details
-- ?? **Insolvency** - Access insolvency information
-- ?? **Registers** - View company register information
-- ??? **Exemptions** - Access company exemptions
+- **Company Search** - Search for companies by name
+- **Company Information** - Retrieve detailed company profiles
+- **Officers** - Access officer lists and appointment details
+- **Filing History** - View company filing history
+- **Persons with Significant Control (PSC)** - Access PSC information
+- **Charges** - Retrieve company charges and secured details
+- **Disqualified Officers** - Access disqualified officer information
+- **UK Establishments** - View UK establishment details
+- **Insolvency** - Access insolvency information
+- **Registers** - View company register information
+- **Exemptions** - Access company exemptions
 
 ## Installation
 
