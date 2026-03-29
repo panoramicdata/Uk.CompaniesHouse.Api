@@ -19,12 +19,11 @@ public abstract class TestBase
 		Log = new XunitLogger<TestBase>(testOutputHelper, LogLevel.Debug);
 
 		var configuration = new ConfigurationBuilder()
-			.SetBasePath(Directory.GetCurrentDirectory())
-			.AddJsonFile("appsettings.json", optional: false)
+			.AddUserSecrets<TestBase>()
 			.Build();
 
 		var apiKey = configuration["AppSettings:ApiKey"]
-			?? throw new InvalidDataException("API key not found in configuration.");
+			?? throw new InvalidDataException("API key not found in user secrets. See usersecrets.example.json for the expected format.");
 
 		Client = new CompaniesHouseClient(new CompaniesHouseClientOptions
 		{
