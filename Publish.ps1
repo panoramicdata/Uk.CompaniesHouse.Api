@@ -63,7 +63,7 @@ $gitStatus = git status --porcelain
 if ($gitStatus -and -not $Force) {
     Write-Error "Working directory is not clean. Uncommitted changes detected:"
     Write-Information $gitStatus -InformationAction Continue
-    Write-Host ""
+    Write-Information "" -InformationAction Continue
     Write-Warning "Please commit or stash your changes before publishing."
     Write-Warning "Or use -Force parameter to publish anyway (not recommended)."
     exit 1
@@ -74,7 +74,7 @@ elseif ($gitStatus -and $Force) {
 else {
     Write-Success "Working directory is clean."
 }
-Write-Host ""
+Write-Information "" -InformationAction Continue
 
 # Step 2: Run unit tests
 if (-not $SkipTests) {
@@ -98,7 +98,7 @@ if (-not $SkipTests) {
 else {
     Write-Warning "Step 2: Skipping unit tests (SkipTests parameter specified)."
 }
-Write-Host ""
+Write-Information "" -InformationAction Continue
 
 # Step 3: Check for NuGet API key
 Write-Info "Step 3: Reading NuGet API key..."
@@ -106,7 +106,7 @@ $nugetKeyFile = "nuget-key.txt"
 
 if (-not (Test-Path $nugetKeyFile)) {
     Write-Error "NuGet API key file not found: $nugetKeyFile"
-    Write-Host ""
+    Write-Information "" -InformationAction Continue
     Write-Info "Please create a file named 'nuget-key.txt' in the root directory containing your NuGet API key."
     Write-Info "This file is gitignored for security."
     exit 1
@@ -121,7 +121,7 @@ if ([string]::IsNullOrWhiteSpace($nugetApiKey)) {
 }
 
 Write-Success "NuGet API key loaded successfully."
-Write-Host ""
+Write-Information "" -InformationAction Continue
 
 # Step 4: Build and pack the project
 Write-Info "Step 4: Building and packing the project..."
@@ -146,7 +146,7 @@ if ($LASTEXITCODE -ne 0) {
 }
 
 Write-Success "Build completed successfully."
-Write-Host ""
+Write-Information "" -InformationAction Continue
 
 # Step 5: Find the generated NuGet package
 Write-Info "Step 5: Locating NuGet package..."
@@ -161,12 +161,12 @@ if (-not $packagePath) {
 }
 
 Write-Success "Found package: $($packagePath.FullName)"
-Write-Host ""
+Write-Information "" -InformationAction Continue
 
 # Step 6: Publish to NuGet
 Write-Info "Step 6: Publishing to NuGet.org..."
 Write-Warning "Publishing package: $($packagePath.Name)"
-Write-Host ""
+Write-Information "" -InformationAction Continue
 
 dotnet nuget push $packagePath.FullName --api-key $nugetApiKey --source https://api.nuget.org/v3/index.json --skip-duplicate
 
@@ -175,11 +175,11 @@ if ($LASTEXITCODE -ne 0) {
     exit 1
 }
 
-Write-Host ""
+Write-Information "" -InformationAction Continue
 Write-Success "=================================================="
 Write-Success "  Package published successfully!"
 Write-Success "=================================================="
-Write-Host ""
+Write-Information "" -InformationAction Continue
 Write-Info "Package: $($packagePath.Name)"
 Write-Info "It may take a few minutes for the package to appear on NuGet.org"
-Write-Host ""
+Write-Information "" -InformationAction Continue
