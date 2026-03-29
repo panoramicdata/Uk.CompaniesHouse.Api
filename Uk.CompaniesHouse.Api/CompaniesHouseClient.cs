@@ -11,7 +11,7 @@ public class CompaniesHouseClient
 	public CompaniesHouseClient(CompaniesHouseClientOptions options, ILogger logger)
 		: this(new HttpClient(new AuthenticatedHttpClientHandler(options, logger))
 		{
-			BaseAddress = new Uri("https://api.company-information.service.gov.uk/")
+			BaseAddress = new Uri(options.BaseUrl)
 		})
 	{
 	}

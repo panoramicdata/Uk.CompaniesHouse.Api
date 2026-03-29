@@ -25,11 +25,17 @@ public abstract class TestBase
 		var apiKey = configuration["AppSettings:ApiKey"]
 			?? throw new InvalidDataException("API key not found in user secrets. See usersecrets.example.json for the expected format.");
 
-		Client = new CompaniesHouseClient(new CompaniesHouseClientOptions
+		var options = new CompaniesHouseClientOptions
 		{
 			ApiKey = apiKey
-		},
-			Log
-		);
+		};
+
+		var baseUrl = configuration["AppSettings:BaseUrl"];
+		if (!string.IsNullOrWhiteSpace(baseUrl))
+		{
+			options.BaseUrl = baseUrl;
+		}
+
+		Client = new CompaniesHouseClient(options, Log);
 	}
 }
