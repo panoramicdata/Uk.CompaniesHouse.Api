@@ -11,6 +11,11 @@ public class ExemptionsTests(ITestOutputHelper testOutputHelper) : TestBase(test
 	[Fact]
 	public async Task Search_ValidQuery_Succeeds()
 	{
+       if (IsSandbox)
+		{
+			return;
+		}
+
 		var result = await Client
 			.Company
 			.GetExemptionsByIdAsync(ExampleCompanyID, CancellationToken);

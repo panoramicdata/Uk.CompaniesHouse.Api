@@ -11,6 +11,11 @@ public class FilingHistorySearchTests(ITestOutputHelper testOutputHelper) : Test
 	[Fact]
 	public async Task Search_ValidQuery_Succeeds()
 	{
+       if (IsSandbox)
+		{
+			return;
+		}
+
 		var result = await Client
 			.Company
 			.GetFilingHistoryListByIdAsync(ExampleCompanyID, CancellationToken);
@@ -28,6 +33,11 @@ public class FilingHistorySearchTests(ITestOutputHelper testOutputHelper) : Test
 	[Fact]
 	public async Task Search_InvalidQuery_Fails()
 	{
+       if (IsSandbox)
+		{
+			return;
+		}
+
 		var result = await Client
 			.Company
 			.GetFilingHistoryListByIdAsync("xyzzzzzzzzzzzzz", CancellationToken);

@@ -10,6 +10,11 @@ public class OfficerSearchTests(ITestOutputHelper testOutputHelper) : TestBase(t
 	[Fact]
 	public async Task Search_ValidQuery_Succeeds()
 	{
+       if (IsSandbox)
+		{
+			return;
+		}
+
 		var result = await Client
 			.Search
 			.GetOfficerInfoByNameAsync("David Niel Bond", CancellationToken);

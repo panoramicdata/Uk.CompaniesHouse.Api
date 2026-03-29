@@ -8,12 +8,29 @@ namespace Uk.CompaniesHouse.Api;
 
 public class CompaniesHouseClient
 {
+	private const string LiveBaseUrl = "https://api.company-information.service.gov.uk/";
+	private const string SandboxBaseUrl = "https://api-sandbox.company-information.service.gov.uk/";
+
 	public CompaniesHouseClient(CompaniesHouseClientOptions options, ILogger logger)
-		: this(new HttpClient(new AuthenticatedHttpClientHandler(options, logger))
-		{
-			BaseAddress = new Uri(options.BaseUrl)
-		})
+      : this(CreateHttpClient(options, logger))
 	{
+	}
+
+  internal static string GetBaseUrl(ApiEnvironment environment) => environment switch
+	{
+		ApiEnvironment.Live => LiveBaseUrl,
+		ApiEnvironment.Sandbox => SandboxBaseUrl,
+		_ => throw new ArgumentOutOfRangeException(nameof(environment), environment, "Unknown API environment.")
+	};
+
+	private static HttpClient CreateHttpClient(CompaniesHouseClientOptions options, ILogger logger)
+	{
+		AuthenticatedHttpClientHandler.ValidateOptions(options);
+
+		return new HttpClient(new AuthenticatedHttpClientHandler(options, logger))
+		{
+			BaseAddress = new Uri(GetBaseUrl(options.Environment))
+		};
 	}
 
 	public CompaniesHouseClient(HttpClient httpClient)

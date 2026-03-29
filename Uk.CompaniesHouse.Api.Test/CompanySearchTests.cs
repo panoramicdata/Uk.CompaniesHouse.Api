@@ -9,6 +9,11 @@ public class CompanySearchTests(ITestOutputHelper testOutputHelper) : TestBase(t
 	[Fact]
 	public async Task Search_ValidQuery_Succeeds()
 	{
+       if (IsSandbox)
+		{
+			return;
+		}
+
 		var result = await Client
 			.Search
 			.GetCompanyInfoByNameAsync("Panoramic Data Limited", CancellationToken);
@@ -45,6 +50,11 @@ public class CompanySearchTests(ITestOutputHelper testOutputHelper) : TestBase(t
 	[Fact]
 	public async Task GetCompanyInfo_Succeeds()
 	{
+       if (IsSandbox)
+		{
+			return;
+		}
+
 		var result = await Client
 			.Company
 			.GetByIdAsync("06982102", CancellationToken);

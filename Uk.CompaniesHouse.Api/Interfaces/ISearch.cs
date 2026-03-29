@@ -41,11 +41,11 @@ public interface ISearch
 		);
 
 	/// <summary>
-	/// Find officer information from the officer name
+	/// Find disqualified officer information from the officer name
 	/// </summary>
 	/// <param name="query">The query string</param>
 	/// <param name="cancellationToken">The cancellation token</param>
-	[Get("/search/officers")]
+	[Get("/search/disqualified-officers")]
 	public Task<Page<DisqualifiedOfficerSearchResults>> GetDisqualifiedOfficerInfoByNameAsync(
 		[AliasAs("q")] string query,
 		CancellationToken cancellationToken

@@ -59,8 +59,8 @@ public interface ICompany
 	[Get("/company/{companyNumber}/appointments/{appointmentNumber}")]
 	public Task<Officer> GetOfficerInformationByAppointmentAsync(
 		[AliasAs("companyNumber")] string companyNumber,
-		CancellationToken cancellationToken,
-		[AliasAs("appointmentNumber")] string appointmentNumber
+		[AliasAs("appointmentNumber")] string appointmentNumber,
+		CancellationToken cancellationToken
 		);
 
 	/// <summary>
@@ -83,8 +83,8 @@ public interface ICompany
 	[Get("/company/{companyNumber}/filing-history/{transactionID}")]
 	public Task<FilingHistory> GetFilingHistoryByIdAsync(
 		[AliasAs("companyNumber")] string companyNumber,
-		CancellationToken cancellationToken,
-		[AliasAs("transactionID")] string transactionID
+        [AliasAs("transactionID")] string transactionID,
+		CancellationToken cancellationToken
 		);
 
 	/// <summary>
@@ -151,8 +151,8 @@ public interface ICompany
 	[Get("/company/{companyNumber}/charges/{chargeID}")]
 	public Task<Charges> GetChargesByIdAsync(
 		[AliasAs("companyNumber")] string companyNumber,
-		CancellationToken cancellationToken,
-		[AliasAs("chargeID")] string chargeID
+        [AliasAs("chargeID")] string chargeID,
+		CancellationToken cancellationToken
 		);
 
 	/// <summary>
@@ -186,8 +186,8 @@ public interface ICompany
 	[Get("/company/{companyNumber}/persons-with-significant-control/corporate-entity/{pscID}")]
 	public Task<CorporateEntity> GetCorporateEntityByIdAsync(
 		[AliasAs("companyNumber")] string companyNumber,
-		CancellationToken cancellationToken,
-		[AliasAs("pscID")] string pscID
+		[AliasAs("pscID")] string pscID,
+		CancellationToken cancellationToken
 		);
 
 	/// <summary>
@@ -199,8 +199,8 @@ public interface ICompany
 	[Get("/company/{companyNumber}/persons-with-significant-control/individual/{pscID}")]
 	public Task<Individual> GetIndividualByIdAsync(
 		[AliasAs("companyNumber")] string companyNumber,
-		CancellationToken cancellationToken,
-		[AliasAs("pscID")] string pscID
+        [AliasAs("pscID")] string pscID,
+		CancellationToken cancellationToken
 		);
 
 	/// <summary>
@@ -212,8 +212,8 @@ public interface ICompany
 	[Get("/company/{companyNumber}/persons-with-significant-control/legal-person/{pscID}")]
 	public Task<LegalPerson> GetLegalPersonByIdAsync(
 		[AliasAs("companyNumber")] string companyNumber,
-		CancellationToken cancellationToken,
-		[AliasAs("pscID")] string pscID
+        [AliasAs("pscID")] string pscID,
+		CancellationToken cancellationToken
 		);
 
 	/// <summary>
@@ -225,8 +225,8 @@ public interface ICompany
 	[Get("/company/{companyNumber}/persons-with-significant-control-statements/{statementID}")]
 	public Task<Statement> GetStatementByIdAsync(
 		[AliasAs("companyNumber")] string companyNumber,
-		CancellationToken cancellationToken,
-		[AliasAs("statementID")] string statementID
+        [AliasAs("statementID")] string statementID,
+		CancellationToken cancellationToken
 		);
 
 	/// <summary>
@@ -238,8 +238,8 @@ public interface ICompany
 	[Get("/company/{companyNumber}/persons-with-significant-control/super-secure/{superSecureID}")]
 	public Task<SuperSecure> GetSuperSecureByIdAsync(
 		[AliasAs("companyNumber")] string companyNumber,
-		CancellationToken cancellationToken,
-		[AliasAs("superSecureID")] string superSecureID
+		[AliasAs("superSecureID")] string superSecureID,
+		CancellationToken cancellationToken
 		);
 
 	/// <summary>
@@ -261,6 +261,17 @@ public interface ICompany
 	[Get("/company/{companyNumber}/persons-with-significant-control-statements")]
 	public Task<StatementList> GetStatementListByIdAsync(
 		[AliasAs("companyNumber")] string companyNumber,
+		CancellationToken cancellationToken
+		);
+
+	/// <summary>
+	/// Find officer appointments by officer ID
+	/// </summary>
+	/// <param name="officerId">The officer ID</param>
+	/// <param name="cancellationToken">The cancellation token</param>
+	[Get("/officers/{officer_id}/appointments")]
+	public Task<OfficerAppointmentList> GetOfficerAppointmentsAsync(
+		[AliasAs("officer_id")] string officerId,
 		CancellationToken cancellationToken
 		);
 }

@@ -5,21 +5,26 @@
 [![License: MIT](https://img.shields.io/badge/License-MIT-yellow.svg)](https://opensource.org/licenses/MIT)
 [![Codacy Badge](https://app.codacy.com/project/badge/Grade/737357523e2245a498448048bcd06f90)](https://app.codacy.com/gh/panoramicdata/Uk.CompaniesHouse.Api/dashboard?utm_source=gh&utm_medium=referral&utm_content=&utm_campaign=Badge_grade)
 
-A .NET library for interacting with the [UK Companies House API](https://developer.company-information.service.gov.uk/api/docs/).
+A .NET library for interacting with the UK Companies House APIs.
 
 ## Features
 
-- **Company Search** - Search for companies by name
-- **Company Information** - Retrieve detailed company profiles
-- **Officers** - Access officer lists and appointment details
-- **Filing History** - View company filing history
-- **Persons with Significant Control (PSC)** - Access PSC information
-- **Charges** - Retrieve company charges and secured details
-- **Disqualified Officers** - Access disqualified officer information
-- **UK Establishments** - View UK establishment details
-- **Insolvency** - Access insolvency information
-- **Registers** - View company register information
-- **Exemptions** - Access company exemptions
+- Company profile retrieval
+- Registered office address lookup
+- Officer list and appointment lookup
+- Officer appointments by officer ID
+- Filing history list and item lookup
+- Company registers
+- Charges
+- Insolvency
+- Exemptions
+- UK establishments
+- Persons with significant control (PSC)
+- PSC statements
+- Natural and corporate disqualified officer lookup
+- Search across companies, officers, and disqualified officers
+- Live and sandbox environment selection
+- API key and OAuth bearer token authentication modes
 
 ## Installation
 
@@ -38,41 +43,88 @@ dotnet add package Uk.CompaniesHouse.Api
 <PackageReference Include="Uk.CompaniesHouse.Api" Version="10.0.*" />
 ```
 
-## Prerequisites
+## Authentication
 
-You will need an API key from Companies House to use this library. You can register for a free API key at:
-https://developer.company-information.service.gov.uk/
+The client supports both authentication modes documented by Companies House:
 
-## Usage
+- API key over HTTP Basic authentication
+- OAuth 2.0 bearer access token authentication
 
-### Basic Setup
+### API key authentication
 
 ```csharp
 using Microsoft.Extensions.Logging;
 using Uk.CompaniesHouse.Api;
 
-// Create logger (using your preferred logging framework)
-var logger = LoggerFactory.Create(builder => builder.AddConsole()).CreateLogger<CompaniesHouseClient>();
+var logger = LoggerFactory.Create(builder => builder.AddConsole())
+    .CreateLogger<CompaniesHouseClient>();
 
-// Configure the client with your API key
 var options = new CompaniesHouseClientOptions
 {
-    ApiKey = "your-api-key-here",
+    ApiKey = "your-api-key",
+    AuthenticationMode = CompaniesHouseAuthenticationMode.ApiKey,
+    Environment = ApiEnvironment.Live,
     UserAgent = "MyApplication/1.0"
 };
 
-// Create the client
 var client = new CompaniesHouseClient(options, logger);
 ```
 
-### Search for Companies
+### OAuth bearer token authentication
 
 ```csharp
-// Search for a company by name
+using Microsoft.Extensions.Logging;
+using Uk.CompaniesHouse.Api;
+
+var logger = LoggerFactory.Create(builder => builder.AddConsole())
+    .CreateLogger<CompaniesHouseClient>();
+
+var options = new CompaniesHouseClientOptions
+{
+    AccessToken = "your-access-token",
+    AuthenticationMode = CompaniesHouseAuthenticationMode.OAuthBearerToken,
+    Environment = ApiEnvironment.Live,
+    UserAgent = "MyApplication/1.0"
+};
+
+var client = new CompaniesHouseClient(options, logger);
+```
+
+## Environments
+
+The client supports both public data environments:
+
+- `ApiEnvironment.Live` -> `https://api.company-information.service.gov.uk/`
+- `ApiEnvironment.Sandbox` -> `https://api-sandbox.company-information.service.gov.uk/`
+
+## URLs used
+
+The following URLs are relevant when using or testing this library:
+
+- Public Data API (live): `https://api.company-information.service.gov.uk/`
+- Public Data API (sandbox): `https://api-sandbox.company-information.service.gov.uk/`
+- Identity service (sandbox OAuth testing): `https://identity-sandbox.company-information.service.gov.uk/`
+- Sandbox test data generator: `https://test-data-sandbox.company-information.service.gov.uk/`
+- Developer specifications: `https://developer-specs.company-information.service.gov.uk/`
+
+This package directly calls the Public Data API live or sandbox base URL depending on `ApiEnvironment`.
+The identity service and sandbox test data generator are companion services that may be used when testing OAuth flows or creating sandbox data.
+
+```csharp
+var options = new CompaniesHouseClientOptions
+{
+    ApiKey = "your-api-key",
+    Environment = ApiEnvironment.Sandbox
+};
+```
+
+## Usage
+
+### Search for companies
+
+```csharp
 var searchResults = await client.Search
     .GetCompanyInfoByNameAsync("Panoramic Data Limited", cancellationToken);
-
-Console.WriteLine($"Found {searchResults.TotalResults} companies");
 
 foreach (var company in searchResults.Items)
 {
@@ -80,22 +132,18 @@ foreach (var company in searchResults.Items)
 }
 ```
 
-### Get Company Details
+### Get a company profile
 
 ```csharp
-// Get detailed company information
 var company = await client.Company
     .GetByIdAsync("06982102", cancellationToken);
 
-Console.WriteLine($"Company Name: {company.CompanyName}");
-Console.WriteLine($"Company Status: {company.CompanyStatus}");
-Console.WriteLine($"Incorporation Date: {company.CreationDate}");
+Console.WriteLine(company.CompanyName);
 ```
 
-### Get Company Officers
+### Get company officers
 
 ```csharp
-// Get list of company officers
 var officers = await client.Company
     .GetOfficerListByIdAsync("06982102", cancellationToken);
 
@@ -105,102 +153,120 @@ foreach (var officer in officers.Items)
 }
 ```
 
-### Get Filing History
+### Get officer appointments by officer ID
 
 ```csharp
-// Get company filing history
-var filingHistory = await client.Company
-    .GetFilingHistoryListByIdAsync("06982102", cancellationToken);
+var appointments = await client.Company
+    .GetOfficerAppointmentsAsync("officer-id", cancellationToken);
 
-foreach (var filing in filingHistory.Items)
+foreach (var appointment in appointments.Items)
 {
-    Console.WriteLine($"{filing.Date}: {filing.Description}");
+    Console.WriteLine($"{appointment.AppointedToCompanyName} - {appointment.OfficerRole}");
 }
 ```
 
-### Get Persons with Significant Control
+### Get a specific filing history item
 
 ```csharp
-// Get PSC list
-var pscList = await client.Company
-    .GetPWSCListByIdAsync("06982102", cancellationToken);
+var filing = await client.Company
+    .GetFilingHistoryByIdAsync("06982102", "transaction-id", cancellationToken);
 
-foreach (var psc in pscList.Items)
-{
-    Console.WriteLine($"PSC: {psc.Name}");
-}
+Console.WriteLine($"{filing.Date} - {filing.Description}");
 ```
 
-### Get Company Charges
+### Get charges
 
 ```csharp
-// Get list of charges
 var charges = await client.Company
     .GetChargesListByIdAsync("06982102", cancellationToken);
 
 foreach (var charge in charges.Items)
 {
-    Console.WriteLine($"Charge ID: {charge.ChargeNumber}");
+    Console.WriteLine(charge.ChargeCode);
 }
 ```
 
-## API Reference
-
-For complete API documentation, please refer to the official Companies House API documentation:
-https://developer.company-information.service.gov.uk/api/docs/
-
-## Supported Endpoints
-
-This library supports the following Companies House API endpoints:
-
-### Company API
-- Get company profile
-- Get registered office address
-- Get officers
-- Get officer appointments
-- Get registers
-- Get filing history
-- Get UK establishments
-- Get charges
-- Get insolvency information
-- Get exemptions
-- Get persons with significant control
-- Get PSC statements
+## Supported client surface
 
 ### Search API
-- Search companies
-- Search officers
-- Search disqualified officers
 
-### Disqualified Officers API
-- Get natural disqualified officer details
-- Get corporate disqualified officer details
+- `GetInfoByNameAsync`
+- `GetCompanyInfoByNameAsync`
+- `GetOfficerInfoByNameAsync`
+- `GetDisqualifiedOfficerInfoByNameAsync`
 
-## Requirements
+### Company API
 
-- .NET 10.0 or later
-- Valid Companies House API key
+- `GetByIdAsync`
+- `GetRegisteredAddressAsync`
+- `GetOfficerListByIdAsync`
+- `GetOfficerInformationByAppointmentAsync`
+- `GetRegisterInfoByIdAsync`
+- `GetFilingHistoryListByIdAsync`
+- `GetFilingHistoryByIdAsync`
+- `GetNaturalDisqualifiedByIdAsync`
+- `GetCorporateDisqualifiedByIdAsync`
+- `GetUkEstablishmentsByIdAsync`
+- `GetChargesListByIdAsync`
+- `GetChargesByIdAsync`
+- `GetInsolvencyByIdAsync`
+- `GetExemptionsByIdAsync`
+- `GetCorporateEntityByIdAsync`
+- `GetIndividualByIdAsync`
+- `GetLegalPersonByIdAsync`
+- `GetStatementByIdAsync`
+- `GetSuperSecureByIdAsync`
+- `GetPWSCListByIdAsync`
+- `GetStatementListByIdAsync`
+- `GetOfficerAppointmentsAsync`
 
-## Contributing
+## Testing
 
-Contributions are welcome! Please feel free to submit a Pull Request.
+The test project supports `User Secrets` for local credentials.
+
+Example:
+
+```json
+{
+  "AppSettings": {
+    "ApiKey": "your-companies-house-api-key-here",
+    "AuthenticationMode": "ApiKey",
+    "Environment": "Sandbox"
+  }
+}
+```
+
+Set secrets with:
+
+```powershell
+dotnet user-secrets set "AppSettings:ApiKey" "your-key" --project Uk.CompaniesHouse.Api.Test
+dotnet user-secrets set "AppSettings:AuthenticationMode" "ApiKey" --project Uk.CompaniesHouse.Api.Test
+dotnet user-secrets set "AppSettings:Environment" "Sandbox" --project Uk.CompaniesHouse.Api.Test
+```
+
+For bearer token testing:
+
+```powershell
+dotnet user-secrets set "AppSettings:AuthenticationMode" "OAuthBearerToken" --project Uk.CompaniesHouse.Api.Test
+dotnet user-secrets set "AppSettings:AccessToken" "your-access-token" --project Uk.CompaniesHouse.Api.Test
+```
+
+## Notes
+
+- Sandbox data differs from live Companies House data.
+- The deterministic test suite validates the full client surface without depending on live network data.
+- OAuth token acquisition is outside the scope of this package. Supply an access token obtained by your own OAuth flow.
+
+## API Reference
+
+Official documentation:
+https://developer-specs.company-information.service.gov.uk/
 
 ## License
 
-This project is licensed under the MIT License - see the [LICENSE](LICENSE) file for details.
+This project is licensed under the MIT License. See `LICENSE`.
 
 ## Support
 
-For issues, questions, or contributions, please visit the [GitHub repository](https://github.com/panoramicdata/Uk.CompaniesHouse.Api).
-
-## Related Projects
-
-- [Meraki.Api](https://github.com/panoramicdata/Meraki.Api) - .NET library for Cisco Meraki Dashboard API
-
-## Acknowledgments
-
-Built by [Panoramic Data Limited](https://www.panoramicdata.com/)
-
----
-
-**Note**: This is an unofficial library and is not affiliated with or endorsed by Companies House.
+For issues and contributions, visit:
+https://github.com/panoramicdata/Uk.CompaniesHouse.Api

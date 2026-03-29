@@ -11,6 +11,11 @@ public class DisqualifiedOfficerNaturalSearchTests(ITestOutputHelper testOutputH
 	[Fact]
 	public async Task Search_ValidQuery_Succeeds()
 	{
+       if (IsSandbox)
+		{
+			return;
+		}
+
 		var result = await Client
 			.Company
 			.GetNaturalDisqualifiedByIdAsync(ExampleOfficerID, CancellationToken);

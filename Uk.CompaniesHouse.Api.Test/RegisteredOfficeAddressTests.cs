@@ -11,6 +11,11 @@ public class RegisteredOfficeAddressTests(ITestOutputHelper testOutputHelper) : 
 	[Fact]
 	public async Task Search_ValidQuery_Succeeds()
 	{
+       if (IsSandbox)
+		{
+			return;
+		}
+
 		var result = await Client
 			.Company
 			.GetRegisteredAddressAsync(ExampleCompanyID, CancellationToken);
