@@ -64,15 +64,15 @@ public class ClientInterfaceCoverageTests
 
 		(await client.Company.GetByIdAsync("00000006", cancellationToken)).Should().NotBeNull();
 		(await client.Company.GetRegisteredAddressAsync("00000006", cancellationToken)).Should().NotBeNull();
-		(await client.Company.GetOfficerListByIdAsync("00000006", cancellationToken)).Items.Should().HaveCount(1);
+		(await client.Company.GetOfficerListByIdAsync("00000006", cancellationToken)).Items.Should().ContainSingle();
 		(await client.Company.GetOfficerInformationByAppointmentAsync("00000006", "appt1", cancellationToken)).Should().NotBeNull();
 		(await client.Company.GetRegisterInfoByIdAsync("00000006", cancellationToken)).Should().NotBeNull();
-		(await client.Company.GetFilingHistoryListByIdAsync("00000006", cancellationToken)).Items.Should().HaveCount(1);
+		(await client.Company.GetFilingHistoryListByIdAsync("00000006", cancellationToken)).Items.Should().ContainSingle();
 		(await client.Company.GetFilingHistoryByIdAsync("00000006", "tx1", cancellationToken)).Should().NotBeNull();
 		(await client.Company.GetNaturalDisqualifiedByIdAsync("officer1", cancellationToken)).Should().NotBeNull();
 		(await client.Company.GetCorporateDisqualifiedByIdAsync("officer2", cancellationToken)).Should().NotBeNull();
-		(await client.Company.GetUkEstablishmentsByIdAsync("00000006", cancellationToken)).Items.Should().HaveCount(1);
-		(await client.Company.GetChargesListByIdAsync("00000006", cancellationToken)).Items.Should().HaveCount(1);
+		(await client.Company.GetUkEstablishmentsByIdAsync("00000006", cancellationToken)).Items.Should().ContainSingle();
+		(await client.Company.GetChargesListByIdAsync("00000006", cancellationToken)).Items.Should().ContainSingle();
 		(await client.Company.GetChargesByIdAsync("00000006", "charge1", cancellationToken)).Should().NotBeNull();
 		(await client.Company.GetInsolvencyByIdAsync("00000006", cancellationToken)).Should().NotBeNull();
 		(await client.Company.GetExemptionsByIdAsync("00000006", cancellationToken)).Should().NotBeNull();
@@ -83,7 +83,7 @@ public class ClientInterfaceCoverageTests
 		(await client.Company.GetSuperSecureByIdAsync("00000006", "secure1", cancellationToken)).Should().NotBeNull();
 		(await client.Company.GetPWSCListByIdAsync("00000006", cancellationToken)).Should().NotBeNull();
 		(await client.Company.GetStatementListByIdAsync("00000006", cancellationToken)).Should().NotBeNull();
-		(await client.Company.GetOfficerAppointmentsAsync("officer1", cancellationToken)).Items.Should().HaveCount(1);
+		(await client.Company.GetOfficerAppointmentsAsync("officer1", cancellationToken)).Items.Should().ContainSingle();
 
 		handler.RequestedPaths.Should().Contain("/search/disqualified-officers?q=test");
 		handler.RequestedPaths.Should().Contain("/company/00000006/charges/charge1");

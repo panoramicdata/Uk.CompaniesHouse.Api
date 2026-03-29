@@ -12,7 +12,7 @@ internal class AuthenticatedHttpClientHandler(
 	CompaniesHouseClientOptions options,
 	ILogger logger) : HttpClientHandler
 {
- internal const string UserAgentHeader = "User-Agent";
+	internal const string UserAgentHeader = "User-Agent";
 	private const string AuthorizationHeader = "Authorization";
 	private readonly CompaniesHouseClientOptions _options = options;
 	private readonly ILogger _logger = logger;
@@ -43,24 +43,25 @@ internal class AuthenticatedHttpClientHandler(
 		HttpRequestMessage request,
 		CancellationToken cancellationToken)
 	{
-      if (!request.Headers.TryGetValues(UserAgentHeader, out _) && !string.IsNullOrWhiteSpace(_options.UserAgent))
+		if (!request.Headers.TryGetValues(UserAgentHeader, out _) && !string.IsNullOrWhiteSpace(_options.UserAgent))
 		{
 			request.Headers.Add(UserAgentHeader, _options.UserAgent);
 		}
+
 		if (!request.Headers.TryGetValues(AuthorizationHeader, out _))
 		{
-         request.Headers.Authorization = AuthenticationHeaderValue.Parse(GetAuthorizationHeaderValue(_options));
+			request.Headers.Authorization = AuthenticationHeaderValue.Parse(GetAuthorizationHeaderValue(_options));
 		}
 
 		// Get a GUID to uniquely identify the request
 		var guid = Guid.NewGuid();
-		_logger.LogDebug($"{guid}:{request.Method}:{request.RequestUri}\nHeaders:{request.Headers}\nBody:{(request.Content is null ? null : await request.Content.ReadAsStringAsync().ConfigureAwait(false))}");
+		_logger.LogDebug($"{guid}:{request.Method}:{request.RequestUri}\nHeaders:{request.Headers}\nBody:{(request.Content is null ? null : await request.Content.ReadAsStringAsync(cancellationToken).ConfigureAwait(false))}");
 
 		var response = await base
 			.SendAsync(request, cancellationToken)
 			.ConfigureAwait(false);
 
-		_logger.LogDebug($"{guid}:{response.StatusCode}:{await response.Content.ReadAsStringAsync().ConfigureAwait(false)}");
+		_logger.LogDebug($"{guid}:{response.StatusCode}:{await response.Content.ReadAsStringAsync(cancellationToken).ConfigureAwait(false)}");
 
 		return response;
 	}
