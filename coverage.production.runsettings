@@ -1,0 +1,25 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RunSettings>
+  <DataCollectionRunSettings>
+    <DataCollectors>
+      <DataCollector friendlyName="XPlat code coverage">
+        <Configuration>
+          <!-- Production-only profile -->
+          <Include>[Uk.CompaniesHouse.Api*]*</Include>
+          <Exclude>[*.Test*]*,[xunit.*]*,[Xunit.*]*</Exclude>
+
+          <!-- Filter generated/runtime metadata noise -->
+          <ExcludeByAttribute>GeneratedCodeAttribute,CompilerGeneratedAttribute,ExcludeFromCodeCoverageAttribute</ExcludeByAttribute>
+          <ExcludeByFile>**/*.g.cs,**/*.g.i.cs,**/*.designer.cs,**/Migrations/*.cs,**/obj/**,**/bin/**</ExcludeByFile>
+
+          <Format>cobertura</Format>
+          <SingleHit>false</SingleHit>
+          <UseSourceLink>false</UseSourceLink>
+          <SkipAutoProps>false</SkipAutoProps>
+          <DeterministicReport>true</DeterministicReport>
+          <IncludeTestAssembly>false</IncludeTestAssembly>
+        </Configuration>
+      </DataCollector>
+    </DataCollectors>
+  </DataCollectionRunSettings>
+</RunSettings>

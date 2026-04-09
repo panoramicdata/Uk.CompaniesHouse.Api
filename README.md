@@ -251,6 +251,18 @@ dotnet user-secrets set "AppSettings:AuthenticationMode" "OAuthBearerToken" --pr
 dotnet user-secrets set "AppSettings:AccessToken" "your-access-token" --project Uk.CompaniesHouse.Api.Test
 ```
 
+Coverage (full, Test Explorer-style output):
+
+```powershell
+dotnet test Uk.CompaniesHouse.Api.slnx --collect:"XPlat Code Coverage" --settings coverage.runsettings -v minimal
+```
+
+Coverage (production-only, excludes test assembly and generated/runtime noise):
+
+```powershell
+dotnet test Uk.CompaniesHouse.Api.slnx --collect:"XPlat Code Coverage" --settings coverage.production.runsettings -v minimal
+```
+
 ## Notes
 
 - Sandbox data differs from live Companies House data.

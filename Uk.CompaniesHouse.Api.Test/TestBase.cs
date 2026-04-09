@@ -1,7 +1,6 @@
 ﻿using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.Logging;
 using System;
-using System.IO;
 using System.Threading;
 using Xunit;
 
@@ -51,12 +50,21 @@ public abstract class TestBase
 		switch (options.AuthenticationMode)
 		{
 			case CompaniesHouseAuthenticationMode.ApiKey:
-                options.ApiKey = apiKey
-					?? throw new InvalidDataException("API key not found in user secrets. See usersecrets.example.json for the expected format.");
+				if (string.IsNullOrWhiteSpace(apiKey))
+				{
+					Assert.Skip("Skipping integration tests: API key not found in user secrets. See usersecrets.example.json for the expected format.");
+				}
+
+				options.ApiKey = apiKey;
 				break;
 			case CompaniesHouseAuthenticationMode.OAuthBearerToken:
-				options.AccessToken = configuration["AppSettings:AccessToken"]
-					?? throw new InvalidDataException("Access token not found in user secrets.");
+				var accessToken = configuration["AppSettings:AccessToken"];
+				if (string.IsNullOrWhiteSpace(accessToken))
+				{
+					Assert.Skip("Skipping integration tests: Access token not found in user secrets.");
+				}
+
+				options.AccessToken = accessToken;
 				break;
 		}
 

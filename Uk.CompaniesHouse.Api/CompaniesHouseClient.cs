@@ -2,6 +2,10 @@
 using Refit;
 using System;
 using System.Net.Http;
+using System.Reflection;
+using System.Runtime.Serialization;
+using System.Text.Json;
+using System.Text.Json.Serialization.Metadata;
 using Uk.CompaniesHouse.Api.Interfaces;
 
 namespace Uk.CompaniesHouse.Api;
@@ -47,10 +51,42 @@ public class CompaniesHouseClient
 	/// <param name="httpClient">The HTTP client to use for all API requests.</param>
 	public CompaniesHouseClient(HttpClient httpClient)
 	{
-		var settings = new RefitSettings(new NewtonsoftJsonContentSerializer());
+		var settings = new RefitSettings(new SystemTextJsonContentSerializer(CreateJsonSerializerOptions()));
 
 		Search = RestService.For<ISearch>(httpClient, settings);
 		Company = RestService.For<ICompany>(httpClient, settings);
+	}
+
+	private static JsonSerializerOptions CreateJsonSerializerOptions()
+	{
+		var resolver = new DefaultJsonTypeInfoResolver();
+		resolver.Modifiers.Add(static typeInfo =>
+		{
+			if (typeInfo.Kind != JsonTypeInfoKind.Object)
+			{
+				return;
+			}
+
+			foreach (var property in typeInfo.Properties)
+			{
+				var dataMemberAttribute = (property.AttributeProvider as ICustomAttributeProvider)?
+					.GetCustomAttributes(typeof(DataMemberAttribute), inherit: true)
+					.OfType<DataMemberAttribute>()
+					.FirstOrDefault();
+
+				if (!string.IsNullOrWhiteSpace(dataMemberAttribute?.Name))
+				{
+					property.Name = dataMemberAttribute.Name;
+				}
+			}
+		});
+
+		return new JsonSerializerOptions(JsonSerializerDefaults.Web)
+		{
+			PropertyNamingPolicy = JsonNamingPolicy.SnakeCaseLower,
+			DictionaryKeyPolicy = JsonNamingPolicy.SnakeCaseLower,
+			TypeInfoResolver = resolver
+		};
 	}
 
 	/// <summary>
