@@ -15,6 +15,9 @@ using Uk.CompaniesHouse.Api.Data.UkEstablishments;
 
 namespace Uk.CompaniesHouse.Api.Interfaces;
 
+/// <summary>
+/// Defines the Companies House company-related endpoints exposed by this client.
+/// </summary>
 public interface ICompany
 {
 	/// <summary>

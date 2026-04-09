@@ -6,11 +6,19 @@ using Uk.CompaniesHouse.Api.Interfaces;
 
 namespace Uk.CompaniesHouse.Api;
 
+/// <summary>
+/// Provides typed access to the UK Companies House search and company endpoints.
+/// </summary>
 public class CompaniesHouseClient
 {
 	private const string LiveBaseUrl = "https://api.company-information.service.gov.uk/";
 	private const string SandboxBaseUrl = "https://api-sandbox.company-information.service.gov.uk/";
 
+	/// <summary>
+	/// Creates a client using the supplied Companies House options and logger.
+	/// </summary>
+	/// <param name="options">The options used to configure authentication and environment.</param>
+	/// <param name="logger">The logger used by the authenticated HTTP handler.</param>
 	public CompaniesHouseClient(CompaniesHouseClientOptions options, ILogger logger)
       : this(CreateHttpClient(options, logger))
 	{
@@ -33,6 +41,10 @@ public class CompaniesHouseClient
 		};
 	}
 
+	/// <summary>
+	/// Creates a client using an already configured HTTP client.
+	/// </summary>
+	/// <param name="httpClient">The HTTP client to use for all API requests.</param>
 	public CompaniesHouseClient(HttpClient httpClient)
 	{
 		var settings = new RefitSettings(new NewtonsoftJsonContentSerializer());

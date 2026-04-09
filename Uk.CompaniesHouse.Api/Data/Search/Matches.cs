@@ -3,6 +3,9 @@ using System.Runtime.Serialization;
 
 namespace Uk.CompaniesHouse.Api.Data.Search;
 
+/// <summary>
+/// Represents matched character positions returned by a search result.
+/// </summary>
 [DataContract]
 public class Matches
 {

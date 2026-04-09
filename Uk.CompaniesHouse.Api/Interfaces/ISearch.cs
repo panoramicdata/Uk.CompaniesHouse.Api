@@ -5,6 +5,9 @@ using Uk.CompaniesHouse.Api.Data.Search;
 
 namespace Uk.CompaniesHouse.Api.Interfaces;
 
+/// <summary>
+/// Defines the Companies House search endpoints exposed by this client.
+/// </summary>
 public interface ISearch
 {
 	/// <summary>
