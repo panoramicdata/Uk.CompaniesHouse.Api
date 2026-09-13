@@ -1,14 +1,14 @@
-﻿using System.Collections.Generic;
+using System.Collections.Generic;
 using System.Runtime.Serialization;
 using Uk.CompaniesHouse.Api.Data.Common;
 
 namespace Uk.CompaniesHouse.Api.Data.Search;
 
 /// <summary>
-/// The results of the completed search.
+/// Base class for search results.
 /// </summary>
 [DataContract]
-public class OverallSearch
+public class SearchResults
 {
 	/// <summary>
 	/// The address of the company's registered office.
@@ -63,4 +63,12 @@ public class OverallSearch
 	/// </summary>
 	[DataMember(Name = "title")]
 	public string Title { get; set; } = string.Empty;
+}
+
+/// <summary>
+/// The results of the completed search.
+/// </summary>
+[DataContract]
+public class OverallSearch : SearchResults
+{
 }
