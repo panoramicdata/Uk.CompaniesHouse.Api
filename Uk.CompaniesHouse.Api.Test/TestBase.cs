@@ -6,6 +6,9 @@ using Xunit;
 
 namespace Uk.CompaniesHouse.Api.Test;
 
+// Every derived suite calls the live Companies House API with an API key from user secrets, so
+// the Integration category is set here once and inherited, and CI filters it out (OPS-157454).
+[Trait("Category", "Integration")]
 public abstract class TestBase
 {
 	protected static CancellationToken CancellationToken => TestContext.Current.CancellationToken;
