@@ -55,7 +55,7 @@ public abstract class TestBase
 			case CompaniesHouseAuthenticationMode.ApiKey:
 				if (string.IsNullOrWhiteSpace(apiKey))
 				{
-					Assert.Skip("Skipping integration tests: API key not found in user secrets. See usersecrets.example.json for the expected format.");
+					throw new InvalidOperationException("Companies House API key not configured. Set AppSettings:ApiKey in user secrets (see usersecrets.example.json).");
 				}
 
 				options.ApiKey = apiKey;
@@ -64,7 +64,7 @@ public abstract class TestBase
 				var accessToken = configuration["AppSettings:AccessToken"];
 				if (string.IsNullOrWhiteSpace(accessToken))
 				{
-					Assert.Skip("Skipping integration tests: Access token not found in user secrets.");
+					throw new InvalidOperationException("Companies House access token not configured. Set AppSettings:AccessToken in user secrets (see usersecrets.example.json).");
 				}
 
 				options.AccessToken = accessToken;
