@@ -351,3 +351,5 @@ MigrationBackup/
 
 # Ionide (cross platform F# VS Code tools) working folder
 .ionide/
+# Secrets belong in user secrets, never in a committed file (see appsettings.example.json)
+Uk.CompaniesHouse.Api.Test/appsettings.json
