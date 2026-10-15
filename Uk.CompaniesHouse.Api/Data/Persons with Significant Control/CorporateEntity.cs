@@ -6,17 +6,11 @@ using Uk.CompaniesHouse.Api.Data.Common;
 namespace Uk.CompaniesHouse.Api.Data.Persons_with_Significant_Control;
 
 /// <summary>
-/// Corporate entity
+/// Base PSC resource shared by <see cref="CorporateEntity"/> and <see cref="LegalPerson"/>:
+/// the properties common to every person with significant control, in one place.
 /// </summary>
-[DataContract]
-public class CorporateEntity
+public abstract class PscResource<TLinks, TIdentification> where TLinks : new() where TIdentification : new()
 {
-	/// <summary>
-	/// The address of the person with significant control.
-	/// </summary>
-	[DataMember(Name = "address")]
-	public Address Address { get; set; } = new();
-
 	/// <summary>
 	/// The date that Companies House was notified about the cessation of this person with significant control.
 	/// </summary>
@@ -30,12 +24,6 @@ public class CorporateEntity
 	public string Etag { get; set; } = string.Empty;
 
 	/// <summary>
-	/// Identification
-	/// </summary>
-	[DataMember(Name = "identification")]
-	public CorporateIdentification Identification { get; set; } = new();
-
-	/// <summary>
 	/// Kind
 	/// </summary>
 	[DataMember(Name = "kind")]
@@ -45,7 +33,7 @@ public class CorporateEntity
 	/// A set of URLs related to the resource, including self.
 	/// </summary>
 	[DataMember(Name = "links")]
-	public PWSCLinks Links { get; set; } = new();
+	public TLinks Links { get; set; } = new();
 
 	/// <summary>
 	/// Name of the person with significant control.
@@ -64,4 +52,31 @@ public class CorporateEntity
 	/// </summary>
 	[DataMember(Name = "notified_on")]
 	public string NotifiedOn { get; set; } = string.Empty;
+}
+
+/// <summary>
+/// Identification common to persons with significant control that have one,
+/// in one place.
+/// </summary>
+public abstract class PscWithIdentification<TIdentification> : PscResource<PWSCLinks, TIdentification>
+	where TIdentification : new()
+{
+	/// <summary>
+	/// Identification
+	/// </summary>
+	[DataMember(Name = "identification")]
+	public TIdentification Identification { get; set; } = new();
+}
+
+/// <summary>
+/// Corporate entity
+/// </summary>
+[DataContract]
+public class CorporateEntity : PscWithIdentification<CorporateIdentification>
+{
+	/// <summary>
+	/// The address of the person with significant control.
+	/// </summary>
+	[DataMember(Name = "address")]
+	public Address Address { get; set; } = new();
 }

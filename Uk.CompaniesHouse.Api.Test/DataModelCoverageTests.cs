@@ -58,37 +58,10 @@ public class DataModelCoverageTests
 			return GetDefault(type);
 		}
 
-		if (type == typeof(string))
+		var primitiveValue = CreatePrimitiveValue(type);
+		if (primitiveValue is not null)
 		{
-			return "value";
-		}
-
-		if (type == typeof(bool))
-		{
-			return true;
-		}
-
-		if (type == typeof(byte)) return (byte)1;
-		if (type == typeof(sbyte)) return (sbyte)1;
-		if (type == typeof(short)) return (short)1;
-		if (type == typeof(ushort)) return (ushort)1;
-		if (type == typeof(int)) return 1;
-		if (type == typeof(uint)) return (uint)1;
-		if (type == typeof(long)) return 1L;
-		if (type == typeof(ulong)) return 1UL;
-		if (type == typeof(float)) return 1f;
-		if (type == typeof(double)) return 1d;
-		if (type == typeof(decimal)) return 1m;
-		if (type == typeof(char)) return 'a';
-		if (type == typeof(DateTime)) return DateTime.UtcNow;
-		if (type == typeof(DateTimeOffset)) return DateTimeOffset.UtcNow;
-		if (type == typeof(Guid)) return Guid.NewGuid();
-		if (type == typeof(Uri)) return new Uri("https://example.test");
-
-		if (type.IsEnum)
-		{
-			var values = Enum.GetValues(type);
-			return values.Length > 0 ? values.GetValue(0) : Activator.CreateInstance(type);
+			return primitiveValue;
 		}
 
 		var nullableUnderlyingType = Nullable.GetUnderlyingType(type);
@@ -99,26 +72,15 @@ public class DataModelCoverageTests
 
 		if (type.IsArray)
 		{
-			var elementType = type.GetElementType()!;
-			var array = Array.CreateInstance(elementType, 1);
-			array.SetValue(CreateSampleValue(elementType, depth - 1, stack), 0);
-			return array;
+			return CreateSampleArray(type, depth, stack);
 		}
 
 		if (type.IsGenericType)
 		{
-			var genericTypeDefinition = type.GetGenericTypeDefinition();
-			var genericArgs = type.GetGenericArguments();
-
-			if (genericTypeDefinition == typeof(List<>)
-				|| genericTypeDefinition == typeof(IList<>)
-				|| genericTypeDefinition == typeof(IEnumerable<>)
-				|| genericTypeDefinition == typeof(ICollection<>))
+			var list = CreateSampleList(type);
+			if (list is not null)
 			{
-				var elementType = genericArgs[0];
-				var listType = typeof(List<>).MakeGenericType(elementType);
-				var list = (IList)Activator.CreateInstance(listType)!;
-				list.Add(CreateSampleValue(elementType, depth - 1, stack));
+				list.Add(CreateSampleValue(type.GetGenericArguments()[0], depth - 1, stack));
 				return list;
 			}
 		}
@@ -128,29 +90,191 @@ public class DataModelCoverageTests
 			&& type.GetConstructor(Type.EmptyTypes) is not null
 			&& !stack.Contains(type))
 		{
-			stack.Add(type);
-			var instance = Activator.CreateInstance(type);
-			if (instance is not null)
-			{
-				foreach (var property in type.GetProperties(BindingFlags.Instance | BindingFlags.Public))
-				{
-					if (property.CanWrite && property.GetIndexParameters().Length == 0)
-					{
-						property.SetValue(instance, CreateSampleValue(property.PropertyType, depth - 1, stack));
-					}
-
-					if (property.CanRead && property.GetIndexParameters().Length == 0)
-					{
-						_ = property.GetValue(instance);
-					}
-				}
-			}
-
-			stack.Remove(type);
-			return instance;
+			return CreateSampleDataModel(type, depth, stack);
 		}
 
 		return GetDefault(type);
+	}
+
+	private static object? CreatePrimitiveValue(Type type)
+	{
+		if (type == typeof(string))
+		{
+			return "value";
+		}
+
+		if (type == typeof(bool))
+		{
+			return true;
+		}
+
+		if (IsNumericOrChar(type))
+		{
+			return Activator.CreateInstance(type);
+		}
+
+		if (type == typeof(DateTime))
+		{
+			return DateTime.UtcNow;
+		}
+
+		if (type == typeof(DateTimeOffset))
+		{
+			return DateTimeOffset.UtcNow;
+		}
+
+		if (type == typeof(Guid))
+		{
+			return Guid.NewGuid();
+		}
+
+		if (type == typeof(Uri))
+		{
+			return new Uri("https://example.test");
+		}
+
+		if (type.IsEnum)
+		{
+			var values = Enum.GetValues(type);
+			return values.Length > 0 ? values.GetValue(0) : Activator.CreateInstance(type);
+		}
+
+		return null;
+	}
+
+	private static bool IsNumericOrChar(Type type)
+	{
+		if (type == typeof(byte))
+		{
+			return true;
+		}
+
+		if (type == typeof(sbyte))
+		{
+			return true;
+		}
+
+		if (type == typeof(short))
+		{
+			return true;
+		}
+
+		if (type == typeof(ushort))
+		{
+			return true;
+		}
+
+		if (type == typeof(int))
+		{
+			return true;
+		}
+
+		if (type == typeof(uint))
+		{
+			return true;
+		}
+
+		if (type == typeof(long))
+		{
+			return true;
+		}
+
+		if (type == typeof(ulong))
+		{
+			return true;
+		}
+
+		if (type == typeof(float))
+		{
+			return true;
+		}
+
+		if (type == typeof(double))
+		{
+			return true;
+		}
+
+		if (type == typeof(decimal))
+		{
+			return true;
+		}
+
+		if (type == typeof(char))
+		{
+			return true;
+		}
+
+		return false;
+	}
+
+	private static object? CreateSampleArray(Type type, int depth, HashSet<Type> stack)
+	{
+		var elementType = type.GetElementType()!;
+		var array = Array.CreateInstance(elementType, 1);
+		array.SetValue(CreateSampleValue(elementType, depth - 1, stack), 0);
+		return array;
+	}
+
+	private static IList? CreateSampleList(Type type)
+	{
+		var genericTypeDefinition = type.GetGenericTypeDefinition();
+		if (IsSupportedList(genericTypeDefinition))
+		{
+			var elementType = type.GetGenericArguments()[0];
+			var listType = typeof(List<>).MakeGenericType(elementType);
+			return (IList)Activator.CreateInstance(listType)!;
+		}
+
+		return null;
+	}
+
+	private static bool IsSupportedList(Type genericTypeDefinition)
+	{
+		if (genericTypeDefinition == typeof(List<>))
+		{
+			return true;
+		}
+
+		if (genericTypeDefinition == typeof(IList<>))
+		{
+			return true;
+		}
+
+		if (genericTypeDefinition == typeof(IEnumerable<>))
+		{
+			return true;
+		}
+
+		if (genericTypeDefinition == typeof(ICollection<>))
+		{
+			return true;
+		}
+
+		return false;
+	}
+
+	private static object? CreateSampleDataModel(Type type, int depth, HashSet<Type> stack)
+	{
+		stack.Add(type);
+		var instance = Activator.CreateInstance(type);
+		if (instance is not null)
+		{
+			foreach (var property in type.GetProperties(BindingFlags.Instance | BindingFlags.Public))
+			{
+				if (property.CanWrite && property.GetIndexParameters().Length == 0)
+				{
+					property.SetValue(instance, CreateSampleValue(property.PropertyType, depth - 1, stack));
+				}
+
+				if (property.CanRead && property.GetIndexParameters().Length == 0)
+				{
+					_ = property.GetValue(instance);
+				}
+			}
+		}
+
+		stack.Remove(type);
+		return instance;
 	}
 
 	private static object? GetDefault(Type type)

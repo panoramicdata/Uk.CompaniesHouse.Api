@@ -50,25 +50,28 @@ public abstract class TestBase
 
 		CurrentEnvironment = options.Environment;
 
-		switch (options.AuthenticationMode)
+		if (options.AuthenticationMode == CompaniesHouseAuthenticationMode.ApiKey)
 		{
-			case CompaniesHouseAuthenticationMode.ApiKey:
-				if (string.IsNullOrWhiteSpace(apiKey))
-				{
-					throw new InvalidOperationException("Companies House API key not configured. Set AppSettings:ApiKey in user secrets (see usersecrets.example.json).");
-				}
+			if (string.IsNullOrWhiteSpace(apiKey))
+			{
+				throw new InvalidOperationException("Companies House API key not configured. Set AppSettings:ApiKey in user secrets (see usersecrets.example.json).");
+			}
 
-				options.ApiKey = apiKey;
-				break;
-			case CompaniesHouseAuthenticationMode.OAuthBearerToken:
-				var accessToken = configuration["AppSettings:AccessToken"];
-				if (string.IsNullOrWhiteSpace(accessToken))
-				{
-					throw new InvalidOperationException("Companies House access token not configured. Set AppSettings:AccessToken in user secrets (see usersecrets.example.json).");
-				}
+			options.ApiKey = apiKey;
+		}
+		else if (options.AuthenticationMode == CompaniesHouseAuthenticationMode.OAuthBearerToken)
+		{
+			var accessToken = configuration["AppSettings:AccessToken"];
+			if (string.IsNullOrWhiteSpace(accessToken))
+			{
+				throw new InvalidOperationException("Companies House access token not configured. Set AppSettings:AccessToken in user secrets (see usersecrets.example.json).");
+			}
 
-				options.AccessToken = accessToken;
-				break;
+			options.AccessToken = accessToken;
+		}
+		else
+		{
+			throw new ArgumentOutOfRangeException(nameof(options.AuthenticationMode), options.AuthenticationMode, "Unsupported Companies House authentication mode.");
 		}
 
 		Client = new CompaniesHouseClient(options, Log);

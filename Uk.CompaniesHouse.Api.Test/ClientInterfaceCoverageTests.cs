@@ -55,41 +55,56 @@ public class ClientInterfaceCoverageTests
 		};
 
 		var client = new CompaniesHouseClient(httpClient);
-		var cancellationToken = CancellationToken.None;
 
-		(await client.Search.GetInfoByNameAsync("test", cancellationToken)).Should().NotBeNull();
-		(await client.Search.GetCompanyInfoByNameAsync("test", cancellationToken)).TotalResults.Should().Be(1);
-		(await client.Search.GetOfficerInfoByNameAsync("test", cancellationToken)).TotalResults.Should().Be(1);
-		(await client.Search.GetDisqualifiedOfficerInfoByNameAsync("test", cancellationToken)).TotalResults.Should().Be(1);
-
-		(await client.Company.GetByIdAsync("00000006", cancellationToken)).Should().NotBeNull();
-		(await client.Company.GetRegisteredAddressAsync("00000006", cancellationToken)).Should().NotBeNull();
-		(await client.Company.GetOfficerListByIdAsync("00000006", cancellationToken)).Items.Should().ContainSingle();
-		(await client.Company.GetOfficerInformationByAppointmentAsync("00000006", "appt1", cancellationToken)).Should().NotBeNull();
-		(await client.Company.GetRegisterInfoByIdAsync("00000006", cancellationToken)).Should().NotBeNull();
-		(await client.Company.GetFilingHistoryListByIdAsync("00000006", cancellationToken)).Items.Should().ContainSingle();
-		(await client.Company.GetFilingHistoryByIdAsync("00000006", "tx1", cancellationToken)).Should().NotBeNull();
-		(await client.Company.GetNaturalDisqualifiedByIdAsync("officer1", cancellationToken)).Should().NotBeNull();
-		(await client.Company.GetCorporateDisqualifiedByIdAsync("officer2", cancellationToken)).Should().NotBeNull();
-		(await client.Company.GetUkEstablishmentsByIdAsync("00000006", cancellationToken)).Items.Should().ContainSingle();
-		(await client.Company.GetChargesListByIdAsync("00000006", cancellationToken)).Items.Should().ContainSingle();
-		(await client.Company.GetChargesByIdAsync("00000006", "charge1", cancellationToken)).Should().NotBeNull();
-		(await client.Company.GetInsolvencyByIdAsync("00000006", cancellationToken)).Should().NotBeNull();
-		(await client.Company.GetExemptionsByIdAsync("00000006", cancellationToken)).Should().NotBeNull();
-		(await client.Company.GetCorporateEntityByIdAsync("00000006", "psc1", cancellationToken)).Should().NotBeNull();
-		(await client.Company.GetIndividualByIdAsync("00000006", "psc2", cancellationToken)).Should().NotBeNull();
-		(await client.Company.GetLegalPersonByIdAsync("00000006", "psc3", cancellationToken)).Should().NotBeNull();
-		(await client.Company.GetStatementByIdAsync("00000006", "statement1", cancellationToken)).Should().NotBeNull();
-		(await client.Company.GetSuperSecureByIdAsync("00000006", "secure1", cancellationToken)).Should().NotBeNull();
-		(await client.Company.GetPWSCListByIdAsync("00000006", cancellationToken)).Should().NotBeNull();
-		(await client.Company.GetStatementListByIdAsync("00000006", cancellationToken)).Should().NotBeNull();
-		(await client.Company.GetOfficerAppointmentsAsync("officer1", cancellationToken)).Items.Should().ContainSingle();
+		await VerifySearchMethods(client, handler);
+		await VerifyCompanyMethods(client, handler);
 
 		handler.RequestedPaths.Should().Contain("/search/disqualified-officers?q=test");
 		handler.RequestedPaths.Should().Contain("/company/00000006/charges/charge1");
 		handler.RequestedPaths.Should().Contain("/officers/officer1/appointments");
-        handler.RequestedPaths.Should().HaveCount(expectedMethodCount);
+		handler.RequestedPaths.Should().HaveCount(expectedMethodCount);
 		handler.RequestedPaths.Distinct().Should().HaveCount(expectedMethodCount);
+	}
+
+	private static async Task VerifySearchMethods(CompaniesHouseClient client, StubHttpMessageHandler handler)
+	{
+		(await client.Search.GetInfoByNameAsync("test", CancellationToken.None)).Should().NotBeNull();
+		(await client.Search.GetCompanyInfoByNameAsync("test", CancellationToken.None)).TotalResults.Should().Be(1);
+		(await client.Search.GetOfficerInfoByNameAsync("test", CancellationToken.None)).TotalResults.Should().Be(1);
+		(await client.Search.GetDisqualifiedOfficerInfoByNameAsync("test", CancellationToken.None)).TotalResults.Should().Be(1);
+
+		handler.RequestedPaths.Should().Contain("/search/disqualified-officers?q=test");
+	}
+
+	private static async Task VerifyCompanyMethods(CompaniesHouseClient client, StubHttpMessageHandler handler)
+	{
+		var token = CancellationToken.None;
+
+		(await client.Company.GetByIdAsync("00000006", token)).Should().NotBeNull();
+		(await client.Company.GetRegisteredAddressAsync("00000006", token)).Should().NotBeNull();
+		(await client.Company.GetOfficerListByIdAsync("00000006", token)).Items.Should().ContainSingle();
+		(await client.Company.GetOfficerInformationByAppointmentAsync("00000006", "appt1", token)).Should().NotBeNull();
+		(await client.Company.GetRegisterInfoByIdAsync("00000006", token)).Should().NotBeNull();
+		(await client.Company.GetFilingHistoryListByIdAsync("00000006", token)).Items.Should().ContainSingle();
+		(await client.Company.GetFilingHistoryByIdAsync("00000006", "tx1", token)).Should().NotBeNull();
+		(await client.Company.GetNaturalDisqualifiedByIdAsync("officer1", token)).Should().NotBeNull();
+		(await client.Company.GetCorporateDisqualifiedByIdAsync("officer2", token)).Should().NotBeNull();
+		(await client.Company.GetUkEstablishmentsByIdAsync("00000006", token)).Items.Should().ContainSingle();
+		(await client.Company.GetChargesListByIdAsync("00000006", token)).Items.Should().ContainSingle();
+		(await client.Company.GetChargesByIdAsync("00000006", "charge1", token)).Should().NotBeNull();
+		(await client.Company.GetInsolvencyByIdAsync("00000006", token)).Should().NotBeNull();
+		(await client.Company.GetExemptionsByIdAsync("00000006", token)).Should().NotBeNull();
+		(await client.Company.GetCorporateEntityByIdAsync("00000006", "psc1", token)).Should().NotBeNull();
+		(await client.Company.GetIndividualByIdAsync("00000006", "psc2", token)).Should().NotBeNull();
+		(await client.Company.GetLegalPersonByIdAsync("00000006", "psc3", token)).Should().NotBeNull();
+		(await client.Company.GetStatementByIdAsync("00000006", "statement1", token)).Should().NotBeNull();
+		(await client.Company.GetSuperSecureByIdAsync("00000006", "secure1", token)).Should().NotBeNull();
+		(await client.Company.GetPWSCListByIdAsync("00000006", token)).Should().NotBeNull();
+		(await client.Company.GetStatementListByIdAsync("00000006", token)).Should().NotBeNull();
+		(await client.Company.GetOfficerAppointmentsAsync("officer1", token)).Items.Should().ContainSingle();
+
+		handler.RequestedPaths.Should().Contain("/company/00000006/charges/charge1");
+		handler.RequestedPaths.Should().Contain("/officers/officer1/appointments");
 	}
 
 	private sealed class StubHttpMessageHandler(Dictionary<string, string> responses) : HttpMessageHandler
