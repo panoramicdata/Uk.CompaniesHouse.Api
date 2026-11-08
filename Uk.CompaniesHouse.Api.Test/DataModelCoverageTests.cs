@@ -51,6 +51,22 @@ public class DataModelCoverageTests
 		}
 	}
 
+	private static readonly HashSet<Type> NumericOrCharTypes =
+	[
+		typeof(byte), typeof(sbyte), typeof(short), typeof(ushort), typeof(int), typeof(uint),
+		typeof(long), typeof(ulong), typeof(float), typeof(double), typeof(decimal), typeof(char)
+	];
+
+	private static readonly Dictionary<Type, Func<object>> PrimitiveFactories = new()
+	{
+		[typeof(string)] = () => "value",
+		[typeof(bool)] = () => true,
+		[typeof(DateTime)] = () => DateTime.UtcNow,
+		[typeof(DateTimeOffset)] = () => DateTimeOffset.UtcNow,
+		[typeof(Guid)] = () => Guid.NewGuid(),
+		[typeof(Uri)] = () => new Uri("https://example.test")
+	};
+
 	private static object? CreateSampleValue(Type type, int depth, HashSet<Type> stack)
 	{
 		if (depth <= 0)
@@ -70,67 +86,36 @@ public class DataModelCoverageTests
 			return CreateSampleValue(nullableUnderlyingType, depth - 1, stack);
 		}
 
-		if (type.IsArray)
-		{
-			return CreateSampleArray(type, depth, stack);
-		}
-
-		if (type.IsGenericType)
-		{
-			var list = CreateSampleList(type);
-			if (list is not null)
-			{
-				list.Add(CreateSampleValue(type.GetGenericArguments()[0], depth - 1, stack));
-				return list;
-			}
-		}
-
-		if (type.Namespace is not null
-			&& type.Namespace.StartsWith("Uk.CompaniesHouse.Api.Data", StringComparison.Ordinal)
-			&& type.GetConstructor(Type.EmptyTypes) is not null
-			&& !stack.Contains(type))
-		{
-			return CreateSampleDataModel(type, depth, stack);
-		}
-
-		return GetDefault(type);
+		return type.IsArray ? CreateSampleArray(type, depth, stack) : CreateSampleComposite(type, depth, stack);
 	}
+
+	private static object? CreateSampleComposite(Type type, int depth, HashSet<Type> stack)
+	{
+		var list = type.IsGenericType ? CreateSampleList(type) : null;
+		if (list is not null)
+		{
+			list.Add(CreateSampleValue(type.GetGenericArguments()[0], depth - 1, stack));
+			return list;
+		}
+
+		return IsSampleableDataModel(type, stack) ? CreateSampleDataModel(type, depth, stack) : GetDefault(type);
+	}
+
+	private static bool IsSampleableDataModel(Type type, HashSet<Type> stack)
+		=> type.Namespace?.StartsWith("Uk.CompaniesHouse.Api.Data", StringComparison.Ordinal) == true
+			&& type.GetConstructor(Type.EmptyTypes) is not null
+			&& !stack.Contains(type);
 
 	private static object? CreatePrimitiveValue(Type type)
 	{
-		if (type == typeof(string))
+		if (PrimitiveFactories.TryGetValue(type, out var factory))
 		{
-			return "value";
+			return factory();
 		}
 
-		if (type == typeof(bool))
-		{
-			return true;
-		}
-
-		if (IsNumericOrChar(type))
+		if (NumericOrCharTypes.Contains(type))
 		{
 			return Activator.CreateInstance(type);
-		}
-
-		if (type == typeof(DateTime))
-		{
-			return DateTime.UtcNow;
-		}
-
-		if (type == typeof(DateTimeOffset))
-		{
-			return DateTimeOffset.UtcNow;
-		}
-
-		if (type == typeof(Guid))
-		{
-			return Guid.NewGuid();
-		}
-
-		if (type == typeof(Uri))
-		{
-			return new Uri("https://example.test");
 		}
 
 		if (type.IsEnum)
@@ -141,72 +126,6 @@ public class DataModelCoverageTests
 
 		return null;
 	}
-
-	private static bool IsNumericOrChar(Type type)
-	{
-		if (type == typeof(byte))
-		{
-			return true;
-		}
-
-		if (type == typeof(sbyte))
-		{
-			return true;
-		}
-
-		if (type == typeof(short))
-		{
-			return true;
-		}
-
-		if (type == typeof(ushort))
-		{
-			return true;
-		}
-
-		if (type == typeof(int))
-		{
-			return true;
-		}
-
-		if (type == typeof(uint))
-		{
-			return true;
-		}
-
-		if (type == typeof(long))
-		{
-			return true;
-		}
-
-		if (type == typeof(ulong))
-		{
-			return true;
-		}
-
-		if (type == typeof(float))
-		{
-			return true;
-		}
-
-		if (type == typeof(double))
-		{
-			return true;
-		}
-
-		if (type == typeof(decimal))
-		{
-			return true;
-		}
-
-		if (type == typeof(char))
-		{
-			return true;
-		}
-
-		return false;
-	}
-
 	private static object? CreateSampleArray(Type type, int depth, HashSet<Type> stack)
 	{
 		var elementType = type.GetElementType()!;
