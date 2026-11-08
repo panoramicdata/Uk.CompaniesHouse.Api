@@ -9,7 +9,7 @@ namespace Uk.CompaniesHouse.Api.Data.Persons_with_Significant_Control;
 /// Base PSC resource shared by <see cref="CorporateEntity"/> and <see cref="LegalPerson"/>:
 /// the properties common to every person with significant control, in one place.
 /// </summary>
-public abstract class PscResource<TLinks, TIdentification> where TLinks : new() where TIdentification : new()
+public abstract class PscResource<TLinks> where TLinks : new()
 {
 	/// <summary>
 	/// The date that Companies House was notified about the cessation of this person with significant control.
@@ -58,7 +58,7 @@ public abstract class PscResource<TLinks, TIdentification> where TLinks : new() 
 /// Identification common to persons with significant control that have one,
 /// in one place.
 /// </summary>
-public abstract class PscWithIdentification<TIdentification> : PscResource<PWSCLinks, TIdentification>
+public abstract class PscWithIdentification<TIdentification> : PscResource<PWSCLinks>
 	where TIdentification : new()
 {
 	/// <summary>
