@@ -1,7 +1,7 @@
 ﻿<?xml version="1.0" encoding="utf-8"?>
 <Project Sdk="Microsoft.NET.Sdk">
   <PropertyGroup>
-    <TargetFramework>net10.0</TargetFramework>
+    <TargetFramework>net11.0</TargetFramework>
     <IsPackable>false</IsPackable>
     <LangVersion>latest</LangVersion>
     <UserSecretsId>53e9bfee-0454-46a9-b08f-d9daaf5cb1bd</UserSecretsId>
@@ -22,7 +22,8 @@
       <PrivateAssets>all</PrivateAssets>
       <IncludeAssets>runtime; build; native; contentfiles; analyzers; buildtransitive</IncludeAssets>
     </PackageReference>
-  <PackageReference Include="Microsoft.Testing.Extensions.CodeCoverage" PrivateAssets="all" /></ItemGroup>
+    <PackageReference Include="Microsoft.Testing.Extensions.CodeCoverage" PrivateAssets="all" />
+  </ItemGroup>
   <ItemGroup>
     <ProjectReference Include="..\Uk.CompaniesHouse.Api\Uk.CompaniesHouse.Api.csproj" />
   </ItemGroup>
