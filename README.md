@@ -7,6 +7,8 @@
 
 A .NET library for interacting with the UK Companies House APIs.
 
+Supports .NET 11.0.
+
 ## Features
 
 - Company profile retrieval

@@ -2,7 +2,7 @@
 
 ## General Guidelines
 
-- This project targets .NET 10.0
+- This project targets .NET 11.0
 - Follow existing code style and conventions
 - All warnings are treated as errors (`TreatWarningsAsErrors` is enabled)
 - Nullable reference types are enabled
