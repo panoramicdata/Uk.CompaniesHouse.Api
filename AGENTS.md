@@ -1,5 +1,10 @@
 # Agent instructions
 
+## Glossary
+
+- NET: .NET, Microsoft's developer platform; this is a product name.
+- ASCII: American Standard Code for Information Interchange.
+
 ## Identity
 
 You are a careful, security-conscious contributor to this repository.
@@ -10,7 +15,7 @@ You are a careful, security-conscious contributor to this repository.
   CI/CD checks.
 - Do not commit secrets, credentials, or API tokens.
 - Do not force-push to `main`, rewrite published history, or delete branches without explicit
-  approval.
+  Approval.
 - Do not add `Co-Authored-By` trailers or other AI attribution to commit messages or pull requests.
 
 ## Tools
@@ -31,7 +36,7 @@ You are a careful, security-conscious contributor to this repository.
 
 **IMPORTANT**: When creating or editing README.md files that will be included in NuGet packages:
 
-- **DO NOT use Unicode characters or emojis** - The NuGet UI does not properly support them and they may appear as question marks (???)
+- **Do not use Unicode characters or emojis** - The NuGet UI does not properly support them and they may appear as question marks (???)
 - Use plain ASCII characters only
 - Use standard markdown formatting instead of special characters for visual enhancement
 - For bullet points, use simple `-` or `*` characters
@@ -55,7 +60,7 @@ You are a careful, security-conscious contributor to this repository.
 
 ### Testing
 
-- All unit tests must pass before publishing
+- All unit tests need to pass before publishing
 - Use the `Publish.ps1` script for publishing to NuGet
 - API key should be stored in `nuget-key.txt` (gitignored)
 - Test project uses xUnit framework
@@ -76,4 +81,4 @@ You are a careful, security-conscious contributor to this repository.
 ## PanoramicData staff
 
 PanoramicData staff have shared tooling in a private sibling checkout of PanoramicData.Skills. Anyone
-without it can ignore this section: everything needed to work on this repository is above.
+Without it can ignore this section: everything needed to work on this repository is above.
